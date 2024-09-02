@@ -8,7 +8,7 @@
   Version: 2.0.2cd
 
   Template: genesis
-  Template Version: 1.8 
+  Template Version: 1.8
 
   License: GNU General Public License v2.0
   License URI: http://www.opensource.org/licenses/gpl-license.php
@@ -16,14 +16,15 @@
 // Custom.scss
 // Option B: Include parts of Bootstrap
 
-// Import all of Bootstrap's CSS
-//@import "bootstrap/scss/bootstrap";
-
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "bootstrap/scss/functions";
+//@import "animate.css/source/animate.css";
+//$aos-distance: 10px !default;
+@import "aos/src/sass/aos.scss";
+//@import "hover.css/scss/hover.scss";
 
 // 2. Include any default variable overrides here
-@import "aos/src/sass/aos.scss";
+
 @import "../../parts/variables";
 
 // 3. Include remainder of required Bootstrap stylesheets
@@ -31,9 +32,10 @@
 @import "bootstrap/scss/variables-dark";
 
 // 4. Include any default map overrides here
-
+$theme-colors: (
+  primary: $blue,
+);
 // 5. Include remainder of required parts
-//@import "variables-dark.scss";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
@@ -58,18 +60,13 @@
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "bootstrap/scss/utilities/api";
 
-//$bootstrap-icons-font-src: url("~bootstrap-icons/font/fonts/bootstrap-icons.woff2")
-//    format("woff2"),
-//  url("~bootstrap-icons/font/fonts/bootstrap-icons.woff") format("woff");
-//@import "~bootstrap-icons/font/bootstrap-icons.scss";
-
 // 8. Add additional custom code here
 @import "../../parts/hover";
-@import "../../parts/utilities";
+@import "utilities";
 @import "../../parts/forms";
 @import "../../parts/buttons";
 @import "../../parts/navbar";
 @import "breadcrumbs";
-@import "utilities";
 @import "content";
+@import "sections";
 @import "../../parts/footer";

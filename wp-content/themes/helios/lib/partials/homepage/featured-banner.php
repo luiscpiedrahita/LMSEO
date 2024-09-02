@@ -36,7 +36,8 @@ $out.='
      data-aos="fade-left" data-aos-mirror="true"    >
         <img src="'. get_stylesheet_directory_uri(). '/images/home/computer.jpg" alt="Our path" width="1000" height="837" >    
         <div class="featured-s6"
-            data-aos="fade-left"></div>
+            data-aos="fade-left"
+            data-aos-offset="50"></div>
     </div>
 </div>';
 

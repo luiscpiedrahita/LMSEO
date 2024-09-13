@@ -17,31 +17,31 @@ $out.='
                     data-aos-offset="300">
                   <h3>Ecommerce</h3>
                   <div id="ecommerce" class="text-center">
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/airchaser/airchaser-home.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/airchaser/airchaser-home.jpg" 
                     title="Air Chaser, Inc Full Size" 
                     data-caption="Air Chaser, Inc Full Size"
                     class="catalog-industries"
                     data-gallery="ecommerce">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/airchaser/airchaser-emulations.png" 
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/airchaser/airchaser-emulations.png" 
                         alt="Air Chaser, Inc ecommerce website"
                         height="289"
                         width="526">
                     </a>
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/airchaser/airchaser-home-tablet.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/airchaser/airchaser-home-tablet.jpg" 
                     title="Air Chaser, Inc Tablet Size" 
                     data-caption="Air Chaser, Inc Tablet Size"
                     class="d-none catalog-industries"
                     data-gallery="ecommerce">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/airchaser/airchaser-home-tablet.jpg" 
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/airchaser/airchaser-home-tablet.jpg" 
                         alt="Air Chaser, Inc Tablet"  
                         class="">
                     </a>
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/airchaser/airchaser-home-mobile.jpg"
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/airchaser/airchaser-home-mobile.jpg"
                     title="Air Chaser, Inc Mobile Size" 
                     data-caption="Air Chaser, Inc Mobile Size"
                     class="d-none catalog-industries"
                     data-gallery="ecommerce">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/airchaser/airchaser-home-mobile.jpg" 
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/airchaser/airchaser-home-mobile.jpg" 
                         alt="Air Chaser, Inc Mobile"  
                         class="">
                     </a>
@@ -61,29 +61,29 @@ $out.='
                 data-aos-offset="300">
                  <h3>Construction</h3>
                   <div id="health" class="text-center">
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/vqconstruction/vqconstruction-home.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/vqconstruction/vqconstruction-home.jpg" 
                     title="Construction Full Size" 
                     data-caption="Health site - Full Size"
                     class="catalog-industries"
                     data-gallery="construction">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/templates/vqconstruction-argos-template.png" 
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/templates/vqconstruction-argos-template.png" 
                         alt="Construction"
                         height="289"
                         width="534">
                     </a>
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/vqconstruction/vqconstruction-home-tablet.jpg"
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/vqconstruction/vqconstruction-home-tablet.jpg"
                     title="Construction Tablet Size" 
                     data-caption="Health site - Full Size"
                     class="d-none catalog-industries"
                     data-gallery="construction">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/vqconstruction/vqconstruction-home-tablet.jpg" alt="Construction"  class="hide">
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/vqconstruction/vqconstruction-home-tablet.jpg" alt="Construction"  class="hide">
                     </a>
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/vqconstruction/vqconstruction-home-mobile.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/vqconstruction/vqconstruction-home-mobile.jpg" 
                     title="Construction Full Size"
                      data-caption="Construction mobile Size "
                     class="d-none catalog-industries"
                     data-gallery="construction">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/vqconstruction/vqconstruction-home-mobile.jpg" alt="Construction"  class="hide">
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/vqconstruction/vqconstruction-home-mobile.jpg" alt="Construction"  class="hide">
                     </a>
                   </div>
                   <h4>V & Q Construction</h4>
@@ -99,29 +99,29 @@ $out.='
                 data-aos-offset="300">
                   <h3>Health</h3>
                   <div id="health" class="text-center">
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/eopiates/eopiates-full-size.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/eopiates/eopiates-full-size.jpg" 
                     title="Health Full Size" 
                     data-caption="Health Full Size"
                     class="catalog-industries"
                     data-gallery="health">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/eopiates/eopiates.png" 
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/eopiates/eopiates.png" 
                         alt="health"
                         height="289"
                         width="526">
                     </a>
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/eopiates/eopiates-mobile-size.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/eopiates/eopiates-mobile-size.jpg" 
                     title="Health tablet size" 
                     data-caption="Health tablet size"
                     class="d-none catalog-industries"
                     data-gallery="health">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/eopiates/eopiates-mobile-size.jpg" alt="health"  class="hide">
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/eopiates/eopiates-mobile-size.jpg" alt="health"  class="hide">
                     </a>
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/eopiates/eopiates-tablet-size.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/eopiates/eopiates-tablet-size.jpg" 
                     title="Health mobile"
                     data-caption="Health mobile"
                     class="d-none catalog-industries"
                     data-gallery="health">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/eopiates/eopiates-tablet-size.jpg" alt="health"  class="hide">
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/eopiates/eopiates-tablet-size.jpg" alt="health"  class="hide">
                     </a>
                   </div>
                   <h4>eOpiates</h4>
@@ -138,29 +138,29 @@ $out.='
                    data-aos-offset="300">
                   <h3>Real Estate</h3>
                   <div id="real-estate" class="text-center">
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/templates/oberon/full-size.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/templates/oberon/full-size.jpg" 
                     title="RealEstateOne Full Size" 
                     data-caption="RealEstateOne Full Size"
                     class="catalog-industries"
                     data-gallery="RealEstateOne">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/realestateone/real-estate-one-home-combination.png"
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/realestateone/real-estate-one-home-combination.png"
                          alt="RealEstateOne"
                          width="526"
                          height="289">
                     </a>
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/templates/oberon/mobile-size.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/templates/oberon/mobile-size.jpg" 
                     title="RealEstateOne Mobile Size" 
                     data-caption="RealEstateOne Mobile Size"
                     class="d-none catalog-industries"
                     data-gallery="RealEstateOne">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/templates/oberon.png" alt="RealEstateOne Mobile Size"  class="">
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/templates/oberon.png" alt="RealEstateOne Mobile Size"  class="">
                     </a>
-                    <a href="'. get_stylesheet_directory_uri(). '/bin/images/projects/templates/oberon/tablet-size.jpg" 
+                    <a href="'. get_stylesheet_directory_uri(). '/dist/images/projects/templates/oberon/tablet-size.jpg" 
                     title="RealEstateOne Tablet Size"
                     data-caption="RealEstateOne Tablet Size"
                     class="d-none catalog-industries"
                     data-gallery="RealEstateOne">
-                        <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/templates/oberon/tablet-size.jpg" alt="RealEstateOne Tablet Size"  class="">
+                        <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/templates/oberon/tablet-size.jpg" alt="RealEstateOne Tablet Size"  class="">
                     </a>
                   </div>
                   <h4>Real Estate One</h4>

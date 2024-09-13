@@ -7,7 +7,7 @@ $out.='<a class="anchor" id="projects"></a><section class="projects">
         <div class="col-lg-3 col-md-4 columns">
         
             <a class="th" href="/projects/lmseo-com/">
-              <img src="'. get_stylesheet_directory_uri(). '/bin/images/projects/eopiates/home.jpg">
+              <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/eopiates/home.jpg">
             </a>
         <h6>
           <a href="/projects/eopiates-com/">eOpiates.com</a>
@@ -21,7 +21,7 @@ $out.='<a class="anchor" id="projects"></a><section class="projects">
         </div>
         <div class="col-lg-3 col-md-4 columns">
               <a class="th" href="/projects/lmseo-com/">
-                <img src="'.get_stylesheet_directory_uri().'/bin/images/projects/eopiates/instant-search.jpg">
+                <img src="'.get_stylesheet_directory_uri().'/dist/images/projects/eopiates/instant-search.jpg">
               </a>
             
           <h6><a href="/projects/instant-search/">Instant Search</a></h6>
@@ -34,7 +34,7 @@ $out.='<a class="anchor" id="projects"></a><section class="projects">
         </div>
         <div class="col-lg-3 col-md-4 columns">
           <a class="th" href="/projects/lmseo-com/">
-                <img src="'.get_stylesheet_directory_uri().'/bin/images/projects/lmseo/home.jpg">
+                <img src="'.get_stylesheet_directory_uri().'/dist/images/projects/lmseo/home.jpg">
               </a>
             
           <h6><a href="/projects/lmseo-com/">lmseo.com</a></h6>

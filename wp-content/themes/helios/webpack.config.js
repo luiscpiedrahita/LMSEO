@@ -25,6 +25,11 @@ const pageEntryPoints = {
   app: "./js/internal/pages/app.js",
   style: "./scss/internal/pages/pages.scss",
 };
+const blogEntryPoints = {
+  app: "./js/internal/blog/blog.js",
+  style: "./scss/internal/blog/blog.scss",
+};
+
 module.exports = [
   {
     entry: homePageEntryPoints,

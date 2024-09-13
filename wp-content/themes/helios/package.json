@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "404": "webpack --mode development --watch --config ./webpack/webpack.config.404.js",
-    "build": "webpack --mode production -config ./webpack/webpack.config.contact.js",
+    "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
     "contact": "webpack --mode development --watch --config ./webpack/webpack.config.contact.js",
     "contBuild": "webpack --mode production --config ./webpack/webpack.config.contact.js",

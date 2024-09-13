@@ -57,7 +57,7 @@ wp-content/themes/helios/include/cpt/*
 wp-content/themes/helios/lib/css/partials/typography/*
 # wp-content/themes/helios/photos/*
 /wp-content/themes/helios/testing/
-/wp-content/themes/helios/dist/
+# /wp-content/themes/helios/dist/
 
 # ignore log files, databases and dev files
 *.log

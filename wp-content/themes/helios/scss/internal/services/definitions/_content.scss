@@ -1,16 +1,17 @@
+$magicbox-border-width: 5px;
+
 body {
   padding-top: 4.7rem;
 }
 .entry-header {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(24, 1fr);
   background-color: $hexachromeBlack;
   color: $white;
-  height: 90vh;
+  height: 150vh;
   h1 {
-    grid-area: 3/2/5/9;
-    width: auto;
+    grid-area: 3 / 1 / 6 / 24;
     color: $white;
     text-transform: uppercase;
   }
@@ -20,26 +21,51 @@ body {
     line-height: 11rem;
     font-family: Sans-serif, arial, verdana;
     letter-spacing: -1rem;
-    grid-area: 1/1/13/13;
+    grid-area: 1/1/25/25;
     color: rgba(255, 255, 255, 0.05);
     justify-self: end;
     align-self: start;
     height: auto;
   }
-  .services-definition-divider {
-    grid-area: 5/1/5/13;
-    border-top: 5px solid $white;
+  .magicbox-definition-divider {
+    grid-area: 10 / 1 / 10 / 14;
+    border-top: solid $white;
+    border-width: $magicbox-border-width;
     //background-color: $blue;
     //height: 50%;
   }
+  .magicbox-def-div-2 {
+    grid-area: 8 / 24 / 25 / 25;
+    background-color: $blue;
+    border-left: 5px solid $white;
+    border-top: 5px solid $white;
+  }
+  .magicbox-def-div-3 {
+    grid-area: 23 / 1 / 25 / 13;
+    background-color: $white;
+    border-left: 5px solid $white;
+    border-top: 5px solid $white;
+    display: none;
+  }
+  .magicbox-def-div-4 {
+    grid-area: 8 / 24 / 16 / 25;
+    background-color: $hexachromeBlack;
+    border-left: 5px solid $white;
+    border-top: 5px solid $white;
+  }
+  .magicbox-def-div-5 {
+    grid-area: 19 / 24 / 25 / 25;
+    background-color: $hexachromeBlack;
+    border-left: 5px solid $white;
+    border-top: 5px solid $white;
+  }
   .services-title {
-    grid-area: 7/2/12/6;
+    grid-area: 17 / 2 / 23 / 23;
     font-size: 1.2rem;
   }
   .services-definition-image-wrapper {
-    grid-area: 5/7/13/13;
+    grid-area: 6 / 1 / 16 / 25;
     //padding-top: 5px;
-    border-left: 5px solid $white;
   }
   .services-definition-image {
     object-fit: cover;
@@ -50,4 +76,34 @@ body {
 .entry-content {
   padding-top: 7rem;
   font-size: 1.2rem;
+}
+@include media-breakpoint-up(md) {
+  .entry-header {
+    height: 100vh;
+    h1 {
+      grid-area: 4 / 4 / 8 / 24;
+      width: auto;
+    }
+    .services-title {
+      grid-area: 13/3/23/12;
+    }
+    .services-definition-image-wrapper {
+      grid-area: 8 / 14 / 25 / 25;
+      border-left: 5px solid $white;
+      //padding-top: 5px;
+    }
+    .magicbox-def-div-2 {
+      grid-area: 8 / 13 / 25 / 13;
+    }
+    .magicbox-def-div-3 {
+      grid-area: 23 / 1 / 25 / 13;
+      display: block;
+    }
+    .magicbox-def-div-4 {
+      grid-area: 8 / 13 / 10 / 13;
+    }
+    .magicbox-def-div-5 {
+      grid-area: 19 / 13 / 25 / 13;
+    }
+  }
 }

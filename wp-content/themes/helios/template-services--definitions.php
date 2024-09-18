@@ -104,13 +104,11 @@ remove_theme_support('genesis-structural-wraps',array( 'header'));
 //}
 remove_action( 'genesis_before_content', 'custom_breadcrumbs', 10);
 add_action( 'genesis_before_content', 'custom_breadcrumbs_services', 10);
-
 function custom_breadcrumbs_services(){
     get_template_part( 'template-parts/breadcrumb/breadcrumb-trail', 'trail' );
 }
 
 add_filter('genesis_attr_content','contentClassesFunction_services_definition');
-
 function contentClassesFunction_services_definition($attributes) {
     $attributes['class'] = $attributes['class'] . ' ' . 'container-fluid g-0 overflow-hidden';
     return $attributes;
@@ -150,10 +148,10 @@ function lmseo_do_post_title(){
                 'wrap' => $wrap,
             ],
             'atts' => [
-                'class' => 'entry-title col-lg-8 m-0 px-3 p-lg-0',
+                'class' => 'entry-title col-lg-8 m-0 px-3 p-lg-0 text-center',
                 'data-aos' => "fade-right",
             ],
-            'echo'    => false,
+            'echo'    => true,
         ]
     );
     genesis_markup(
@@ -175,10 +173,52 @@ function lmseo_do_post_title(){
             'open'    => "<div %s>",
             'close'   => "</div>",
             'content' => '',
-            'context' => 'services-definition-divider',
+            'context' => 'magicbox-def-div-2',
             'atts' => [
-                'class' => 'services-definition-divider m-0 p-0 p-lg-0 z-9',
-                'data-aos' => "fade-left",
+                'class' => 'magicbox-def-div-2 m-0 p-0 p-lg-0',
+                'data-aos' => "fade-down",
+                'data-aos-delay' => "0",
+            ],
+            'echo'    => true,
+        ]
+    );
+    genesis_markup(
+        [
+            'open'    => "<div %s>",
+            'close'   => "</div>",
+            'content' => '',
+            'context' => 'magicbox-def-div-5',
+            'atts' => [
+                'class' => 'magicbox-def-div-5 m-0 p-0 p-lg-0',
+                'data-aos' => "fade-up",
+                'data-aos-offset' => "100",
+            ],
+            'echo'    => true,
+        ]
+    );
+    genesis_markup(
+        [
+            'open'    => "<div %s>",
+            'close'   => "</div>",
+            'content' => '',
+            'context' => 'magicbox-def-div-3',
+            'atts' => [
+                'class' => 'magicbox-def-div-3 m-0 p-0 p-lg-0',
+                'data-aos' => "fade-up",
+                'data-aos-delay' => "0",
+            ],
+            'echo'    => true,
+        ]
+    );
+    genesis_markup(
+        [
+            'open'    => "<div %s>",
+            'close'   => "</div>",
+            'content' => '',
+            'context' => 'magicbox-definition-divider',
+            'atts' => [
+                'class' => 'magicbox-definition-divider m-0 p-0 p-lg-0',
+                'data-aos' => "fade-right",
                 'data-aos-delay' => "0",
             ],
             'echo'    => true,
@@ -199,10 +239,24 @@ function lmseo_do_post_title(){
                 'close' => '</div>',
                 'content' => $img,
                 'context' => 'services-definition-image-wrapper',
-                'atts' => genesis_parse_attr('services-definition-image-wrapper', ['class' => 'services-definition-image-wrapper z-10', 'data-aos' => "fade-left", ]),
+                'atts' => genesis_parse_attr('services-definition-image-wrapper', ['class' => 'services-definition-image-wrapper', 'data-aos' => "fade-left", ]),
             ]
         );
     }
+    genesis_markup(
+        [
+            'open'    => "<div %s>",
+            'close'   => "</div>",
+            'content' => '',
+            'context' => 'magicbox-def-div-4',
+            'atts' => [
+                'class' => 'magicbox-def-div-4 m-0 p-0 p-lg-0',
+                'data-aos' => "fade-down",
+                'data-aos-delay' => "0",
+            ],
+            'echo'    => true,
+        ]
+    );
 //    genesis_markup(
 //        [
 //            'open'    => "<h5 %s>",

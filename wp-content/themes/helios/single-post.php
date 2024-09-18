@@ -65,6 +65,13 @@ function ServicesCSS_services_definition(){
 }
 add_filter('genesis_attr_content','contentClassesFunction_services_definition');
 
+remove_action( 'genesis_before_content', 'custom_breadcrumbs', 10);
+add_action( 'genesis_after_header', 'custom_breadcrumbs_services', 10);
+
+function custom_breadcrumbs_services(){
+    get_template_part( 'template-parts/breadcrumb/breadcrumb-trail', 'trail' );
+}
+
 function contentClassesFunction_services_definition($attributes) {
     $attributes['class'] = $attributes['class'] . ' ' . 'container g-0 overflow-hidden py-5';
     return $attributes;
@@ -104,12 +111,13 @@ function entryContentClassesFunction($attributes) {
 }
 //    genesis();
 get_header();
-echo '<nav class="lmseo-breadcrumb-wrap px-5"><div class="container-fluid g-0 clearfix"><div class="">';
-if (function_exists('yoast_breadcrumb')) {
-    yoast_breadcrumb('<ul class="lmseo-breadcrumb float-end m-0 p-0" xmlns:v="http://rdf.data-vocabulary.org/#">', '</ul>');
-}
-echo '</div></div></nav>';
+// echo '<nav class="lmseo-breadcrumb-wrap px-5"><div class="container-fluid g-0 clearfix"><div class="">';
+// if (function_exists('yoast_breadcrumb')) {
+//     yoast_breadcrumb('<ul class="lmseo-breadcrumb float-end m-0 p-0" itemscope itemtype="https://schema.org/BreadcrumbList">', '</ul>');
+// }
+// echo '</div></div></nav>';
     ?>
+    
 
         <main id="main" class="main" role="main">
 

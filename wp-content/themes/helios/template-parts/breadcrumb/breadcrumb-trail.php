@@ -12,15 +12,15 @@ if ( is_front_page() || is_home() ) {
 
 // If file is not already loaded, loaded it now.
 if ( ! function_exists( 'breadcrumb_trail' ) ) {
-	include get_template_directory() . '/inc/compatibility/breadcrumb.php';
+	include get_stylesheet_directory() . '/inc/compatibility/class-breadcrumb-trail.php';
 }
 ?>
-<nav id="breadcrumb" class="cenote-breadcrumb cenote-breadcrumb--light">
+<nav class="lmseo-breadcrumb-wrap px-5">
 	<?php
 	breadcrumb_trail( array(
 		'container'   => 'div',
-		'before'      => '<div class="tg-container">',
-		'after'       => '</div>',
+		'before'      => '',
+		'after'       => '',
 		'show_browse' => false,
 	) );
 	?>

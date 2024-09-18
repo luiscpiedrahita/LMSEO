@@ -102,6 +102,13 @@ remove_theme_support('genesis-structural-wraps',array( 'header'));
 //        ]
 //    );
 //}
+remove_action( 'genesis_before_content', 'custom_breadcrumbs', 10);
+add_action( 'genesis_before_content', 'custom_breadcrumbs_services', 10);
+
+function custom_breadcrumbs_services(){
+    get_template_part( 'template-parts/breadcrumb/breadcrumb-trail', 'trail' );
+}
+
 add_filter('genesis_attr_content','contentClassesFunction_services_definition');
 
 function contentClassesFunction_services_definition($attributes) {

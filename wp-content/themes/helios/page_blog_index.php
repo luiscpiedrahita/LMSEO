@@ -7,7 +7,6 @@
 /* This example is for a child theme of Twenty Thirteen: 
 *  You'll need to adapt it the HTML structure of your own theme.
 */
-
 get_header(); ?>
 
 	<div id="primary" class="content-area">

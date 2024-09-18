@@ -107,7 +107,7 @@ remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
 remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
 remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 //Remove breadcrumbs
-remove_action( 'genesis_before_content', 'custom_breadcrumbs_services_definition', 10);
+remove_action( 'genesis_before_content', 'custom_breadcrumbs', 10);
 
 remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 add_action( 'genesis_entry_content', 'lmseo_do_post_content' );

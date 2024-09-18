@@ -825,11 +825,13 @@ function lmseo_filter_yoast_breadcrumb_items( $link_output, $link ) {
 	$new_link_output ='';
 	$pos = strpos($link_output, 'breadcrumb_last');
 	if($pos===false){
-		$new_link_output = '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">';
-		$new_link_output .= '<a href="' . $link['url'] . '" itemprop="url" class="hvr-underline-from-left">' . $link['text'] . '</a>';
+		$new_link_output = '<li itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">';
+		$new_link_output .= '<a href="' . $link['url'] . '" itemprop="item" class="hvr-underline-from-left"><span itemprop="name">' . $link['text'] . '</span></a>';
 		$new_link_output .= '</li>';
 	}else{
-		$new_link_output .= '<li class="current-item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'. $link['text'];
+		$new_link_output .= '<li class="current-item" itemprop="itemListElement" itemscope
+      itemtype="https://schema.org/ListItem">'. $link['text'];
 		$new_link_output .= '</li>';
 	}
 
@@ -855,21 +857,25 @@ function lmseo_filter_yoast_breadcrumb_output( $output ){
 }
 add_filter( 'wpseo_breadcrumb_output', 'lmseo_filter_yoast_breadcrumb_output' );
 
-add_action( 'genesis_before_content', 'custom_breadcrumbs_services_definition', 10);
-function custom_breadcrumbs_services_definition(){
-    if(is_home() or is_front_page()){
-    }else {
-        echo '<nav class="lmseo-breadcrumb-wrap px-5"><div class="container-fluid g-0 clearfix"><div class="">';
-//        if(function_exists('bcn_display_list')){
-//            bcn_display_list();
-//        }
+// add_action( 'genesis_before_content', 'custom_breadcrumbs_services_definition', 10);
+// function custom_breadcrumbs_services_definition(){
+//     if(is_home() or is_front_page()){
+//     }else {
+//         echo '<nav class="lmseo-breadcrumb-wrap px-5"><div class="container-fluid g-0 clearfix"><div class="">';
+// //        if(function_exists('bcn_display_list')){
+// //            bcn_display_list();
+// //        }
 
-        if (function_exists('yoast_breadcrumb')) {
-            yoast_breadcrumb('<ul class="lmseo-breadcrumb float-end m-0 p-0" xmlns:v="http://rdf.data-vocabulary.org/#">', '</ul>');
-        }
+//         if (function_exists('yoast_breadcrumb')) {
+//             yoast_breadcrumb('<ul class="lmseo-breadcrumb float-end m-0 p-0" itemscope itemtype="https://schema.org/BreadcrumbList">', '</ul>');
+//         }
 
-        echo '</div></div></nav>';
-    }
+//         echo '</div></div></nav>';
+//     }
+// }
+add_action( 'genesis_before_content', 'custom_breadcrumbs', 10);
+function custom_breadcrumbs(){
+    get_template_part( 'template-parts/breadcrumb/breadcrumb-trail', 'trail' );
 }
 
 add_action(  'wp_enqueue_scripts', 'lmseo_general_styles'   );

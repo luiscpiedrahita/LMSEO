@@ -33,8 +33,8 @@ $out.='
         data-aos="fade-up"
         data-aos-offset="100"></div>
     <div class="featured-image" onclick="location.href=\'' . get_permalink(128) . '\'" 
-     data-aos="fade-left" data-aos-mirror="true"    >
-        <img src="'. get_stylesheet_directory_uri(). '/dist/images/home/computer.avif" alt="Our path" width="1000" height="837" >    
+     data-aos="fade-left" data-aos-mirror="true" >
+       <img data-dominant-color="45484d" data-has-transparency="false" style="--dominant-color: #45484d;" decoding="async" width="1024" height="721"  src="https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_1024,h_721/http://lmseo.test/wp-content/uploads/2024/09/computer-1024x721.avif" alt="LMSEO: Our path" class="not-transparent wp-image-1091" srcset="https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_1024/http://lmseo.test/wp-content/uploads/2024/09/computer-1024x721.avif 1024w, https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_300/http://lmseo.test/wp-content/uploads/2024/09/computer-300x211.avif 300w, https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_768/http://lmseo.test/wp-content/uploads/2024/09/computer-768x540.avif 768w, https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_1536/http://lmseo.test/wp-content/uploads/2024/09/computer-1536x1081.avif 1536w, https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_600/http://lmseo.test/wp-content/uploads/2024/09/computer-600x422.avif 600w, https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_1920/http://lmseo.test/wp-content/uploads/2024/09/computer.avif 1920w" sizes="(max-width: 1024px) 100vw, 1024px" />
         <div class="featured-s6"
             data-aos="fade-left"
             data-aos-offset="50"></div>

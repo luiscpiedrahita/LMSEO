@@ -7,7 +7,7 @@
  * @subpackage Customizations
  */
 /*
-Template Name: Services
+Template Name: Teams
 */
 remove_action( 'genesis_before_content', 'custom_breadcrumbs', 10);
 add_action( 'genesis_before_content', 'custom_breadcrumbs_services', 10);

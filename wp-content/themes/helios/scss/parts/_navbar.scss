@@ -17,6 +17,9 @@
     width: 100%;
   }
 }
+.navbar-nav .nav-link.show {
+  color: darken($white, $amount: 15%);
+}
 // Animation to fade in the dropdown menus
 @keyframes fadeIn {
   from {

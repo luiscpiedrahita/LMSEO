@@ -1,3 +1,49 @@
+.services {
+  .page-content-1 {
+    //grid-area: 18/25/33/49;
+    background: no-repeat bottom left / cover
+      url("~/images/services/online-marketing-services-los-angeles-1200x701.jpg");
+  }
+  .page-content-2 {
+    //grid-area: 6/20/20/33;
+    background: url("~/images/services/web-development-services-los-angeles-950x1425.jpg")
+      no-repeat bottom right / cover;
+    .text-container {
+      grid-area: 1/1/13/13;
+    }
+  }
+  .page-content-5 {
+    //grid-area: 49/25/68/49;
+    background: url("~/images/services/online-marketing-growth-los-angeles.jpg")
+      no-repeat center center / cover;
+  }
+
+  //.services-image-wrapper {
+  //  grid-area: 1/24/18/49;
+  //}
+  .page-content-6 {
+    //grid-area: 49/1/68/28;
+    background: url("~/images/services/online-marketing-growth-los-angeles.jpg")
+      no-repeat center center / cover;
+  }
+  .page-content-9 {
+    //grid-area: 49/25/68/49;
+    background: url("~/images/services/online-marketing-growth-los-angeles.jpg")
+      no-repeat center center / cover;
+  }
+
+  //.services-image-wrapper {
+  //  grid-area: 1/24/18/49;
+  //}
+  .page-content-10 {
+    //grid-area: 49/1/68/28;
+    background: url("~/images/services/online-marketing-growth-los-angeles.jpg")
+      no-repeat center center / cover;
+  }
+  .page-content-7 {
+    //grid-area: 49/25/68/49;
+  }
+}
 @include media-breakpoint-up(lg) {
   .services {
     //.text-container {
@@ -20,50 +66,6 @@
         //.text-container {
         //  grid-area: 1/1/13/12;
         //}
-      }
-      .page-content-1 {
-        //grid-area: 18/25/33/49;
-        background: no-repeat bottom left / cover
-          url("~/images/services/online-marketing-services-los-angeles-1200x701.jpg");
-      }
-      .page-content-2 {
-        //grid-area: 6/20/20/33;
-        background: url("~/images/services/web-development-services-los-angeles-950x1425.jpg")
-          no-repeat bottom right / cover;
-        .text-container {
-          grid-area: 1/1/13/13;
-        }
-      }
-      .page-content-5 {
-        //grid-area: 49/25/68/49;
-        background: url("~/images/services/online-marketing-growth-los-angeles.jpg")
-          no-repeat center center / cover;
-      }
-
-      //.services-image-wrapper {
-      //  grid-area: 1/24/18/49;
-      //}
-      .page-content-6 {
-        //grid-area: 49/1/68/28;
-        background: url("~/images/services/online-marketing-growth-los-angeles.jpg")
-          no-repeat center center / cover;
-      }
-      .page-content-9 {
-        //grid-area: 49/25/68/49;
-        background: url("~/images/services/online-marketing-growth-los-angeles.jpg")
-          no-repeat center center / cover;
-      }
-
-      //.services-image-wrapper {
-      //  grid-area: 1/24/18/49;
-      //}
-      .page-content-10 {
-        //grid-area: 49/1/68/28;
-        background: url("~/images/services/online-marketing-growth-los-angeles.jpg")
-          no-repeat center center / cover;
-      }
-      .page-content-7 {
-        //grid-area: 49/25/68/49;
       }
     }
   }

@@ -2,13 +2,23 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const path = require("path");
+
 module.exports = (
   entryPoints,
   outputPath,
   localDomain,
   publicPath,
-  filename = "style.css"
+  filename = "style.css",
+  lastArrayElem = false
 ) => {
+  const bSyncConf = new BrowserSyncPlugin(
+    {
+      proxy: localDomain,
+      files: ["/*.css"],
+      injectCss: false,
+    },
+    { reload: true }
+  );
   return [
     {
       entry: entryPoints,
@@ -26,16 +36,9 @@ module.exports = (
       plugins: [
         new WebpackBar(),
         new MiniCssExtractPlugin({
-          filename: filename,
+          filename: filename === "" ? "style.css" : filename,
         }),
-        new BrowserSyncPlugin(
-          {
-            proxy: localDomain,
-            files: ["/*.css"],
-            injectCss: false,
-          },
-          { reload: true }
-        ),
+        lastArrayElem === false ? "" : bSyncConf,
       ],
       module: {
         rules: [

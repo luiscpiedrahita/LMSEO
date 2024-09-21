@@ -183,7 +183,7 @@ class Breadcrumb_Trail {
 
 			// Open the unordered list.
 			$breadcrumb .= sprintf(
-				'<%s class="lmseo-breadcrumb float-end m-0 p-0" itemscope itemtype="http://schema.org/BreadcrumbList">',
+				'<%s class="lmseo-breadcrumb float-start  float-lg-end pe-lg-3 ps-lg-0" itemscope itemtype="http://schema.org/BreadcrumbList">',
 				tag_escape( $this->args['list_tag'] )
 			);
 
@@ -240,7 +240,7 @@ class Breadcrumb_Trail {
 
 			// Wrap the breadcrumb trail.
 			$breadcrumb = sprintf(
-				'<%1$s role="navigation" aria-label="%2$s" class="container-fluid g-0 clearfix" itemprop="breadcrumb">%3$s%4$s%5$s</%1$s>',
+				'<%1$s role="navigation" aria-label="%2$s" class="container-fluid g-0 overflow-hidden" itemprop="breadcrumb">%3$s%4$s%5$s</%1$s>',
 				tag_escape( $this->args['container'] ),
 				esc_attr( $this->labels['aria_label'] ),
 				$this->args['before'],
@@ -509,7 +509,9 @@ class Breadcrumb_Trail {
 		// Get the queried post.
 		$post       = get_queried_object();
 		$post_id    = get_queried_object_id();
-		$post_title = single_post_title( '', false );
+		// $post_title = single_post_title( '', false );
+		$post_title = ucwords(preg_replace("/[^a-zA-Z0-9]+/", " ", get_post_field( 'post_name', get_post() )));
+
 
 		// If the post has a parent, follow the parent trail.
 		if ( 0 < $post->post_parent ) {
@@ -956,7 +958,8 @@ class Breadcrumb_Trail {
 			}
 
 			// Add the formatted post link to the array of parents.
-			$parents[] = sprintf( '<a href="%s" class="hvr-underline-from-left">%s</a>', esc_url( get_permalink( $post_id ) ), get_the_title( $post_id ) );
+			// $parents[] = sprintf( '<a href="%s" class="hvr-underline-from-left">%s</a>', esc_url( get_permalink( $post_id ) ), get_the_title( $post_id ) );
+			$parents[] = sprintf( '<a href="%s" class="hvr-underline-from-left">%s</a>', esc_url( get_permalink( $post_id ) ), ucwords(preg_replace("/[^a-zA-Z0-9]+/", " ", $post->post_name ))) ;
 
 			// If there's no longer a post parent, break out of the loop.
 			if ( 0 >= $post->post_parent ) {

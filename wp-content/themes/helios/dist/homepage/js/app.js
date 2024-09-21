@@ -7883,7 +7883,6 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-var __webpack_exports__ = {};
 /*!*******************!*\
   !*** ./js/app.js ***!
   \*******************/
@@ -7923,17 +7922,6 @@ aos__WEBPACK_IMPORTED_MODULE_1___default().init({
   mirror: false
 });
 _utilities_navbar__WEBPACK_IMPORTED_MODULE_2__.bsToggle.init();
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-/*!*************************!*\
-  !*** ./scss/style.scss ***!
-  \*************************/
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
 })();
 
 /******/ })()

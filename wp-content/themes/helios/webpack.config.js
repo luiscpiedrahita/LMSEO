@@ -336,14 +336,6 @@ module.exports = [
       new MiniCssExtractPlugin({
         filename: "internal/pages/[name].css",
       }),
-      new BrowserSyncPlugin(
-        {
-          proxy: localDomain,
-          files: ["/*.css"],
-          injectCss: false,
-        },
-        { reload: true }
-      ),
     ],
     module: {
       rules: [

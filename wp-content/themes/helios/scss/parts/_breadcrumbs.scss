@@ -1,13 +1,13 @@
 .lmseo-breadcrumb-wrap {
   padding: 0 1rem;
-  //background-color: $hexachromeBlack;
   color: $white;
-  background-color: $main;
+  // background-color: $main;
   ul {
+    background-color: $hexachromeBlack;
     list-style: none;
     border-bottom: 5px solid $white;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
   }
   li {
@@ -35,11 +35,12 @@
     a {
       display: inline-block;
       padding: 0.5rem;
-    }
-    &:after {
-      content: "⇨";
-      color: $blue;
       border-radius: 0.5rem;
+      &:after {
+        content: "⇨";
+        color: $blue;
+        padding-left: 7px;
+      }
     }
     &:last-child:after {
       content: "";
@@ -52,13 +53,31 @@
     height: 100%;
   }
 }
+@include media-breakpoint-up(md) {
+}
 @include media-breakpoint-up(lg) {
+  .lmseo-breadcrumb li {
+    max-height: 40px;
+    a::after {
+      content: "";
+      padding: 0;
+    }
+  }
+  .lmseo-breadcrumb-wrap li.current-item,
+  .lmseo-breadcrumb-wrap li a {
+    display: inline-block;
+    padding: 0.5rem;
+    max-height: 37px;
+    max-width: 90%;
+    overflow: hidden;
+  }
   .lmseo-breadcrumb-wrap {
     padding: 0 3rem;
     //background-color: $hexachromeBlack;
     color: $main;
     background-color: transparent;
     ul {
+      background-color: transparent;
       list-style: none;
       border-bottom: 5px solid $white;
       flex-direction: row;
@@ -71,5 +90,11 @@
         border-radius: 0.5rem;
       }
     }
+  }
+}
+@include media-breakpoint-up(xlg) {
+  .lmseo-breadcrumb-wrap li.current-item,
+  .lmseo-breadcrumb-wrap li a {
+    max-width: fit-content;
   }
 }

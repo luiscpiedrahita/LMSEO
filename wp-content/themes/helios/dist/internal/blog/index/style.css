@@ -10717,8 +10717,8 @@ footer a:hover svg {
   padding: 0.5rem;
   border-radius: 50%;
   background-color: #999999;
-  height: 4.5rem;
-  width: 4.5rem;
+  height: 4rem;
+  width: 4rem;
   text-align: center;
   display: block;
   color: black;
@@ -10726,8 +10726,8 @@ footer a:hover svg {
   position: relative;
 }
 .footer-social svg {
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 .footer-social a.icon-twitter:hover {

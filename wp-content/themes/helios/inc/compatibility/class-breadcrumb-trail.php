@@ -183,7 +183,7 @@ class Breadcrumb_Trail {
 
 			// Open the unordered list.
 			$breadcrumb .= sprintf(
-				'<%s class="lmseo-breadcrumb float-start  float-lg-end pe-lg-3 ps-lg-0" itemscope itemtype="http://schema.org/BreadcrumbList">',
+				'<%s class="lmseo-breadcrumb float-start  float-lg-end p-0 pe-lg-3 ps-lg-0" itemscope itemtype="http://schema.org/BreadcrumbList">',
 				tag_escape( $this->args['list_tag'] )
 			);
 

@@ -10,5 +10,7 @@ module.exports = require("./templates/dev.template")(
   contactEntryPoints,
   outputPath,
   localDomain,
-  publicPath
+  publicPath,
+  "",
+  true
 );

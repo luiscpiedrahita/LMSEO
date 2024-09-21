@@ -310,18 +310,22 @@ section.widget {
   }
   .footer-social {
     width: auto;
-  }
-  .footer-social a {
-    padding: 0.5rem;
-    border-radius: 50%;
-    background-color: $aluminum;
-    height: 2.5rem;
-    width: 2.5rem;
-    text-align: center;
-    display: block;
-    color: black;
-    transition: all 0.5s ease-out 0s;
-    position: relative;
+    a {
+      padding: 0.5rem;
+      border-radius: 50%;
+      background-color: $aluminum;
+      height: 2.5rem;
+      width: 2.5rem;
+      text-align: center;
+      display: block;
+      color: black;
+      transition: all 0.5s ease-out 0s;
+      position: relative;
+      svg {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
   }
   .inline-list > li {
     display: block;

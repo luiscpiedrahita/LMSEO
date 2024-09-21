@@ -9,5 +9,7 @@ module.exports = require("./templates/dev.template")(
   pagestEntryPoints,
   outputPath,
   localDomain,
-  publicPath
+  publicPath,
+  "",
+  true
 );

@@ -9,5 +9,7 @@ module.exports = require("./templates/dev.template")(
   error404EntryPoints,
   outputPath,
   localDomain,
-  publicPath
+  publicPath,
+  "",
+  true
 );

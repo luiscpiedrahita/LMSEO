@@ -1,8 +1,8 @@
+@use "sass:color";
 @import "../../parts/breadcrumbs";
 
 .lmseo-breadcrumb-wrap {
   ul {
-    //list-style: none;
-    border-bottom: 5px solid $blue;
+    border-bottom: 5px solid color.scale($blue, $lightness: 50%);
   }
 }

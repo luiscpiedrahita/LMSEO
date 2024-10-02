@@ -30,8 +30,18 @@ body {
     .content-image {
     }
     .services-image-wrapper {
-      background: no-repeat bottom left / cover
-        url("~/images/services/online-marketing-services-los-angeles-1200x701.jpg");
+      // background: no-repeat bottom left / cover
+      //   url("~/images/services/online-marketing-services-los-angeles-1200x701.jpg");
+      overflow: hidden;
+      figure {
+        margin: 0;
+      }
+      img {
+        width: 100%;
+        object-position: top left;
+        height: fit-content;
+        object-fit: cover;
+      }
     }
 
     .page-content-0 {
@@ -112,13 +122,13 @@ body {
       .services-image-wrapper {
         display: block;
         grid-area: 1/24/15/49;
-        background: no-repeat bottom left
-          url("~/images/services/online-marketing-services-los-angeles-1200x701.jpg");
+        // background: no-repeat bottom left
+        //   url("~/images/services/online-marketing-services-los-angeles-1200x701.jpg");
         background-size: cover;
         img {
-          width: 100%;
-          object-position: top;
-          object-fit: cover;
+          width: auto;
+          height: revert-layer;
+          max-height: 100%;
         }
       }
       .attachment-post-image {

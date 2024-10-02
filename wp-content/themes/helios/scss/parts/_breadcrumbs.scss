@@ -35,7 +35,8 @@
     a {
       display: inline-block;
       padding: 0.5rem;
-      border-radius: 0.5rem;
+      // border-radius: 0.5rem;
+      border-radius: 0;
       &:after {
         content: "⇨";
         color: $blue;
@@ -58,6 +59,7 @@
 @include media-breakpoint-up(lg) {
   .lmseo-breadcrumb li {
     max-height: 40px;
+    margin-bottom: -5px;
     a::after {
       content: "";
       padding: 0;
@@ -66,7 +68,7 @@
   .lmseo-breadcrumb-wrap li.current-item,
   .lmseo-breadcrumb-wrap li a {
     display: inline-block;
-    padding: 0.5rem;
+    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
     max-height: 37px;
     max-width: 90%;
     overflow: hidden;

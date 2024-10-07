@@ -1,0 +1,9 @@
+@use "sass:color";
+@import "../../parts/breadcrumbs";
+
+.lmseo-breadcrumb-wrap {
+  background-color: $white-smoke;
+  ul {
+    border-bottom: 5px solid color.scale($blue, $lightness: 50%);
+  }
+}

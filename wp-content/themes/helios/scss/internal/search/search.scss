@@ -1,0 +1,73 @@
+/*!
+  Theme Name: Helios
+  Theme URI: http://www.lmseo.co
+  Description: Helios is a 2 or 3-column Widget-ready child theme created for the Genesis Framework.
+  Author: Luis Luis Pieadrahita
+  Author URI: http://www.lmseo.co/
+
+  Version: 2.0.2cd
+
+  Template: genesis
+  Template Version: 1.8
+
+  License: GNU General Public License v2.0
+  License URI: http://www.opensource.org/licenses/gpl-license.php
+*/
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "bootstrap/scss/functions";
+//@import "animate.css/source/animate.css";
+//$aos-distance: 10px !default;
+@import "aos/src/sass/aos.scss";
+//@import "hover.css/scss/hover.scss";
+
+// 2. Include any default variable overrides here
+
+@import "variables";
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+$theme-colors: (
+  primary: $blue,
+);
+// 5. Include remainder of required parts
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/forms";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+@import "../../parts/hover";
+@import "utilities";
+@import "../../parts/forms";
+@import "../../parts/buttons";
+@import "../../parts/navbar";
+@import "breadcrumbs";
+@import "content";
+@import "sections";
+@import "../../parts/footer";

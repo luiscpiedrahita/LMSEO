@@ -155,8 +155,7 @@ function contentClassesFunction($attributes)
  * @return 'entry-content' classes array.
  */
 add_filter('genesis_attr_entry-header', 'entryClassesFunction');
-function entryClassesFunction($attributes)
-{
+function entryClassesFunction($attributes){
     $attributes['class'] = $attributes['class'] . ' ' . ' text-grid m-0';
     return $attributes;
 }
@@ -164,8 +163,8 @@ function entryClassesFunction($attributes)
 
 remove_action('genesis_entry_header', 'genesis_do_post_title');
 add_action('genesis_entry_header', 'lmseo_do_post_title');
-function lmseo_do_post_title()
-{
+function lmseo_do_post_title(){
+
     require_once(get_stylesheet_directory() . '/lib/partials/svg/ecommerce.php');
 
     $title = apply_filters('genesis_post_title_text', get_the_title());

@@ -1,0 +1,28 @@
+body {
+  padding-top: 4.7rem;
+}
+.content{
+  background-color: $white-smoke;
+}
+h3.entry-title{
+  line-height: 2rem;
+  font-size: 1.5rem;
+  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  margin-bottom: 2rem;
+  a{
+    color: $jet;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    &:hover{
+      color:$blue;
+    }
+  }
+}
+@include media-breakpoint-up(lg) {
+
+}
+@include media-breakpoint-up(xl) {
+ 
+}

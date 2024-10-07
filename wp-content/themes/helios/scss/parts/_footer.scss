@@ -82,6 +82,7 @@ footer a {
   }
   input[type="search"] {
     @extend .black-small-input-box;
+    color: $white;
   }
   input[type="submit"] {
     @extend %black-small-button;

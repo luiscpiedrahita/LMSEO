@@ -19,10 +19,270 @@ add_action( 'genesis_before_loop', 'genesis_do_search_title' );
  */
 function genesis_do_search_title() {
 
-	$title = sprintf( '<div class="archive-description"><h1 class="archive-title">%s %s</h1></div>', apply_filters( 'genesis_search_title_text', __( 'Search Results for:', 'genesis' ) ), get_search_query() );
+	$title = sprintf( '<div class="archive-description container"><h1 class="archive-title">%s %s</h1></div>', apply_filters( 'genesis_search_title_text', __( 'Search Results for:', 'genesis' ) ), get_search_query() );
 
 	echo apply_filters( 'genesis_search_title_output', $title ) . "\n";
 
 }
+
+// Wrap entry titles on 'portfolio' post type archive page in h3 tags
+add_filter( 'genesis_entry_title_wrap', 'lmseo_set_custom_entry_title_wrap' );
+function lmseo_set_custom_entry_title_wrap( $wrap ) {
+	$wrap = 'h3';
+	return $wrap;
+
+}
+
+add_action( 'wp_footer', 'lmseo_deregister_scripts' );
+function lmseo_deregister_scripts(){
+    wp_deregister_script( 'wp-embed' );
+}
+
+add_action(  'wp_enqueue_scripts', 'lmseo_index_print_styles'   );
+function lmseo_index_print_styles() {
+    global $portArchDev;
+
+//  Disabling CSS styles of WooCommerce blocks
+//  https://themesharbor.com/disabling-css-styles-of-woocommerce-blocks/
+    wp_dequeue_style( 'wc-blocks-style' ); //wc-blocks-integration-css
+    wp_dequeue_style( 'wc-blocks-integration' ); //wc-blocks-integration-css
+    wp_dequeue_style( 'woocommerce-smallscreen' ); //wc-blocks-integration-css
+    wp_dequeue_style( 'woocommerce-layout' ); //wc-blocks-integration-css
+    wp_dequeue_style( 'woocommerce-general' ); //wc-blocks-integration-css
+    wp_dequeue_style( 'woocommerce-inline' ); //wc-blocks-integration-css
+    wp_dequeue_style( 'classic-theme-styles' ); //wc-blocks-integration-css
+//  Dequeue Gutenberg Block Library CSS Code Snippet
+//  https://smartwp.com/remove-gutenberg-css/
+    wp_dequeue_style( 'wp-block-library' ); // wp-block-library-css
+//  https://wordpress.org/support/topic/how-to-disable-inline-styling-style-idglobal-styles-inline-css/
+    wp_dequeue_style( 'global-styles' ); //  global-styles-inline-css
+    wp_dequeue_style('lmseo'); // main css
+    if( !is_super_admin() || !is_admin_bar_showing() || is_wp_login()){
+        wp_deregister_script('jquery');
+        wp_dequeue_script('jquery');
+        wp_dequeue_script('jquery-migrate');
+    }
+}
+/** Add Teams JS to website */
+add_action( 'wp_enqueue_scripts','searchJS');
+function searchJS(){
+    wp_register_script( 'internal-search',get_stylesheet_directory_uri( 'bootstrap' ) . '/dist/internal/search/js/app.js',array(), '1.0', true );
+    wp_enqueue_script('internal-search');
+
+}
+/** Add search JS to website */
+add_action( 'wp_enqueue_scripts','searchCSS');
+function searchCSS(){
+    wp_register_style( 'search-css',get_stylesheet_directory_uri( ) . '/dist/internal/search/style.css',array(), '1.0', 'all' );
+    wp_enqueue_style('search-css');
+
+}
+/*
+*remove wrappers for header and inner
+*/
+add_filter( 'genesis_markup_content-sidebar-wrap', '__return_null' );
+add_filter('genesis_attr_content','contentClassesFunction');
+
+function contentClassesFunction($attributes) {
+    $attributes['class'] = $attributes['class'] . ' ' . 'pt-5 pb-5';
+    return $attributes;
+}
+
+remove_action( 'genesis_loop', 'genesis_do_loop' );
+add_action( 'genesis_loop', 'lmseo_do_search_loop' );
+/**
+ * Outputs a custom loop.
+ *
+ * @global mixed $paged current page number if paginated.
+ * @return void
+ */
+function lmseo_do_search_loop() {
+	// create an array variable with specific post types in your desired order.
+	$post_types = array( 'post', 'page' );
+
+	echo '<div class="search-content container">';
+
+	foreach ( $post_types as $post_type ) {
+		// get the search term entered by user.
+		$s = isset( $_GET["s"] ) ? $_GET["s"] : "";
+
+		// accepts any wp_query args.
+		$args = (array(
+			's' => $s,
+			'post_type' => $post_type,
+			'posts_per_page' => 5,
+			'order' => 'ASC',
+			'orderby' => 'title',
+
+		));
+
+		$query = new WP_Query( $args );
+		if ( $query->have_posts() ) {
+			$searchItemHeading = genesis_markup( array(
+				'open'   => '<header %s>',
+				'close' => '</header>',
+				'content' => '<h2>'. ucwords($post_type) . 's</h2>',
+				'xhtml'   => '<div class="search-item-heading">',
+				'params'  => array(
+					'id'  => 'search-item-heading',
+				),
+				'context' => 'search-item-heading',
+				'echo' => false,
+				'atts' =>[
+					'class' => 'search-item-heading ' . $post_type,
+				]
+			) );
+			$searchItemBody = genesis_markup( array(
+				'open'   => '<section %s>',
+				'xhtml'   => '<div class="search-item-body">',
+				'context' => 'search-item-body',
+				'echo' => false,
+				'atts' =>[
+					'class' => 'search-item-body row justify-content-center' ,
+				]
+			) );
+			genesis_markup( array(
+				'open'   => '<section %s>',
+				'content' => $searchItemHeading . $searchItemBody,
+				'xhtml'   => '<div class="search-results">',
+				'params'  => array(
+					'id'  => 'search-results-list',
+				),
+				'context' => 'search-results-list',
+				'echo' => true,
+				'atts' =>(array(
+					'class' => 'search-results-list ' . $post_type,
+				))
+			) );
+			// echo '<div class="post-type '. $post_type .'"><div class="post-type-heading">'. $post_type . 's</div>';
+			// echo'<!-- Nav tabs -->
+			// 	<ul class="nav nav-tabs">
+			// 	<li class="nav-item">
+			// 		<a class="nav-link active" data-bs-toggle="tab" href="#home">Home</a>
+			// 	</li>
+			// 	<li class="nav-item">
+			// 		<a class="nav-link" data-bs-toggle="tab" href="#menu1">Menu 1</a>
+			// 	</li>
+			// 	<li class="nav-item">
+			// 		<a class="nav-link" data-bs-toggle="tab" href="#menu2">Menu 2</a>
+			// 	</li>
+			// 	</ul>
+
+			// 	<!-- Tab panes -->
+			// 	<div class="tab-content">
+			// 	<div class="tab-pane container active" id="home">...</div>
+			// 	<div class="tab-pane container fade" id="menu1">...</div>
+			// 	<div class="tab-pane container fade" id="menu2">...</div>
+			// 	</div>';
+				// remove post info.
+				// remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+				
+				
+
+				// remove post image (from theme settings).
+				// remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
+
+				// remove entry content.
+				// remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+				add_filter( 'genesis_attr_entry', 'lmseo_post_class' );
+
+				// remove post content nav.
+				remove_action( 'genesis_entry_content', 'genesis_do_post_content_nav', 12 );
+				remove_action( 'genesis_entry_content', 'genesis_do_post_permalink', 14 );
+
+				// force content limit.
+				add_filter( 'genesis_pre_get_option_content_archive_limit', 'sk_content_limit' );
+
+				// modify the Content Limit read more link.
+				add_filter( 'get_the_content_more_link', 'sp_read_more_link' );
+
+				// force excerpts.
+				// add_filter( 'genesis_pre_get_option_content_archive', 'sk_show_excerpts' );
+
+				// modify the Excerpt read more link.
+				add_filter( 'excerpt_more', 'new_excerpt_more' );
+
+				// modify the length of post excerpts.
+				add_filter( 'excerpt_length', 'sp_excerpt_length' );
+
+				// remove entry footer.
+				// remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_open', 5 );
+				// remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 );
+				// remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+
+				// remove archive pagination.
+				remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
+				remove_action( 'genesis_before_post_content', 'genesis_post_info' );
+				add_filter('genesis_post_info', 'lmseo_post_info_filter');
+
+				// custom genesis loop with the above query parameters and hooks.
+				genesis_custom_loop( $args );
+
+			// echo '</div>';
+			genesis_markup(
+                array(
+                    'close'   => '</section>',
+                    'context' => 'search-item-body',
+                    'echo'    => true,
+                )
+			);
+			genesis_markup(
+                array(
+                    'close'   => '</section>',
+                    'context' => 'search-results-list',
+                    'echo'    => true,
+                )
+			);
+		}
+	}
+
+	echo '</div>'; // .search-content
+
+}
+
+function lmseo_post_class( $attributes ) {
+
+    $attributes['class'] = 'card m-2 p-2 col-md-8 col-lg-6 ' . join( ' ', get_post_class() );
+    return $attributes;
+}
+
+
+
+function lmseo_post_info_filter($post_info) {
+	$post_info = '[post_date] by [post_author_posts_link] at [post_time] [post_comments] [post_edit]';
+	return $post_info;
+}
+
+function sk_content_limit() {
+	// return '1'; // number of characters.
+	return -1;
+}
+
+function sp_read_more_link() {
+	// return '... <a class="more-link" href="' . get_permalink() . '">Continue Reading</a>';
+	return '';
+}
+
+function sk_show_excerpts() {
+	return 'excerpts';
+}
+
+function new_excerpt_more( $more ) {
+    // return '... <a class="more-link" href="' . get_permalink() . '">Continue Reading</a>';
+	return '';
+}
+
+function sp_excerpt_length( $length ) {
+	return 20; // pull first 20 words.
+}
+// // Add div.wrap inside of div#inner
+// add_action( 'genesis_before_entry', 'child_before_content_sidebar_wrap' );
+// function child_before_content_sidebar_wrap() {
+//     echo '<div class="wrap">';
+// }
+// add_action( 'genesis_after_entry', 'child_after_content_sidebar_wrap' );
+// function child_after_content_sidebar_wrap() {
+//     echo '</div><!-- end .wrap -->';
+// }
 
 genesis();

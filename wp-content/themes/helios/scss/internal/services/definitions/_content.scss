@@ -3,6 +3,9 @@ $magicbox-border-width: 5px;
 body {
   padding-top: 4.7rem;
 }
+h2, h3, p, ul{
+  margin: 1.8rem 0;
+}
 .entry-header {
   display: grid;
   grid-template-columns: repeat(24, 1fr);

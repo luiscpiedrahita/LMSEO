@@ -315,5 +315,28 @@ function lmseo_do_post_title(){
 //    }
 //    genesis_do_post_content();
 //}
+// remove_action( 'genesis_before_entry_content', 'genesis_do_post_content' );
+add_action( 'genesis_before_entry_content', 'lmseo_do_post_content' );
+function lmseo_do_post_content() {
+    genesis_markup(
+        [
+            'open' => '<section %s>',
+            'content' => '<div class="row">',
+            'context' => 'services-definition-content',
+            'atts' => genesis_parse_attr('services-definition-content', ['class' => 'services-definition-content container pb-5']),
+        ]
+    );
+}
+remove_action( 'genesis_after_entry_content', 'genesis_do_post_content' );
+add_action( 'genesis_after_entry_content', 'lmseo_after_post_content' );
+function lmseo_after_post_content() {
+    genesis_markup(
+        [
+            'content' => '</div>',   
+            'close' => '</section>',
+            'context' => 'services-definition-content',
+        ]
+    );
+}
 
 genesis();

@@ -9940,7 +9940,7 @@ textarea.form-control-lg {
 .hvr-sweep-to-left:hover,
 .hvr-sweep-to-left:focus,
 .hvr-sweep-to-left:active {
-  color: white;
+  color: #ffffff;
 }
 
 .hvr-sweep-to-left:hover:before,
@@ -9948,6 +9948,35 @@ textarea.form-control-lg {
 .hvr-sweep-to-left:active:before {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
+}
+
+.hvr-underline-from-right {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+
+.hvr-underline-from-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+  background: #2098d1;
+  height: 5px;
+  transition-property: left;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.hvr-underline-from-right:hover:before,
+.hvr-underline-from-right:focus:before,
+.hvr-underline-from-right:active:before {
+  left: 0;
 }
 
 @view-transition {
@@ -11031,7 +11060,11 @@ body {
   padding-top: 4.7rem;
 }
 
-h2, .h2, h3, .h3, p, ul {
+.content h2, .content .h2,
+.content h3,
+.content .h3,
+.content p,
+.content ul {
   margin: 1.8rem 0;
 }
 

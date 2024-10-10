@@ -10683,13 +10683,13 @@ body {
   padding-top: 4.7rem;
 }
 
-h2, .h2,
-h3,
-.h3,
-h4,
-.h4,
-p,
-ul {
+.main h2, .main .h2,
+.main h3,
+.main .h3,
+.main h4,
+.main .h4,
+.main p,
+.main ul {
   margin: 1.8rem 0;
 }
 

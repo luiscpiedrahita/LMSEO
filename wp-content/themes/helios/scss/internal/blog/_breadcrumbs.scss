@@ -1,0 +1,13 @@
+@use "sass:color";
+@import "../../parts/breadcrumbs";
+
+.lmseo-breadcrumb-wrap {
+  ul {
+    // border-bottom: 5px solid color.scale($blue, $lightness: 50%);
+    border-bottom: 5px solid $blue;
+  }
+  .lmseo-breadcrumb .hvr-underline-from-left:before {
+    background: var(--bs-code-color);
+    background: #ffec2d;
+  }
+}

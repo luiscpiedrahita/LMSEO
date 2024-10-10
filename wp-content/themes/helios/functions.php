@@ -1,6 +1,6 @@
 <?php
 /** Start the engine */
-require_once(TEMPLATEPATH.'/lib/init.php');
+require_once(get_template_directory().'/lib/init.php');
 require_once ( get_stylesheet_directory() . '/lib/functions/html5.php' );
 /**
  * Custom template tags for this theme.

@@ -1,3 +1,4 @@
+@use "sass:color";
 body {
   padding-top: 4.7rem;
 }
@@ -51,10 +52,30 @@ h1 {
   display: inline-block;
   padding: 3px 5px;
 }
+.wp-block-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .entry-thumbnail {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
+  img {
+    max-width: 100%;
+    max-height: fit-content;
+  }
 }
 .entry-title {
   position: relative;
@@ -88,6 +109,7 @@ pre {
   //background: url(lines.png) repeat 0 0;
   padding: 10px;
   color: #333;
+  text-wrap: wrap;
 }
 pre code {
   padding: 10px;
@@ -103,12 +125,21 @@ pre code {
   grid-template-rows: repeat(24, 1fr);
   transition: all 0.9s ease-out;
   &:hover .arrow path {
-    fill: #ffec2d;
+    fill: var(--bs-code-color);
   }
   &:hover .next-post-title-item,
   &:hover .prev-post-title-item {
     color: $main;
     background-size: 100% 100%;
+  }
+  &:hover {
+    .prev-post-image,
+    .next-post-image {
+      transform: scale(1.05);
+      img {
+        transform: scale(1.05);
+      }
+    }
   }
 }
 .prev-post-image,
@@ -120,8 +151,13 @@ pre code {
   display: flex;
   justify-content: center;
   overflow: hidden;
-
-  // background-color: #ffec2d;
+  transition: all 0.7s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  transform: scale(1);
+  img {
+    transition: all 0.7s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: scale(1);
+  }
+  // background-color: var(--bs-code-color);
 }
 .next-post-image {
   grid-area: 1 / 1 / 14 / 21;
@@ -141,8 +177,8 @@ pre code {
   transition: all 0.5s cubic-bezier(0, 0.78, 1, 0.99);
   background-image: linear-gradient(
     transparent 35%,
-    #ffec2d 0,
-    #ffec2d 75%,
+    color.adjust($blue, $lightness: 30%) 0,
+    color.adjust($blue, $lightness: 30%) 75%,
     transparent 0
   );
   background-size: 0% 100%;

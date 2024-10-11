@@ -10676,7 +10676,6 @@ button.expand,
 }
 .lmseo-breadcrumb-wrap .lmseo-breadcrumb .hvr-underline-from-left:before {
   background: var(--bs-code-color);
-  background: #ffec2d;
 }
 
 body {
@@ -10733,10 +10732,30 @@ h1, .h1 {
   padding: 3px 5px;
 }
 
+.wp-block-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+.wp-block-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .entry-thumbnail {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+.entry-thumbnail img {
+  max-width: 100%;
+  max-height: fit-content;
 }
 
 .entry-title {
@@ -10773,6 +10792,7 @@ pre {
   border: 1px solid #777;
   padding: 10px;
   color: #333;
+  text-wrap: wrap;
 }
 
 pre code {
@@ -10790,13 +10810,25 @@ pre code {
 }
 .prev-post:hover .arrow path,
 .next-post:hover .arrow path {
-  fill: #ffec2d;
+  fill: var(--bs-code-color);
 }
 .prev-post:hover .next-post-title-item, .prev-post:hover .prev-post-title-item,
 .next-post:hover .next-post-title-item,
 .next-post:hover .prev-post-title-item {
   color: #212529;
   background-size: 100% 100%;
+}
+.prev-post:hover .prev-post-image,
+.prev-post:hover .next-post-image,
+.next-post:hover .prev-post-image,
+.next-post:hover .next-post-image {
+  transform: scale(1.05);
+}
+.prev-post:hover .prev-post-image img,
+.prev-post:hover .next-post-image img,
+.next-post:hover .prev-post-image img,
+.next-post:hover .next-post-image img {
+  transform: scale(1.05);
 }
 
 .prev-post-image,
@@ -10807,6 +10839,13 @@ pre code {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  transform: scale(1);
+}
+.prev-post-image img,
+.next-post-image img {
+  transition: all 0.7s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  transform: scale(1);
 }
 
 .next-post-image {
@@ -10828,7 +10867,7 @@ pre code {
 .next-post-title-item,
 .prev-post-title-item {
   transition: all 0.5s cubic-bezier(0, 0.78, 1, 0.99);
-  background-image: linear-gradient(transparent 35%, #ffec2d 0, #ffec2d 75%, transparent 0);
+  background-image: linear-gradient(transparent 35%, rgb(154.4024896266, 212.1618257261, 239.5975103734) 0, rgb(154.4024896266, 212.1618257261, 239.5975103734) 75%, transparent 0);
   background-size: 0% 100%;
   background-repeat: no-repeat;
 }

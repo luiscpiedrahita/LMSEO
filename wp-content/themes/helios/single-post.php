@@ -165,7 +165,7 @@ get_header();
                     <a href="<?php echo get_permalink($prev_post->ID); ?>" class="prev-post offset-lg-1 col-lg-4 my-5 text-middle">
                         <span class="prev-post-arrow">
                             <svg width="60" height="60" class="arrow arrow-left">
-                                <path d="M 20 10 L 30 0 L 60 30 L 30 60 L 20 50 L 40 30 L 10 0"></path>
+                                <path d="M 20 10 L 30 0 L 60 30 L 30 60 L 20 50 L 40 30 L 20 10"></path>
                             </svg>
                         </span>
                         <span class="prev-post-image">
@@ -191,7 +191,7 @@ get_header();
                         </span>
                         <span class="next-post-arrow">
                             <svg width="60" height="60" class="arrow arrow-right">
-                                <path d="M 20 10 L 30 0 L 60 30 L 30 60 L 20 50 L 40 30 L 10 0"></path>
+                                <path d="M 20 10 L 30 0 L 60 30 L 30 60 L 20 50 L 40 30 L 20 10"></path>
                             </svg>
                         </span>
                         <span class="next-post-title  hvr-underline-from-left pb-1">
@@ -210,7 +210,7 @@ get_header();
         </section>
         <?php
         if (comments_open() || get_comments_number()) : ?>
-            <div class="dark-bg-lg py-5">
+            <div class="dark-bg py-5">
                 <div class="container">
                     <div class="row">
                         <?php comments_template(); ?>

@@ -1,4 +1,4 @@
-import { Dropdown, Popper } from "bootstrap";
+import { Dropdown } from "bootstrap";
 import Lightbox from "bs5-lightbox";
 import AOS from "aos";
 import { bsToggle } from "../../utilities/navbar";

@@ -25,7 +25,9 @@
     "teamsBuild": "webpack --mode production --config ./webpack/webpack.config.teams.js",
     "404Build": "webpack --mode production --config ./webpack/webpack.config.404.js",
     "search": "webpack --mode development --watch --config ./webpack/webpack.config.search.js",
-    "searchBuild": "webpack --mode production --config ./webpack/webpack.config.search.js"
+    "searchBuild": "webpack --mode production --config ./webpack/webpack.config.search.js",
+    "digital": "webpack --mode development --watch --config ./webpack/webpack.config.digital.js",
+    "searchDigital": "webpack --mode production --config ./webpack/webpack.config.digital.js"
   },
   "babel": {
     "presets": [

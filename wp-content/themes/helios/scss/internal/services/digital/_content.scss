@@ -1,0 +1,289 @@
+$magicbox-border-width: 5px;
+
+body {
+  padding-top: 4.7rem;
+}
+.content {
+  h2,
+  h3,
+  p,
+  ul {
+    margin: 1.8rem 0;
+  }
+}
+
+.entry-header {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(24, 1fr);
+  color: $white;
+  height: 150vh;
+  h1 {
+    grid-area: 3 / 1 / 6 / 24;
+    color: $white;
+    text-transform: uppercase;
+  }
+  h5.header-brand {
+    background-color: transparent;
+    font-size: 11rem;
+    line-height: 11rem;
+    font-family: Sans-serif, arial, verdana;
+    letter-spacing: -1rem;
+    grid-area: 1/1/25/25;
+    color: rgba(255, 255, 255, 0.05);
+    justify-self: end;
+    align-self: start;
+    height: auto;
+  }
+  .magicbox-definition-divider {
+    grid-area: 10 / 1 / 10 / 14;
+    border-top: solid $white;
+    border-width: $magicbox-border-width;
+  }
+  .magicbox-def-div-2 {
+    grid-area: 8 / 24 / 25 / 25;
+    border-left: 5px solid $white;
+    border-top: 5px solid $white;
+  }
+  .magicbox-def-div-3 {
+    grid-area: 23 / 1 / 25 / 13;
+    border-left: 5px solid $white;
+    border-top: 5px solid $white;
+    display: none;
+  }
+  .magicbox-def-div-4 {
+    grid-area: 8 / 24 / 16 / 25;
+    border-left: 5px solid $white;
+    border-top: 5px solid $white;
+  }
+  .magicbox-def-div-5 {
+    grid-area: 19 / 24 / 25 / 25;
+    border-left: 5px solid $white;
+    border-top: 5px solid $white;
+  }
+  .services-title {
+    grid-area: 17 / 2 / 23 / 23;
+    font-size: 1.2rem;
+  }
+  .services-definition-image-wrapper {
+    grid-area: 6 / 1 / 16 / 25;
+    //padding-top: 5px;
+  }
+  .services-definition-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+.entry-content {
+  padding-top: 7rem;
+  font-size: 1.2rem;
+}
+@include media-breakpoint-up(md) {
+  .entry-header {
+    height: 100vh;
+    h1 {
+      grid-area: 4 / 4 / 8 / 24;
+      width: auto;
+    }
+    .services-title {
+      grid-area: 13/3/23/12;
+    }
+    .services-definition-image-wrapper {
+      grid-area: 8 / 14 / 25 / 25;
+      border-left: 5px solid $white;
+      //padding-top: 5px;
+    }
+    .magicbox-def-div-2 {
+      grid-area: 8 / 13 / 25 / 13;
+    }
+    .magicbox-def-div-3 {
+      grid-area: 23 / 1 / 25 / 13;
+      display: block;
+    }
+    .magicbox-def-div-4 {
+      grid-area: 8 / 13 / 10 / 13;
+    }
+    .magicbox-def-div-5 {
+      grid-area: 19 / 13 / 25 / 13;
+    }
+  }
+}
+:root {
+  --cream-color: #f7dfb4;
+}
+.entry-header .magicbox-def-div-3,
+.entry-header .magicbox-def-div-6 {
+  background-color: var(--cream-color);
+}
+.entry-header .magicbox-def-div-3 {
+  border-left: none;
+  border-bottom: none;
+}
+.magicbox-def-div-6 {
+  grid-area: 25 / 13 / 25 / 25;
+  border-bottom: 5px solid white;
+}
+.content h4 {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+.dark-bg {
+  background-color: $hexachromeBlack;
+}
+.light-bg {
+  background-color: #fff5e3;
+}
+.cream-bg {
+  background-color: var(--cream-color);
+}
+.blue-bg {
+  background-color: $blue;
+}
+.card p {
+  font-size: 22.1546px;
+  font-weight: 400;
+  letter-spacing: -0.221546px;
+  line-height: 32.1241px;
+  text-indent: 0px;
+  word-spacing: 0px;
+}
+.card li {
+  list-style-image: none;
+  background-image: url("/wp-content/themes/helios/dist/internal/services/digital/icons/check-mark.svg");
+
+  margin: 0;
+  padding: 10px 0 10px 35px;
+  list-style: none;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 25px;
+  font-size: 17.7204px;
+  letter-spacing: -0.177204px;
+  line-height: 25.6947px;
+}
+.card-1-image-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-top-right-radius: var(--card-border-radius);
+  border-bottom-right-radius: var(--card-border-radius);
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--box-border-radius);
+  /* margin-top: 1em; */
+  /* margin-bottom: 1em; */
+  background-size: cover;
+  padding: 0px;
+  object-fit: contain;
+  container-type: size;
+}
+.card-1-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0px;
+  overflow: hidden;
+  border-radius: var(--box-border-radius);
+  background-image: url(/wp-content/uploads/2024/10/digital-marketing-agency.avif);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.card-1-heading-wrapper {
+  color: white;
+}
+.card-1-heading {
+  text-align: left;
+  text-decoration-color: rgb(255, 255, 255);
+  font-size: 3.45em;
+  color: white;
+  display: block;
+  font-family: Inter;
+  font-weight: 700;
+  letter-spacing: -1.863px;
+  line-height: 77.625px;
+  text-rendering: optimizelegibility;
+}
+.card-1-content {
+  text-size-adjust: 100%;
+  font-family: Inter;
+  font-feature-settings: "liga" 0;
+  font-size: 18px;
+  font-variant-ligatures: none;
+  font-weight: 400;
+  letter-spacing: -0.36px;
+  line-height: 28.8px;
+  text-wrap: wrap;
+  white-space-collapse: collapse;
+}
+
+.dragon {
+  width: 350px;
+  height: 350px;
+  mask: url(/wp-content/themes/helios/dist/internal/services/digital/icons/dragon.svg);
+  mask-size: 350px;
+  mask-repeat: no-repeat;
+  mask-position: bottom right;
+  margin: 0;
+  padding: 10px 0 10px 35px;
+  list-style: none;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-color: #ea9703;
+  transform: rotate(90deg);
+}
+.underline {
+  width: 350px;
+  height: 80px;
+  mask: url(/wp-content/themes/helios/dist/internal/services/digital/icons/underline.svg);
+  mask-size: 350px;
+  mask-repeat: no-repeat;
+  mask-position: bottom right;
+  background-color: #ea9703;
+  background-color: #2098d1;
+}
+.underline-position {
+  bottom: 20px;
+}
+.card-2 {
+  overflow: hidden;
+}
+.card-2-title {
+  text-align: left;
+  text-decoration-color: rgb(255, 255, 255);
+  font-size: 11rem;
+  display: block;
+  font-family: Inter;
+  font-weight: 700;
+  letter-spacing: -1.863px;
+  line-height: 77.625px;
+  text-rendering: optimizelegibility;
+  text-wrap: wrap;
+}
+.card-2-title-subs {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 2rem;
+}
+/* 'Underline animation for AOS */
+[data-aos="stretch-out"] {
+  transform: scale(0, 0.3);
+  transition-property: transform;
+  transform-origin: 0 80px;
+  &.aos-animate {
+    transform: scale(1, 1);
+  }
+}
+@media screen and (min-width: 768px) {
+  [data-aos="stretch-out"] {
+    transform: scale(0, 0.3);
+    transition-property: transform;
+    transform-origin: 0 80px;
+
+    &.aos-animate {
+      transform: scale(1, 1);
+    }
+  }
+}

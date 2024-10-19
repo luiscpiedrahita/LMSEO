@@ -49,7 +49,12 @@ module.exports = (
               {
                 loader: MiniCssExtractPlugin.loader,
               },
-              "css-loader",
+              {
+                loader: "css-loader",
+                options: {
+                  url: false,
+                },
+              },
               {
                 loader: "postcss-loader",
                 options: {
@@ -73,13 +78,13 @@ module.exports = (
             scheme: "data",
             type: "asset/resource",
             generator: {
-              filename: "icons/[name]-[hash].svg[query]",
+              filename: "icons/[name].svg[query]",
             },
           },
-          {
-            test: /\.(png|jpg|jpeg|gif)$/i,
-            type: "asset/resource",
-          },
+          // {
+          //   test: /\.(png|jpg|svg|jpeg|gif)$/i,
+          //   type: "asset/resource",
+          // },
           {
             test: /\.(woff|woff2|eot|ttf|otf)$/i,
             type: "asset/resource",

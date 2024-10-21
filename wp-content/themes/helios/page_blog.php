@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Genesis Framework.
  *
@@ -18,23 +19,23 @@
 
 
 /** Add support for structural wraps */
-add_theme_support( 'genesis-structural-wraps', array(   'subnav', 'inner', 'footer-widgets', 'footer' ) );
+add_theme_support('genesis-structural-wraps', array('subnav', 'inner', 'footer'));
 
 /** Add new image sizes */
-add_image_size( 'grid', 295, 100, TRUE );
-add_image_size( 'portfolio', 300, 200, TRUE );
+add_image_size('grid', 295, 100, TRUE);
+add_image_size('portfolio', 300, 200, TRUE);
 
-add_filter( 'body_class', 'sp_body_class' );
-function sp_body_class( $classes ) {
-	
+add_filter('body_class', 'sp_body_class');
+function sp_body_class($classes)
+{
+
 	$classes[] = 'blog-index-class';
 	return $classes;
-	
 }
 
 /** Reposition post info */
-remove_action( 'genesis_before_post_content', 'genesis_post_info' );
-add_action( 'genesis_before_post_title', 'genesis_post_info' );
+remove_action('genesis_before_post_content', 'genesis_post_info');
+add_action('genesis_before_post_title', 'genesis_post_info');
 
 /** Customize the post info function */
 /**add_filter( 'genesis_post_info', 'post_info_filter' );
@@ -62,8 +63,9 @@ function balance_read_more_link() {
 }**/
 
 /** Customize search button text */
-add_filter( 'genesis_search_button_text', 'custom_search_button_text' );
-function custom_search_button_text($text) {
+add_filter('genesis_search_button_text', 'custom_search_button_text');
+function custom_search_button_text($text)
+{
 	return esc_attr('Search');
 }
 
@@ -87,23 +89,23 @@ function balance_breadcrumb_args( $args ) {
 //add_action( 'genesis_after_footer', 'genesis_footer_widget_areas' );
 
 /** Register widget areas */
-genesis_register_sidebar( array(
+genesis_register_sidebar(array(
 	'id'				=> 'home-featured-left',
-	'name'			=> __( 'Home Featured Left', 'balance' ),
-	'description'	=> __( 'This is the featured left area on the homepage.', 'balance' ),
-) );
+	'name'			=> __('Home Featured Left', 'balance'),
+	'description'	=> __('This is the featured left area on the homepage.', 'balance'),
+));
 
-genesis_register_sidebar( array(
+genesis_register_sidebar(array(
 	'id'				=> 'home-featured-right',
-	'name'			=> __( 'Home Featured Right', 'balance' ),
-	'description'	=> __( 'This is the featured right area on the homepage.', 'balance' ),
-) );
+	'name'			=> __('Home Featured Right', 'balance'),
+	'description'	=> __('This is the featured right area on the homepage.', 'balance'),
+));
 
-genesis_register_sidebar( array(
+genesis_register_sidebar(array(
 	'id'				=> 'portfolio',
-	'name'			=> __( 'Portfolio', 'balance' ),
-	'description'	=> __( 'This is the portfolio page.', 'balance' ),
-) );
+	'name'			=> __('Portfolio', 'balance'),
+	'description'	=> __('This is the portfolio page.', 'balance'),
+));
 
 //remove_action( 'genesis_loop', 'genesis_do_loop' );
 //add_action( 'genesis_loop', 'child_grid_loop_helper' );

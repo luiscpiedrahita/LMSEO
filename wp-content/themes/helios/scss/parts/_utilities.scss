@@ -10,6 +10,18 @@
   background-color: $white;
   color: $main;
 }
+.dark-bg {
+  background-color: $hexachromeBlack;
+}
+.light-bg {
+  background-color: #fff5e3;
+}
+.cream-bg {
+  background-color: var(--cream-color);
+}
+.blue-bg {
+  background-color: $blue;
+}
 @include media-breakpoint-up(lg) {
   .white-bg-lg {
     background-color: $white;

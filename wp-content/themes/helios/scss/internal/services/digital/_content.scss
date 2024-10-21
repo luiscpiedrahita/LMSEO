@@ -1,5 +1,10 @@
 $magicbox-border-width: 5px;
 
+:root {
+  --cream-color: #f7dfb4;
+  // --bs-border-color: #{$white};
+}
+
 body {
   padding-top: 4.7rem;
 }
@@ -35,41 +40,32 @@ body {
     align-self: start;
     height: auto;
   }
-  .magicbox-definition-divider {
+  .magicbox {
+    opacity: 0;
+  }
+  .magicbox-1 {
     grid-area: 10 / 1 / 10 / 14;
-    border-top: solid $white;
-    border-width: $magicbox-border-width;
   }
-  .magicbox-def-div-2 {
+  .magicbox-2 {
     grid-area: 8 / 24 / 25 / 25;
-    border-left: 5px solid $white;
-    border-top: 5px solid $white;
   }
-  .magicbox-def-div-3 {
+  .magicbox-3 {
     grid-area: 23 / 1 / 25 / 13;
-    border-left: 5px solid $white;
-    border-top: 5px solid $white;
-    display: none;
   }
-  .magicbox-def-div-4 {
+  .magicbox-4 {
     grid-area: 8 / 24 / 16 / 25;
-    border-left: 5px solid $white;
-    border-top: 5px solid $white;
   }
-  .magicbox-def-div-5 {
+  .magicbox-5 {
     grid-area: 19 / 24 / 25 / 25;
-    border-left: 5px solid $white;
-    border-top: 5px solid $white;
   }
   .services-title {
     grid-area: 17 / 2 / 23 / 23;
     font-size: 1.2rem;
   }
-  .services-definition-image-wrapper {
+  .magicbox-7 {
     grid-area: 6 / 1 / 16 / 25;
-    //padding-top: 5px;
   }
-  .services-definition-image {
+  .magicbox-image {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -89,38 +85,33 @@ body {
     .services-title {
       grid-area: 13/3/23/12;
     }
-    .services-definition-image-wrapper {
+    .magicbox-7 {
       grid-area: 8 / 14 / 25 / 25;
-      border-left: 5px solid $white;
-      //padding-top: 5px;
     }
-    .magicbox-def-div-2 {
+    .magicbox-2 {
       grid-area: 8 / 13 / 25 / 13;
     }
-    .magicbox-def-div-3 {
+    .magicbox-3 {
       grid-area: 23 / 1 / 25 / 13;
-      display: block;
     }
-    .magicbox-def-div-4 {
+    .magicbox-4 {
       grid-area: 8 / 13 / 10 / 13;
     }
-    .magicbox-def-div-5 {
+    .magicbox-5 {
       grid-area: 19 / 13 / 25 / 13;
     }
   }
 }
-:root {
-  --cream-color: #f7dfb4;
-}
-.entry-header .magicbox-def-div-3,
-.entry-header .magicbox-def-div-6 {
+
+.entry-header .magicbox-3,
+.entry-header .magicbox-6 {
   background-color: var(--cream-color);
 }
-.entry-header .magicbox-def-div-3 {
+.entry-header .magicbox-3 {
   border-left: none;
   border-bottom: none;
 }
-.magicbox-def-div-6 {
+.magicbox-6 {
   grid-area: 25 / 13 / 25 / 25;
   border-bottom: 5px solid white;
 }
@@ -128,18 +119,6 @@ body {
   font-size: 2rem;
   font-weight: bold;
   line-height: 1;
-}
-.dark-bg {
-  background-color: $hexachromeBlack;
-}
-.light-bg {
-  background-color: #fff5e3;
-}
-.cream-bg {
-  background-color: var(--cream-color);
-}
-.blue-bg {
-  background-color: $blue;
 }
 .card p {
   font-size: 22.1546px;
@@ -232,7 +211,7 @@ body {
   background-repeat: no-repeat;
   background-position: right bottom;
   background-color: #ea9703;
-  transform: rotate(90deg);
+  // transform: rotate(90deg);
 }
 .underline {
   width: 350px;
@@ -269,21 +248,43 @@ body {
 }
 /* 'Underline animation for AOS */
 [data-aos="stretch-out"] {
+  opacity: 0;
   transform: scale(0, 0.3);
-  transition-property: transform;
   transform-origin: 0 80px;
+  transition-property: transform, opacity;
+
   &.aos-animate {
+    opacity: 1;
     transform: scale(1, 1);
   }
-}
-@media screen and (min-width: 768px) {
-  [data-aos="stretch-out"] {
+
+  @include media-breakpoint-up(md) {
+    opacity: 0;
     transform: scale(0, 0.3);
-    transition-property: transform;
+    transition-property: transform, opacity;
     transform-origin: 0 80px;
 
     &.aos-animate {
       transform: scale(1, 1);
+    }
+  }
+}
+/* 'Dragon animation for AOS */
+[data-aos="rotate-90"] {
+  transform: translate(0%, -100%) rotate(90deg);
+  transform-origin: center;
+  transition-property: transform;
+
+  &.aos-animate {
+    transform: translate(7%, 0%) rotate(90deg);
+  }
+  @include media-breakpoint-up(md) {
+    transform: translate(0%, -100%) rotate(90deg);
+    transform-origin: center;
+    transition-property: transform;
+
+    &.aos-animate {
+      transform: translate(7%, 0%) rotate(90deg);
     }
   }
 }

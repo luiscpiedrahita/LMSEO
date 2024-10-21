@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This file adds the Landing template to the Streamline Child Theme.
+ * This file adds the Landing template to the Helios Child Theme.
  *
- * @author StudioPress
+ * @author LMSEO
  * @package Generate
  * @subpackage Customizations
  */
@@ -15,36 +15,6 @@ add_action('genesis_before_content', 'custom_breadcrumbs_services', 10);
 function custom_breadcrumbs_services()
 {
     get_template_part('template-parts/breadcrumb/breadcrumb-trail', 'trail');
-
-    //     if(is_home() or is_front_page()){
-    //     }else {
-    //         echo '<nav class="lmseo-breadcrumb-wrap px-5"><div class="container-fluid g-0">';
-    // //        if(function_exists('bcn_display_list')){
-    // //            bcn_display_list();
-    // //        }
-    // //        if (function_exists('yoast_breadcrumb')) {
-    // //            yoast_breadcrumb('<ul class="lmseo-breadcrumb float-end m-0" itemscope itemtype="https://schema.org/BreadcrumbList">', '</ul><div class="breadcrumbs-bg-shape-wrap float-end"><span class="bc-shape1"></span><span class="bc-shape2"></span><span class="bc-shape3"></span><span class="bc-shape4"></span></div>');
-    // //        }
-    //         if (function_exists('yoast_breadcrumb')) {
-    //             yoast_breadcrumb('<ul class="lmseo-breadcrumb float-end m-0 p-0" itemscope itemtype="https://schema.org/BreadcrumbList">', '</ul>');
-    //         }
-    //         echo '</div></nav>';
-    //     }
-}
-
-/** Add page image above breadcrumbs */
-//add_action( 'genesis_before_content', 'streamline_post_image', 1);
-function streamline_post_image()
-{
-
-    //	if ( is_page() ) return;
-
-    //    if ( $image = genesis_get_image( 'format=url&size=post-image' ) ) {
-    if ($image = genesis_get_image(array('size' => 'post-image'))) {
-        echo ($image);
-        //        printf( '<a href="%s" rel="bookmark"><img class="post-photo" src="%s" alt="%s" height="%s" width="%s"/></a>', get_permalink(), $image, the_title_attribute( 'echo=0' ) );
-
-    }
 }
 // Add custom body class to the head
 add_filter('body_class', 'streamline_add_body_class');
@@ -55,17 +25,17 @@ function streamline_add_body_class($classes)
 }
 
 // Remove header, navigation, breadcrumbs, footer widgets, footer
-//add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-//remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
-//remove_action( 'genesis_header', 'genesis_do_header' );
-//remove_action( 'genesis_header', 'genesis_header_markup_close', 15 );
-//remove_action( 'genesis_after_header', 'genesis_do_nav' );
-//remove_action( 'genesis_after_header', 'genesis_do_subnav', 15 );
-//remove_action( 'genesis_before_content_sidebar_wrap', 'genesis_do_breadcrumbs');
-//remove_action( 'genesis_before_footer', 'genesis_footer_widget_areas' );
-//remove_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
-//remove_action( 'genesis_footer', 'genesis_do_footer' );
-//remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
+add_filter('genesis_pre_get_option_site_layout', '__genesis_return_full_width_content');
+// remove_action('genesis_header', 'genesis_header_markup_open', 5);
+// remove_action('genesis_header', 'genesis_do_header');
+// remove_action('genesis_header', 'genesis_header_markup_close', 15);
+// remove_action('genesis_after_header', 'genesis_do_nav');
+// remove_action('genesis_after_header', 'genesis_do_subnav', 15);
+// remove_action('genesis_before_content_sidebar_wrap', 'genesis_do_breadcrumbs');
+// remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
+// remove_action('genesis_footer', 'genesis_footer_markup_open', 5);
+// remove_action('genesis_footer', 'genesis_do_footer');
+// remove_action('genesis_footer', 'genesis_footer_markup_close', 15);
 //disable or remove wp-embed.js from WordPress
 add_action('wp_footer', 'lmseo_deregister_scripts');
 function lmseo_deregister_scripts()
@@ -155,7 +125,8 @@ function contentClassesFunction($attributes)
  * @return 'entry-content' classes array.
  */
 add_filter('genesis_attr_entry-header', 'entryClassesFunction');
-function entryClassesFunction($attributes){
+function entryClassesFunction($attributes)
+{
     $attributes['class'] = $attributes['class'] . ' ' . ' text-grid m-0';
     return $attributes;
 }
@@ -163,7 +134,8 @@ function entryClassesFunction($attributes){
 
 remove_action('genesis_entry_header', 'genesis_do_post_title');
 add_action('genesis_entry_header', 'lmseo_do_post_title');
-function lmseo_do_post_title(){
+function lmseo_do_post_title()
+{
 
     require_once(get_stylesheet_directory() . '/lib/partials/svg/ecommerce.php');
 

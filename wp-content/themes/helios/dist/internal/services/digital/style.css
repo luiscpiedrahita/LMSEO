@@ -11056,6 +11056,11 @@ button.expand,
   width: 100%;
 }
 
+:root {
+  --cream-color: #f7dfb4;
+  --bs-border-color: #ffffff;
+}
+
 body {
   padding-top: 4.7rem;
 }
@@ -11092,40 +11097,32 @@ body {
   align-self: start;
   height: auto;
 }
-.entry-header .magicbox-definition-divider {
+.entry-header .magicbox {
+  opacity: 0;
+}
+.entry-header .magicbox-1 {
   grid-area: 10/1/10/14;
-  border-top: solid #ffffff;
-  border-width: 5px;
 }
-.entry-header .magicbox-def-div-2 {
+.entry-header .magicbox-2 {
   grid-area: 8/24/25/25;
-  border-left: 5px solid #ffffff;
-  border-top: 5px solid #ffffff;
 }
-.entry-header .magicbox-def-div-3 {
+.entry-header .magicbox-3 {
   grid-area: 23/1/25/13;
-  border-left: 5px solid #ffffff;
-  border-top: 5px solid #ffffff;
-  display: none;
 }
-.entry-header .magicbox-def-div-4 {
+.entry-header .magicbox-4 {
   grid-area: 8/24/16/25;
-  border-left: 5px solid #ffffff;
-  border-top: 5px solid #ffffff;
 }
-.entry-header .magicbox-def-div-5 {
+.entry-header .magicbox-5 {
   grid-area: 19/24/25/25;
-  border-left: 5px solid #ffffff;
-  border-top: 5px solid #ffffff;
 }
 .entry-header .services-title {
   grid-area: 17/2/23/23;
   font-size: 1.2rem;
 }
-.entry-header .services-definition-image-wrapper {
+.entry-header .magicbox-7 {
   grid-area: 6/1/16/25;
 }
-.entry-header .services-definition-image {
+.entry-header .magicbox-image {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -11147,39 +11144,33 @@ body {
   .entry-header .services-title {
     grid-area: 13/3/23/12;
   }
-  .entry-header .services-definition-image-wrapper {
+  .entry-header .magicbox-7 {
     grid-area: 8/14/25/25;
-    border-left: 5px solid #ffffff;
   }
-  .entry-header .magicbox-def-div-2 {
+  .entry-header .magicbox-2 {
     grid-area: 8/13/25/13;
   }
-  .entry-header .magicbox-def-div-3 {
+  .entry-header .magicbox-3 {
     grid-area: 23/1/25/13;
-    display: block;
   }
-  .entry-header .magicbox-def-div-4 {
+  .entry-header .magicbox-4 {
     grid-area: 8/13/10/13;
   }
-  .entry-header .magicbox-def-div-5 {
+  .entry-header .magicbox-5 {
     grid-area: 19/13/25/13;
   }
 }
-:root {
-  --cream-color: #f7dfb4;
-}
-
-.entry-header .magicbox-def-div-3,
-.entry-header .magicbox-def-div-6 {
+.entry-header .magicbox-3,
+.entry-header .magicbox-6 {
   background-color: var(--cream-color);
 }
 
-.entry-header .magicbox-def-div-3 {
+.entry-header .magicbox-3 {
   border-left: none;
   border-bottom: none;
 }
 
-.magicbox-def-div-6 {
+.magicbox-6 {
   grid-area: 25/13/25/25;
   border-bottom: 5px solid white;
 }
@@ -11302,7 +11293,6 @@ body {
   background-repeat: no-repeat;
   background-position: right bottom;
   background-color: #ea9703;
-  transform: rotate(90deg);
 }
 
 .underline {
@@ -11345,29 +11335,53 @@ body {
 
 /* 'Underline animation for AOS */
 [data-aos=stretch-out] {
+  opacity: 0;
   transform: scale(0, 0.3);
-  transition-property: transform;
   transform-origin: 0 80px;
+  transition-property: transform, opacity;
 }
 [data-aos=stretch-out].aos-animate {
+  opacity: 1;
   transform: scale(1, 1);
 }
-
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   [data-aos=stretch-out] {
+    opacity: 0;
     transform: scale(0, 0.3);
-    transition-property: transform;
+    transition-property: transform, opacity;
     transform-origin: 0 80px;
   }
   [data-aos=stretch-out].aos-animate {
     transform: scale(1, 1);
   }
 }
+
+/* 'Dragon animation for AOS */
+[data-aos=rotate-90] {
+  transform: translate(0%, -100%) rotate(90deg);
+  transform-origin: center;
+  transition-property: transform;
+}
+[data-aos=rotate-90].aos-animate {
+  transform: translate(7%, 0%) rotate(90deg);
+}
+@media (min-width: 768px) {
+  [data-aos=rotate-90] {
+    transform: translate(0%, -100%) rotate(90deg);
+    transform-origin: center;
+    transition-property: transform;
+  }
+  [data-aos=rotate-90].aos-animate {
+    transform: translate(7%, 0%) rotate(90deg);
+  }
+}
+
 .footer {
   background-color: #212121;
   color: #999999;
   padding-top: 3.5rem;
   padding-bottom: 6rem;
+  border-bottom: 15px solid #2098d1;
 }
 
 footer a {
@@ -11439,7 +11453,6 @@ footer a:hover svg {
   color: #999999;
   line-height: 30px;
   font-size: 0.875rem;
-  border-top: 1px solid #626262;
   padding: 3.5rem 0 0 0;
   margin-top: 1.5rem;
 }

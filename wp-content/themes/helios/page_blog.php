@@ -26,8 +26,7 @@ add_image_size('grid', 295, 100, TRUE);
 add_image_size('portfolio', 300, 200, TRUE);
 
 add_filter('body_class', 'sp_body_class');
-function sp_body_class($classes)
-{
+function sp_body_class($classes) {
 
 	$classes[] = 'blog-index-class';
 	return $classes;
@@ -64,8 +63,7 @@ function balance_read_more_link() {
 
 /** Customize search button text */
 add_filter('genesis_search_button_text', 'custom_search_button_text');
-function custom_search_button_text($text)
-{
+function custom_search_button_text($text) {
 	return esc_attr('Search');
 }
 

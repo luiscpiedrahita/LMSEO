@@ -19,8 +19,7 @@ add_post_type_support('page', 'excerpt');
 
 /** Branding **/
 add_action('wp_head', 'lmseo_branding', 1);
-function lmseo_branding()
-{
+function lmseo_branding() {
 	if ((is_home() || is_front_page()) && is_page()) {
 		echo '
 <!--
@@ -78,8 +77,7 @@ remove_filter('the_content', 'wpautop'); //https://stackoverflow.com/questions/6
 /*Disable emoticons
 add_action( 'wp_head',             'print_emoji_detection_script',     7    );
 */
-function disable_wp_emojicons()
-{
+function disable_wp_emojicons() {
 
 	// all actions related to emojis
 	remove_action('admin_print_styles', 'print_emoji_styles');
@@ -102,14 +100,12 @@ remove_action('wpseo_head', array($wpseo_json_ld, 'json_ld'), 90);
 
 /** Add Viewport meta tag for mobile browsers */
 add_action('genesis_meta', 'streamline_add_viewport_meta_tag');
-function streamline_add_viewport_meta_tag()
-{
+function streamline_add_viewport_meta_tag() {
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>';
 }
 
 add_action('wp_enqueue_scripts', 'lmseo_theme_js');
-function lmseo_theme_js()
-{
+function lmseo_theme_js() {
 	wp_deregister_script('jquery');
 	// Register
 	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js', false, '2.1.4', false);
@@ -125,27 +121,20 @@ function lmseo_theme_js()
 }
 
 add_action('wp_enqueue_scripts', 'lmseo_enque_scripts');
-function lmseo_enque_scripts()
-{
+function lmseo_enque_scripts() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-migrate');
 }
 
-//* Remove the site title
-//remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
 //* Remove the site description
 remove_action('genesis_site_description', 'genesis_seo_site_description');
-
-/** Create additional color style options */
-//add_theme_support( 'genesis-style-selector', array( 'streamline-blue' => 'Blue', 'streamline-green' => 'Green' ) );
 
 /** Remove favicon */
 remove_action('wp_head', 'genesis_load_favicon');
 
 /*add new favicons */
 add_action('wp_head', 'lmseo_favicon');
-function lmseo_favicon()
-{ ?>
+function lmseo_favicon() { ?>
 	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
@@ -175,8 +164,7 @@ add_theme_support('genesis-structural-wraps', array('nav', 'subnav', 'footer'));
 
 
 add_action('genesis_before_sidebar_widget_area', 'opening_aside_divs', 9);
-function opening_aside_divs()
-{
+function opening_aside_divs() {
 	if (is_front_page() or is_home()) {
 	} else {
 		echo '</div>';
@@ -185,8 +173,7 @@ function opening_aside_divs()
 }
 
 add_action('genesis_after_sidebar_widget_area', 'closing_aside_divs');
-function closing_aside_divs()
-{
+function closing_aside_divs() {
 	if (is_home() or is_front_page()) {
 	} else {
 		echo '';
@@ -215,8 +202,7 @@ add_action('genesis_before_post', 'genesis_post_info');
 
 /** Customize the post info function */
 add_filter('genesis_post_info', 'post_info_filter');
-function post_info_filter($post_info)
-{
+function post_info_filter($post_info) {
 	if (!is_page()) {
 		$post_info = '[post_author_posts_link] [post_date] [post_comments] [post_edit]';
 		return $post_info;
@@ -225,29 +211,25 @@ function post_info_filter($post_info)
 
 /** Add markup around post class */
 add_action('genesis_before_post', 'streamline_post_markup');
-function streamline_post_markup()
-{ ?>
+function streamline_post_markup() { ?>
 	<div class="post-wrap row">
 	<?php
 }
 add_action('genesis_after_post', 'streamline_post_markup_close');
-function streamline_post_markup_close()
-{ ?>
+function streamline_post_markup_close() { ?>
 	</div>
 <?php
 }
 
 /** Modify the size of the Gravatar in the author box */
 add_filter('genesis_author_box_gravatar_size', 'streamline_author_box_gravatar_size');
-function streamline_author_box_gravatar_size($size)
-{
+function streamline_author_box_gravatar_size($size) {
 	return '80';
 }
 
 /** Customize the post meta function */
 add_filter('genesis_post_meta', 'post_meta_filter');
-function post_meta_filter($post_meta)
-{
+function post_meta_filter($post_meta) {
 	if (!is_page()) {
 		$post_meta = '[post_categories before="Filed Under: "] [post_tags before="Tagged: "]';
 		return $post_meta;
@@ -256,8 +238,7 @@ function post_meta_filter($post_meta)
 
 /** Add the after post section */
 add_action('genesis_after_post_content', 'streamline_after_post');
-function streamline_after_post()
-{
+function streamline_after_post() {
 	if (! is_singular('post'))
 		return;
 	genesis_widget_area('after-post', array(
@@ -267,8 +248,7 @@ function streamline_after_post()
 
 /** Add Olark to website */
 add_action('wp_footer', 'lmseo_olark', 1);
-function lmseo_olark()
-{
+function lmseo_olark() {
 ?>
 	<!-- begin olark code -->
 	<!-- begin olark code -->
@@ -401,8 +381,7 @@ add_theme_support('genesis-connect-woocommerce');
 /*
  * Add custom primary nav
  */
-function register_my_menu()
-{
+function register_my_menu() {
 	register_nav_menu('top-bar', __('Top Bar'));
 }
 add_action('init', 'register_my_menu');
@@ -421,8 +400,7 @@ add_action('genesis_header', 'lmseo_genesis_header_markup_open', 5);
 add_action('genesis_header', 'lmseo_genesis_header_markup_close', 15);
 
 //New Header functions
-function lmseo_genesis_header_markup_open()
-{
+function lmseo_genesis_header_markup_open() {
 	genesis_markup(array(
 		'html5'   => '
     <header %s><nav class="navbar navbar-nav-scroll fixed-top navbar-expand-lg navbar-light mask-custom shadow-0 p-0">
@@ -436,16 +414,14 @@ function lmseo_genesis_header_markup_open()
 	));
 	genesis_structural_wrap('header');
 }
-function lmseo_genesis_header_markup_close()
-{
+function lmseo_genesis_header_markup_close() {
 	genesis_structural_wrap('header', 'close');
 	genesis_markup(array(
 		'html5' => '</div></nav></header>',
 	));
 }
 add_action('genesis_header', 'lmseo_genesis_do_header');
-function lmseo_genesis_do_header()
-{
+function lmseo_genesis_do_header() {
 	global $wp_registered_sidebars;
 	require_once(get_stylesheet_directory() . '/lib/partials/svg/logo.php');
 	genesis_markup(array(
@@ -553,8 +529,7 @@ function lmseo_genesis_do_header()
  * @param array  $items The menu items, sorted by each menu item's menu order.
  * @return array (maybe) modified parent CSS class.
  */
-function wpdocs_add_menu_parent_class($items)
-{
+function wpdocs_add_menu_parent_class($items) {
 	$parents = array();
 
 	// Collect menu items with parents.
@@ -575,10 +550,8 @@ function wpdocs_add_menu_parent_class($items)
 }
 add_filter('wp_nav_menu_objects', 'wpdocs_add_menu_parent_class');
 
-class My_Walker_Nav_Menu extends Walker_Nav_Menu
-{
-	function start_lvl(&$output, $depth = 0, $args = array())
-	{
+class My_Walker_Nav_Menu extends Walker_Nav_Menu {
+	function start_lvl(&$output, $depth = 0, $args = array()) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "\n$indent<ul class=\"dropdown\">\n";
 	}
@@ -587,8 +560,7 @@ class My_Walker_Nav_Menu extends Walker_Nav_Menu
 /**
  * Custom walker class.
  */
-class LMSEO_Walker_Nav_Menu extends Walker_Nav_Menu
-{
+class LMSEO_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
 	 * Starts the list before the elements are added.
@@ -599,8 +571,7 @@ class LMSEO_Walker_Nav_Menu extends Walker_Nav_Menu
 	 * @param int    $depth  Depth of menu item. Used for padding.
 	 * @param array  $args   An array of arguments. @see wp_nav_menu()
 	 */
-	function start_lvl(&$output, $depth = 0, $args = array())
-	{
+	function start_lvl(&$output, $depth = 0, $args = array()) {
 		// Depth-dependent classes.
 		$indent = ($depth > 0  ? str_repeat("\t", $depth) : ''); // code indent
 		$display_depth = ($depth + 1); // because it counts the first submenu as 0
@@ -627,8 +598,7 @@ class LMSEO_Walker_Nav_Menu extends Walker_Nav_Menu
 	 * @param array  $args   An array of arguments. @see wp_nav_menu()
 	 * @param int    $id     Current item ID.
 	 */
-	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
-	{
+	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
 		global $wp_query;
 		$indent = ($depth > 0 ? str_repeat("\t", $depth) : ''); // code indent
 		//        print_r(($item));
@@ -689,8 +659,7 @@ class LMSEO_Walker_Nav_Menu extends Walker_Nav_Menu
  *
  * @return string
  */
-function lmseo_filter_yoast_breadcrumb_items($link_output, $link)
-{
+function lmseo_filter_yoast_breadcrumb_items($link_output, $link) {
 	$new_link_output = '';
 	$pos = strpos($link_output, 'breadcrumb_last');
 	if ($pos === false) {
@@ -716,8 +685,7 @@ add_filter('wpseo_breadcrumb_single_link', 'lmseo_filter_yoast_breadcrumb_items'
  *
  * @return mixed
  */
-function lmseo_filter_yoast_breadcrumb_output($output)
-{
+function lmseo_filter_yoast_breadcrumb_output($output) {
 
 	$from = '<span>';
 	$to = '</span>';
@@ -744,14 +712,12 @@ add_filter('wpseo_breadcrumb_output', 'lmseo_filter_yoast_breadcrumb_output');
 //     }
 // }
 add_action('genesis_before_content', 'custom_breadcrumbs', 10);
-function custom_breadcrumbs()
-{
+function custom_breadcrumbs() {
 	get_template_part('template-parts/breadcrumb/breadcrumb-trail', 'trail');
 }
 
 add_action('wp_enqueue_scripts', 'lmseo_general_styles');
-function lmseo_general_styles()
-{
+function lmseo_general_styles() {
 	global $portArchDev;
 
 	//  Disabling CSS styles of WooCommerce blocks

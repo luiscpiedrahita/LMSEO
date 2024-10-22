@@ -22,6 +22,9 @@
 .blue-bg {
   background-color: $blue;
 }
+.smoky-bg {
+  background-color: $white-smoke;
+}
 @include media-breakpoint-up(lg) {
   .white-bg-lg {
     background-color: $white;

@@ -8,7 +8,7 @@
     border-bottom: 5px solid $blue;
   }
   .lmseo-breadcrumb .hvr-underline-from-left:before {
-    background: var(--bs-code-color);
+    background: darken($color: $blue, $amount: 20%);
     // background: $highlightYellow;
   }
 }

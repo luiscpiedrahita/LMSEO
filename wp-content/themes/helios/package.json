@@ -4,9 +4,10 @@
   "description": "WordPress, Genesis theme based on the Storefront by Woothemes.",
   "main": "index.js",
   "scripts": {
-    "404": "webpack --mode development --watch --config ./webpack/webpack.config.404.js",
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
+    "404": "webpack --mode development --watch --config ./webpack/webpack.config.404.js",
+    "404Build": "webpack --mode production --config ./webpack/webpack.config.404.js",
     "contact": "webpack --mode development --watch --config ./webpack/webpack.config.contact.js",
     "contBuild": "webpack --mode production --config ./webpack/webpack.config.contact.js",
     "home": "webpack --mode development --watch --config ./webpack/webpack.config.homepage.js",
@@ -23,11 +24,10 @@
     "blogBuild": "webpack --mode production --config ./webpack/webpack.config.blog.js",
     "teams": "webpack --mode development --watch --config ./webpack/webpack.config.teams.js",
     "teamsBuild": "webpack --mode production --config ./webpack/webpack.config.teams.js",
-    "404Build": "webpack --mode production --config ./webpack/webpack.config.404.js",
     "search": "webpack --mode development --watch --config ./webpack/webpack.config.search.js",
     "searchBuild": "webpack --mode production --config ./webpack/webpack.config.search.js",
     "digital": "webpack --mode development --watch --config ./webpack/webpack.config.digital.js",
-    "searchDigital": "webpack --mode production --config ./webpack/webpack.config.digital.js"
+    "digitalBuild": "webpack --mode production --config ./webpack/webpack.config.digital.js"
   },
   "babel": {
     "presets": [

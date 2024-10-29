@@ -1,16 +1,10 @@
-const outputPath = "../../dist/internal/contact";
-const localDomain = "http://lmseo.test";
-const publicPath = "/wp-content/themes/helios/dist/internal/contact/";
-const contactEntryPoints = [
-  "./js/internal/contact/contact.js",
-  "./scss/internal/contact/contact.scss",
-];
+const config = require("./templates/contact");
 
 module.exports = require("./templates/dev.template")(
-  contactEntryPoints,
-  outputPath,
-  localDomain,
-  publicPath,
-  "",
+  config.entryPoints,
+  config.outputPath,
+  config.localDomain,
+  config.publicPath,
+  config.filename,
   true
 );

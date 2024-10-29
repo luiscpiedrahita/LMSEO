@@ -1,15 +1,10 @@
-const publicPath = "/wp-content/themes/helios/dist/homepage/";
-const outputPath = "../../dist/homepage";
-const localDomain = "http://lmseo.test";
-const homePageEntryPoints = ["./js/app.js", "./scss/style.scss"];
-const filename = "../../style.css";
+const config = require("./templates/homepage");
 
 module.exports = require("./templates/dev.template")(
-  homePageEntryPoints,
-  outputPath,
-  localDomain,
-  publicPath,
-  filename,
-  "",
+  config.entryPoints,
+  config.outputPath,
+  config.localDomain,
+  config.publicPath,
+  config.filename,
   true
 );

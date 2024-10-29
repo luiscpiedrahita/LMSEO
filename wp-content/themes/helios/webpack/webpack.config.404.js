@@ -1,15 +1,10 @@
-const publicPath = "/wp-content/themes/helios/errors/404/";
-const outputPath = "../../dist/errors/404";
-const localDomain = "http://lmseo.test";
-const error404EntryPoints = [
-  "./js/errors/404/404.js",
-  "./scss/errors/404/404.scss",
-];
+const config = require("./templates/404");
+
 module.exports = require("./templates/dev.template")(
-  error404EntryPoints,
-  outputPath,
-  localDomain,
-  publicPath,
-  "",
+  config.entryPoints,
+  config.outputPath,
+  config.localDomain,
+  config.publicPath,
+  config.filename,
   true
 );

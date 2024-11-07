@@ -4,9 +4,9 @@
   "description": "WordPress, Genesis theme based on the Storefront by Woothemes.",
   "main": "index.js",
   "scripts": {
+    "404": "webpack --mode development --watch --config ./webpack/webpack.config.404.js",
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
-    "404": "webpack --mode development --watch --config ./webpack/webpack.config.404.js",
     "404Build": "webpack --mode production --config ./webpack/webpack.config.404.js",
     "contact": "webpack --mode development --watch --config ./webpack/webpack.config.contact.js",
     "contBuild": "webpack --mode production --config ./webpack/webpack.config.contact.js",
@@ -27,7 +27,9 @@
     "search": "webpack --mode development --watch --config ./webpack/webpack.config.search.js",
     "searchBuild": "webpack --mode production --config ./webpack/webpack.config.search.js",
     "digital": "webpack --mode development --watch --config ./webpack/webpack.config.digital.js",
-    "digitalBuild": "webpack --mode production --config ./webpack/webpack.config.digital.js"
+    "digitalBuild": "webpack --mode production --config ./webpack/webpack.config.digital.js",
+    "development": "webpack --mode development --watch --config ./webpack/webpack.config.servicesDevelopment.js",
+    "developmentBuild": "webpack --mode production --config ./webpack/webpack.config.servicesDevelopment.js"
   },
   "babel": {
     "presets": [
@@ -51,6 +53,7 @@
     "prettier": "^3.3.3",
     "sass": "^1.58.3",
     "sass-loader": "^13.2.0",
+    "svgo": "^3.3.2",
     "url-loader": "^4.1.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",

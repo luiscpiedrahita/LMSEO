@@ -12,14 +12,12 @@ Template Name: Services
 */
 remove_action('genesis_before_content', 'custom_breadcrumbs', 10);
 add_action('genesis_before_content', 'custom_breadcrumbs_services', 10);
-function custom_breadcrumbs_services()
-{
+function custom_breadcrumbs_services() {
     get_template_part('template-parts/breadcrumb/breadcrumb-trail', 'trail');
 }
 // Add custom body class to the head
 add_filter('body_class', 'streamline_add_body_class');
-function streamline_add_body_class($classes)
-{
+function streamline_add_body_class($classes) {
     $classes[] = 'services-category';
     return $classes;
 }
@@ -38,14 +36,12 @@ add_filter('genesis_pre_get_option_site_layout', '__genesis_return_full_width_co
 // remove_action('genesis_footer', 'genesis_footer_markup_close', 15);
 //disable or remove wp-embed.js from WordPress
 add_action('wp_footer', 'lmseo_deregister_scripts');
-function lmseo_deregister_scripts()
-{
+function lmseo_deregister_scripts() {
     wp_deregister_script('wp-embed');
 }
 
 add_action('wp_enqueue_scripts', 'lmseo_index_print_styles');
-function lmseo_index_print_styles()
-{
+function lmseo_index_print_styles() {
     global $portArchDev;
 
     //  Disabling CSS styles of WooCommerce blocks
@@ -71,15 +67,13 @@ function lmseo_index_print_styles()
 }
 /** Add Services JS to website */
 add_action('wp_enqueue_scripts', 'ServicesJS');
-function ServicesJS()
-{
+function ServicesJS() {
     wp_register_script('internal-services', get_stylesheet_directory_uri('bootstrap') . '/dist/internal/services/js/app.js', array(), '1.0', true);
     wp_enqueue_script('internal-services');
 }
 /** Add Services JS to website */
 add_action('wp_enqueue_scripts', 'ServicesCSS');
-function ServicesCSS()
-{
+function ServicesCSS() {
     wp_register_style('services-css', get_stylesheet_directory_uri() . '/dist/internal/services/style.css', array(), '1.0', 'all');
     wp_enqueue_style('services-css');
 }
@@ -109,8 +103,7 @@ add_filter('genesis_markup_content-sidebar-wrap', '__return_null');
 //}
 add_filter('genesis_attr_content', 'contentClassesFunction');
 
-function contentClassesFunction($attributes)
-{
+function contentClassesFunction($attributes) {
     $attributes['class'] = $attributes['class'] . ' ' . 'container-fluid g-0 overflow-hidden';
     return $attributes;
 }
@@ -125,8 +118,7 @@ function contentClassesFunction($attributes)
  * @return 'entry-content' classes array.
  */
 add_filter('genesis_attr_entry-header', 'entryClassesFunction');
-function entryClassesFunction($attributes)
-{
+function entryClassesFunction($attributes) {
     $attributes['class'] = $attributes['class'] . ' ' . ' text-grid m-0';
     return $attributes;
 }
@@ -134,8 +126,7 @@ function entryClassesFunction($attributes)
 
 remove_action('genesis_entry_header', 'genesis_do_post_title');
 add_action('genesis_entry_header', 'lmseo_do_post_title');
-function lmseo_do_post_title()
-{
+function lmseo_do_post_title() {
 
     require_once(get_stylesheet_directory() . '/lib/partials/svg/ecommerce.php');
 
@@ -218,11 +209,20 @@ add_filter(
     }
 );
 
-
+add_action('genesis_before_entry_content', 'lmseo_do_post_content');
+function lmseo_do_post_content() {
+    genesis_markup(
+        [
+            'open' => '<section %s>',
+            'content' => '<div class="row">',
+            'context' => 'services-content',
+            'atts' => genesis_parse_attr('services-content', ['class' => 'services-content']),
+        ]
+    );
+}
 remove_action('genesis_entry_content', 'genesis_do_post_content');
-add_action('genesis_entry_content', 'lmseo_do_post_content');
-function lmseo_do_post_content()
-{
+add_action('genesis_entry_content', 'lmseo_before_post_content');
+function lmseo_before_post_content() {
     //
     //    $img = genesis_get_image(
     //        [
@@ -245,5 +245,15 @@ function lmseo_do_post_content()
     //    }
     genesis_do_post_content();
 }
-
+remove_action('genesis_after_entry_content', 'genesis_do_post_content');
+add_action('genesis_after_entry_content', 'lmseo_after_post_content');
+function lmseo_after_post_content() {
+    genesis_markup(
+        [
+            'content' => '</div>',
+            'close' => '</section>',
+            'context' => 'services-definition-content',
+        ]
+    );
+}
 genesis();

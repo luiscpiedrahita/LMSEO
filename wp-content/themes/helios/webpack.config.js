@@ -12,6 +12,7 @@ const configPages = require("./webpack/templates/pages");
 const configSearch = require("./webpack/templates/search");
 const configServices = require("./webpack/templates/services");
 const configServicesDef = require("./webpack/templates/servicesDef");
+const configServicesDev = require("./webpack/templates/servicesDevelopment");
 const configServicesDigital = require("./webpack/templates/servicesDigital");
 const configTeams = require("./webpack/templates/teams");
 
@@ -27,6 +28,7 @@ const wordpressSections = [
   configServices,
   configServicesDef,
   configServicesDigital,
+  configServicesDev,
   configTeams,
 ];
 // lastArrayElem i + 1 === row.length ? true : false

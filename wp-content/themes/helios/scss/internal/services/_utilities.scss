@@ -1,3 +1,4 @@
+@import "bootstrap/scss/mixins";
 @import "../../parts/utilities";
 /*Utilties*/
 $row-start: 1;
@@ -45,6 +46,36 @@ $row-end: 17;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
 }
+.contact {
+  background-color: $purple;
+  border: 0.9rem solid $blue;
+  color: $white;
+}
+.btn-contact {
+  @include button-outline-variant(
+    $white,
+    $color-hover: $blue,
+    $active-background: $white,
+    $active-border: $blue,
+    $active-color: $blue
+  );
+  text-transform: uppercase;
+}
+.btn-more {
+  @include button-variant(
+    $white,
+    $white,
+    $color: $blue,
+    $hover-background: $blue,
+    $hover-border: $white,
+    $hover-color: $white
+  );
+  text-transform: uppercase;
+}
+.btn-xl {
+  @include button-size(0.5rem, 3rem, 1rem, 0);
+  --bs-btn-border-width: 2px;
+}
 @include media-breakpoint-up(lg) {
   .image-container-sm-only {
     height: 100%;
@@ -63,5 +94,11 @@ $row-end: 17;
   }
   .clipped-lg-r {
     clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+  }
+  .w-lg-50 {
+    width: 50%;
+  }
+  .w-lg-75 {
+    width: 75%;
   }
 }

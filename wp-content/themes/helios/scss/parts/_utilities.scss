@@ -2,6 +2,10 @@
 @view-transition {
   navigation: auto;
 }
+::selection {
+  background-color: $blue;
+  color: $white;
+}
 .dark-bg {
   background-color: $hexachromeBlack;
   color: $white;
@@ -25,6 +29,47 @@
 .smoky-bg {
   background-color: $white-smoke;
 }
+.new-list-style {
+  margin-left: 10px;
+  li {
+    list-style-image: none;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    list-style: none;
+    font-size: 17.7204px;
+    letter-spacing: -0.177204px;
+    line-height: 25.6947px;
+  }
+}
+.square-list {
+  counter-reset: counterNum;
+  li {
+    position: relative;
+    padding-left: 55px;
+    padding-top: 0px;
+    padding-bottom: 30px;
+    border-left: 2px solid $blue;
+    border-radius: 20px;
+    &:before {
+      counter-increment: counterNum;
+      content: counter(counterNum);
+      padding: 6px 0 10px 9px;
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      border-radius: 0.35em;
+      border: 1px solid darken($color: $white, $amount: 10%);
+      background-color: var(--bs-body-color);
+      position: absolute;
+      left: 0;
+      top: 0px;
+      transform: translate3d(-50%, 0, 0);
+      color: $white;
+      font-size: 2rem;
+    }
+  }
+}
+
 @include media-breakpoint-up(lg) {
   .white-bg-lg {
     background-color: $white;

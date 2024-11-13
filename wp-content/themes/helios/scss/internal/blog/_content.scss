@@ -1,4 +1,17 @@
 @use "sass:color";
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant(
+      $value,
+      $value,
+      // modify
+      $hover-background: lighten($value, 7.5%),
+      $hover-border: lighten($value, 10%),
+      $active-background: lighten($value, 10%),
+      $active-border: lighten($value, 12.5%) // /modify
+    );
+  }
+}
 body {
   padding-top: 4.7rem;
 }
@@ -116,6 +129,33 @@ pre code {
   padding: 10px;
   color: #333;
 }
+// Code Block Pro Plugin
+.wp-block-kevinbatdorf-code-block-pro {
+  border: 2px solid $hexachromeBlack;
+  border-radius: 25px;
+  & > span:first-child {
+    padding-bottom: 20px !important;
+    border: 2px solid $hexachromeBlack;
+    border-top-right-radius: 23px;
+    border-top-left-radius: 23px;
+    background: $gray-800 !important;
+  }
+  & > span:last-child {
+    border: 2px solid $hexachromeBlack;
+    border-top: none;
+    border-bottom-right-radius: 23px;
+    border-bottom-left-radius: 23px;
+  }
+}
+.code-block-pro-copy-button {
+  opacity: 1 !important;
+  &:hover {
+    opacity: 0.7 !important;
+  }
+  svg {
+    stroke: $white;
+  }
+}
 .post-navigation {
 }
 .prev-post,
@@ -213,4 +253,57 @@ pre code {
 }
 .arrow-left {
   transform: rotate(180deg);
+}
+// Blockquotes
+/* blockquote card colors */
+
+/* blockquote card colors */
+
+/* blockquote card setup*/
+blockquote {
+  --lmseo-border-color: #{$blue};
+  border-left: 4px solid #d6d6d7;
+  border-left: 4px solid var(--lmseo-border-color);
+  padding: 0 0 0 1.125rem;
+  padding: 0 0 0 2rem;
+  margin: 0 0 1.125rem 0;
+  margin: 4rem 0 4rem 0;
+  &::before {
+    --lmseo-accent-color: #{$purple};
+    --lmseo-qHeight: 4rem;
+    display: block;
+    content: "";
+    margin-left: calc(var(--lmseo-padding) * -1);
+    margin-top: calc(var(--lmseo-padding) * -1);
+    height: var(--lmseo-qHeight);
+    width: calc(var(--lmseo-qHeight) * 1.1);
+    background-image: radial-gradient(
+        circle at bottom right,
+        transparent calc(var(--lmseo-qHeight) / 4 - 1px),
+        var(--lmseo-accent-color, black) calc(var(--lmseo-qHeight) / 4)
+          calc(var(--lmseo-qHeight) / 2),
+        transparent calc(var(--lmseo-qHeight) / 2 + 1px)
+      ),
+      linear-gradient(
+        var(--lmseo-accent-color, black),
+        var(--lmseo-accent-color, black)
+      );
+    background-size: calc(var(--lmseo-qHeight) / 2)
+      calc(var(--lmseo-qHeight) / 2);
+    background-position:
+      top left,
+      bottom left;
+    background-repeat: space no-repeat;
+  }
+  & > .author {
+    color: var(--lmseo-text-color-author, white);
+    background-color: var(--lmseo-accent-color, black);
+    justify-self: end;
+    font-size: 0.75em;
+    padding: 0.5em 1em;
+    border-radius: 0.25rem;
+  }
+  & > .author::before {
+    content: "- ";
+  }
 }

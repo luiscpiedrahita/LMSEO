@@ -64,7 +64,7 @@ function lmseo_index_print_styles() {
 /** Add Services JS to website */
 add_action('wp_enqueue_scripts', 'ServicesJS');
 function ServicesJS() {
-    wp_register_script('internal-services', get_stylesheet_directory_uri('bootstrap') . '/dist/internal/services/development/JS/app.js', array(), '1.0', true);
+    wp_register_script('internal-services', get_stylesheet_directory_uri('bootstrap') . '/dist/internal/services/development/js/app.js', array(), '1.0', true);
     wp_enqueue_script('internal-services');
 }
 /** Add Services JS to website */

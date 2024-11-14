@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -49,7 +50,7 @@ class Kirki_Field_Select extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_multiple() {
-		$this->multiple = absint( $this->multiple );
+		$this->multiple = absint($this->multiple);
 	}
 
 	/**
@@ -61,10 +62,10 @@ class Kirki_Field_Select extends Kirki_Field {
 
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
+		if (! empty($this->sanitize_callback)) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = array($this, 'sanitize');
 	}
 
 	/**
@@ -75,17 +76,17 @@ class Kirki_Field_Select extends Kirki_Field {
 	 * @param array $value The value.
 	 * @return string|array
 	 */
-	public function sanitize( $value ) {
-		if ( is_array( $value ) ) {
-			foreach ( $value as $key => $subvalue ) {
-				if ( '' !== $subvalue || isset( $this->choices[''] ) ) {
-					$key           = sanitize_key( $key );
-					$value[ $key ] = sanitize_text_field( $subvalue );
+	public function sanitize($value) {
+		if (is_array($value)) {
+			foreach ($value as $key => $subvalue) {
+				if ('' !== $subvalue || isset($this->choices[''])) {
+					$key           = sanitize_key($key);
+					$value[$key] = sanitize_text_field($subvalue);
 				}
 			}
 			return $value;
 		}
-		return sanitize_text_field( $value );
+		return sanitize_text_field($value);
 	}
 
 	/**
@@ -95,8 +96,8 @@ class Kirki_Field_Select extends Kirki_Field {
 	 * @since 3.0.0
 	 */
 	protected function set_default() {
-		if ( 1 < $this->multiple && ! is_array( $this->default ) ) {
-			$this->default = array( $this->default );
+		if (1 < $this->multiple && ! is_array($this->default)) {
+			$this->default = array($this->default);
 		}
 	}
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Control: checkbox.
  *
@@ -36,21 +37,20 @@ class Kirki_Control_Checkbox extends Kirki_Control_Base {
 	protected function render_content() {
 		$input_id       = '_customize-input-' . $this->id;
 		$description_id = '_customize-description-' . $this->id;
-		?>
+?>
 		<span class="customize-inside-control-row">
 			<input
-				id="<?php echo esc_attr( $input_id ); ?>"
-				<?php echo ( ! empty( $this->description ) ) ? ' aria-describedby="' . esc_attr( $description_id ) . '" ' : ''; ?>
+				id="<?php echo esc_attr($input_id); ?>"
+				<?php echo (! empty($this->description)) ? ' aria-describedby="' . esc_attr($description_id) . '" ' : ''; ?>
 				type="checkbox"
-				value="<?php echo esc_attr( $this->value() ); ?>"
+				value="<?php echo esc_attr($this->value()); ?>"
 				<?php $this->link(); ?>
-				<?php checked( $this->value() ); ?>
-			/>
-			<label for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_html( $this->label ); ?></label>
-			<?php if ( ! empty( $this->description ) ) : ?>
-				<span id="<?php echo esc_attr( $description_id ); ?>" class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
+				<?php checked($this->value()); ?> />
+			<label for="<?php echo esc_attr($input_id); ?>"><?php echo esc_html($this->label); ?></label>
+			<?php if (! empty($this->description)) : ?>
+				<span id="<?php echo esc_attr($description_id); ?>" class="description customize-control-description"><?php echo wp_kses_post($this->description); ?></span>
 			<?php endif; ?>
 		</span>
-		<?php
+<?php
 	}
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -22,8 +23,8 @@ class Kirki_Field_Dropdown_Pages extends Kirki_Field_Select {
 	 */
 	protected function set_choices() {
 		$all_pages = get_pages();
-		foreach ( $all_pages as $page ) {
-			$this->choices[ $page->ID ] = $page->post_title;
+		foreach ($all_pages as $page) {
+			$this->choices[$page->ID] = $page->post_title;
 		}
 	}
 }

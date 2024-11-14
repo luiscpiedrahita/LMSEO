@@ -1,4 +1,5 @@
 <?php
+
 /**
  * An expanded section.
  *

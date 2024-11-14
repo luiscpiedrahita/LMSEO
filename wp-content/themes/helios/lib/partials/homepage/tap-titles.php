@@ -1,5 +1,5 @@
 <?php
-$out.='<section class="tab-titles container-fluid g-0">
+$out .= '<section class="tab-titles container-fluid g-0">
   <div class="icon-bar five-up">
       <a class="item" href="#projects" onclick="javascript:void(0);$.scrollTo(\'#projects\', 1200);" >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  fill="white" class="bi bi-briefcase-fill" viewBox="0 0 16 16">
@@ -36,4 +36,3 @@ $out.='<section class="tab-titles container-fluid g-0">
       </a>
   </div>
 </section>';
-?>

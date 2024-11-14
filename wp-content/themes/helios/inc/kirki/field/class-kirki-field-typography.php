@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -34,8 +35,8 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 *                             Configs are handled by the Kirki_Config class.
 	 * @param array  $args         The arguments of the field.
 	 */
-	public function __construct( $config_id = 'global', $args = array() ) {
-		parent::__construct( $config_id, $args );
+	public function __construct($config_id = 'global', $args = array()) {
+		parent::__construct($config_id, $args);
 		$this->set_default();
 	}
 
@@ -47,12 +48,12 @@ class Kirki_Field_Typography extends Kirki_Field {
 	protected function set_default() {
 
 		// Accomodate the use of font-weight and convert to variant.
-		if ( isset( $this->default['font-weight'] ) ) {
-			$this->default['variant'] = ( 'regular' === $this->default['font-weight'] ) ? 400 : (string) intval( $this->default['font-weight'] );
+		if (isset($this->default['font-weight'])) {
+			$this->default['variant'] = ('regular' === $this->default['font-weight']) ? 400 : (string) intval($this->default['font-weight']);
 		}
 
 		// Make sure letter-spacing has units.
-		if ( isset( $this->default['letter-spacing'] ) && is_numeric( $this->default['letter-spacing'] ) && $this->default['letter-spacing'] ) {
+		if (isset($this->default['letter-spacing']) && is_numeric($this->default['letter-spacing']) && $this->default['letter-spacing']) {
 			$this->default['letter-spacing'] .= 'px';
 		}
 	}
@@ -66,10 +67,10 @@ class Kirki_Field_Typography extends Kirki_Field {
 
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
+		if (! empty($this->sanitize_callback)) {
 			return;
 		}
-		$this->sanitize_callback = array( __CLASS__, 'sanitize' );
+		$this->sanitize_callback = array(__CLASS__, 'sanitize');
 	}
 
 	/**
@@ -78,13 +79,13 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_js_vars() {
-		if ( ! is_array( $this->js_vars ) ) {
+		if (! is_array($this->js_vars)) {
 			$this->js_vars = array();
 		}
 
 		// Check if transport is set to auto.
 		// If not, then skip the auto-calculations and exit early.
-		if ( 'auto' !== $this->transport ) {
+		if ('auto' !== $this->transport) {
 			return;
 		}
 
@@ -96,17 +97,17 @@ class Kirki_Field_Typography extends Kirki_Field {
 
 		// Try to auto-generate js_vars.
 		// First we need to check if js_vars are empty, and that output is not empty.
-		if ( ! empty( $this->output ) ) {
+		if (! empty($this->output)) {
 
 			// Start going through each item in the $output array.
-			foreach ( $this->output as $output ) {
+			foreach ($this->output as $output) {
 
 				// If 'element' or 'property' are not defined, skip this.
-				if ( ! isset( $output['element'] ) ) {
+				if (! isset($output['element'])) {
 					continue;
 				}
-				if ( is_array( $output['element'] ) ) {
-					$output['element'] = implode( ',', $output['element'] );
+				if (is_array($output['element'])) {
+					$output['element'] = implode(',', $output['element']);
 				}
 
 				// If we got this far, it's safe to add this.
@@ -115,7 +116,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 
 			// Did we manage to get all the items from 'output'?
 			// If not, then we're missing something so don't add this.
-			if ( count( $js_vars ) !== count( $this->output ) ) {
+			if (count($js_vars) !== count($this->output)) {
 				return;
 			}
 			$this->js_vars   = $js_vars;
@@ -131,61 +132,61 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 * @param array $value The value.
 	 * @return array
 	 */
-	public static function sanitize( $value ) {
-		if ( ! is_array( $value ) ) {
+	public static function sanitize($value) {
+		if (! is_array($value)) {
 			return array();
 		}
 
-		foreach ( $value as $key => $val ) {
-			switch ( $key ) {
+		foreach ($value as $key => $val) {
+			switch ($key) {
 				case 'font-family':
-					$value['font-family'] = sanitize_text_field( $val );
+					$value['font-family'] = sanitize_text_field($val);
 					break;
 				case 'font-weight':
-					if ( isset( $value['variant'] ) ) {
+					if (isset($value['variant'])) {
 						break;
 					}
 					$value['variant'] = $val;
-					if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
-						$value['variant'] = ( '400' !== $val || 400 !== $val ) ? $value['variant'] . 'italic' : 'italic';
+					if (isset($value['font-style']) && 'italic' === $value['font-style']) {
+						$value['variant'] = ('400' !== $val || 400 !== $val) ? $value['variant'] . 'italic' : 'italic';
 					}
 					break;
 				case 'variant':
 					// Use 'regular' instead of 400 for font-variant.
-					$value['variant'] = ( 400 === $val || '400' === $val ) ? 'regular' : $val;
+					$value['variant'] = (400 === $val || '400' === $val) ? 'regular' : $val;
 
 					// Get font-weight from variant.
-					$value['font-weight'] = filter_var( $value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-					$value['font-weight'] = ( 'regular' === $value['variant'] || 'italic' === $value['variant'] ) ? 400 : absint( $value['font-weight'] );
+					$value['font-weight'] = filter_var($value['variant'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+					$value['font-weight'] = ('regular' === $value['variant'] || 'italic' === $value['variant']) ? 400 : absint($value['font-weight']);
 
 					// Get font-style from variant.
-					if ( ! isset( $value['font-style'] ) ) {
-						$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
+					if (! isset($value['font-style'])) {
+						$value['font-style'] = (false === strpos($value['variant'], 'italic')) ? 'normal' : 'italic';
 					}
 					break;
 				case 'font-size':
 				case 'letter-spacing':
 				case 'word-spacing':
 				case 'line-height':
-					$value[ $key ] = '' === trim( $value[ $key ] ) ? '' : sanitize_text_field( $val );
+					$value[$key] = '' === trim($value[$key]) ? '' : sanitize_text_field($val);
 					break;
 				case 'text-align':
-					if ( ! in_array( $val, array( '', 'inherit', 'left', 'center', 'right', 'justify' ), true ) ) {
+					if (! in_array($val, array('', 'inherit', 'left', 'center', 'right', 'justify'), true)) {
 						$value['text-align'] = '';
 					}
 					break;
 				case 'text-transform':
-					if ( ! in_array( $val, array( '', 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ), true ) ) {
+					if (! in_array($val, array('', 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit'), true)) {
 						$value['text-transform'] = '';
 					}
 					break;
 				case 'text-decoration':
-					if ( ! in_array( $val, array( '', 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ), true ) ) {
+					if (! in_array($val, array('', 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit'), true)) {
 						$value['text-transform'] = '';
 					}
 					break;
 				case 'color':
-					$value['color'] = '' === $value['color'] ? '' : ariColor::newColor( $val )->toCSS( 'hex' );
+					$value['color'] = '' === $value['color'] ? '' : ariColor::newColor($val)->toCSS('hex');
 					break;
 			}
 		}
@@ -200,7 +201,7 @@ class Kirki_Field_Typography extends Kirki_Field {
 	 * @since 3.0.0
 	 */
 	protected function set_choices() {
-		if ( ! is_array( $this->choices ) ) {
+		if (! is_array($this->choices)) {
 			$this->choices = array();
 		}
 		$this->choices = wp_parse_args(

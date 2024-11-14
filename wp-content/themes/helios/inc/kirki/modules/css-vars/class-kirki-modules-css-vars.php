@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles the CSS-variables of fields.
  *
@@ -52,10 +53,10 @@ class Kirki_Modules_CSS_Vars {
 	 * @since 3.0.28
 	 */
 	protected function __construct() {
-		add_action( 'init', array( $this, 'populate_vars' ) );
-		add_action( 'wp_head', array( $this, 'the_style' ), 999 );
-		add_action( 'admin_head', array( $this, 'the_style' ), 999 );
-		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
+		add_action('init', array($this, 'populate_vars'));
+		add_action('wp_head', array($this, 'the_style'), 999);
+		add_action('admin_head', array($this, 'the_style'), 999);
+		add_action('customize_preview_init', array($this, 'postmessage'));
 	}
 
 	/**
@@ -68,7 +69,7 @@ class Kirki_Modules_CSS_Vars {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -85,21 +86,21 @@ class Kirki_Modules_CSS_Vars {
 
 		// Get an array of all fields.
 		$fields = Kirki::$fields;
-		foreach ( $fields as $id => $args ) {
-			if ( ! isset( $args['css_vars'] ) || empty( $args['css_vars'] ) ) {
+		foreach ($fields as $id => $args) {
+			if (! isset($args['css_vars']) || empty($args['css_vars'])) {
 				continue;
 			}
-			$val = Kirki_Values::get_value( $args['kirki_config'], $id );
-			if ( isset( $args['type'] ) && in_array( $args['type'], array( 'typography', 'kirki-typography' ), true ) ) {
-				if ( isset( $val['font-weight'] ) && 'regular' === $val['font-weight'] ) {
+			$val = Kirki_Values::get_value($args['kirki_config'], $id);
+			if (isset($args['type']) && in_array($args['type'], array('typography', 'kirki-typography'), true)) {
+				if (isset($val['font-weight']) && 'regular' === $val['font-weight']) {
 					$val['font-weight'] = '400';
 				}
 			}
-			foreach ( $args['css_vars'] as $css_var ) {
-				if ( isset( $css_var[2] ) && is_array( $val ) && isset( $val[ $css_var[2] ] ) ) {
-					$this->vars[ $css_var[0] ] = str_replace( '$', $val[ $css_var[2] ], $css_var[1] );
+			foreach ($args['css_vars'] as $css_var) {
+				if (isset($css_var[2]) && is_array($val) && isset($val[$css_var[2]])) {
+					$this->vars[$css_var[0]] = str_replace('$', $val[$css_var[2]], $css_var[1]);
 				} else {
-					$this->vars[ $css_var[0] ] = str_replace( '$', $val, $css_var[1] );
+					$this->vars[$css_var[0]] = str_replace('$', $val, $css_var[1]);
 				}
 			}
 		}
@@ -113,14 +114,14 @@ class Kirki_Modules_CSS_Vars {
 	 * @return void
 	 */
 	public function the_style() {
-		if ( empty( $this->vars ) ) {
+		if (empty($this->vars)) {
 			return;
 		}
 
 		echo '<style id="kirki-css-vars">';
 		echo ':root{';
-		foreach ( $this->vars as $var => $val ) {
-			echo esc_html( $var ) . ':' . esc_html( $val ) . ';';
+		foreach ($this->vars as $var => $val) {
+			echo esc_html($var) . ':' . esc_html($val) . ';';
 		}
 		echo '}';
 		echo '</style>';
@@ -147,14 +148,14 @@ class Kirki_Modules_CSS_Vars {
 	 * @return void
 	 */
 	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_css_vars', trailingslashit( Kirki::$url ) . 'modules/css-vars/script.js', array( 'jquery', 'customize-preview' ), KIRKI_VERSION, true );
+		wp_enqueue_script('kirki_auto_css_vars', trailingslashit(Kirki::$url) . 'modules/css-vars/script.js', array('jquery', 'customize-preview'), KIRKI_VERSION, true);
 		$fields = Kirki::$fields;
 		$data   = array();
-		foreach ( $fields as $field ) {
-			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['css_vars'] ) && ! empty( $field['css_vars'] ) ) {
+		foreach ($fields as $field) {
+			if (isset($field['transport']) && 'postMessage' === $field['transport'] && isset($field['css_vars']) && ! empty($field['css_vars'])) {
 				$data[] = $field;
 			}
 		}
-		wp_localize_script( 'kirki_auto_css_vars', 'kirkiCssVarFields', $data );
+		wp_localize_script('kirki_auto_css_vars', 'kirkiCssVarFields', $data);
 	}
 }

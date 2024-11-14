@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Try to automatically generate the script necessary for adding icons to panels & section
  *
@@ -11,7 +12,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -45,7 +46,7 @@ class Kirki_Modules_Icons {
 	 * @access protected
 	 */
 	protected function __construct() {
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ), 99 );
+		add_action('customize_controls_enqueue_scripts', array($this, 'customize_controls_enqueue_scripts'), 99);
 	}
 
 	/**
@@ -58,7 +59,7 @@ class Kirki_Modules_Icons {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -73,8 +74,8 @@ class Kirki_Modules_Icons {
 	 * @param string $icon    The icon to add.
 	 * @param string $context Lowercase 'section' or 'panel'.
 	 */
-	public function add_icon( $id, $icon, $context = 'section' ) {
-		self::$icons[ $context ][ $id ] = trim( $icon );
+	public function add_icon($id, $icon, $context = 'section') {
+		self::$icons[$context][$id] = trim($icon);
 	}
 
 	/**
@@ -85,20 +86,20 @@ class Kirki_Modules_Icons {
 		$panels   = Kirki::$panels;
 
 		// Parse sections and find ones with icons.
-		foreach ( $sections as $section ) {
-			if ( isset( $section['icon'] ) ) {
-				$this->add_icon( $section['id'], $section['icon'], 'section' );
+		foreach ($sections as $section) {
+			if (isset($section['icon'])) {
+				$this->add_icon($section['id'], $section['icon'], 'section');
 			}
 		}
 
 		// Parse panels and find ones with icons.
-		foreach ( $panels as $panel ) {
-			if ( isset( $panel['icon'] ) ) {
-				$this->add_icon( $panel['id'], $panel['icon'], 'panel' );
+		foreach ($panels as $panel) {
+			if (isset($panel['icon'])) {
+				$this->add_icon($panel['id'], $panel['icon'], 'panel');
 			}
 		}
 
-		wp_enqueue_script( 'kirki_panel_and_section_icons', trailingslashit( Kirki::$url ) . 'modules/icons/icons.js', array( 'jquery', 'customize-base', 'customize-controls' ), KIRKI_VERSION, true );
-		wp_localize_script( 'kirki_panel_and_section_icons', 'kirkiIcons', self::$icons );
+		wp_enqueue_script('kirki_panel_and_section_icons', trailingslashit(Kirki::$url) . 'modules/icons/icons.js', array('jquery', 'customize-base', 'customize-controls'), KIRKI_VERSION, true);
+		wp_localize_script('kirki_panel_and_section_icons', 'kirkiIcons', self::$icons);
 	}
 }

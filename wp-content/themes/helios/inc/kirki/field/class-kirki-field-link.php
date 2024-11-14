@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -12,4 +13,5 @@
 /**
  * Field overrides.
  */
-class Kirki_Field_Link extends Kirki_Field_URL {}
+class Kirki_Field_Link extends Kirki_Field_URL {
+}

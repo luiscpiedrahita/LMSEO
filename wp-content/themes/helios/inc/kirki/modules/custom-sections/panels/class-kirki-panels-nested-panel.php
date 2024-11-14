@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Nested section.
  *
@@ -51,7 +52,7 @@ class Kirki_Panels_Nested_Panel extends WP_Customize_Panel {
 			)
 		);
 
-		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
+		$array['title']          = html_entity_decode($this->title, ENT_QUOTES, get_bloginfo('charset'));
 		$array['content']        = $this->get_content();
 		$array['active']         = $this->active();
 		$array['instanceNumber'] = $this->instance_number;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds the Webfont Loader to load fonts asyncronously.
  *
@@ -61,19 +62,19 @@ final class Kirki_Modules_Webfonts_Async {
 	 * @param object $googlefonts The Kirki_Fonts_Google object.
 	 * @param array  $args        Extra args we want to pass.
 	 */
-	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
+	public function __construct($config_id, $webfonts, $googlefonts, $args = array()) {
 		$this->config_id   = $config_id;
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 
-		add_action( 'wp_head', array( $this, 'webfont_loader' ) );
-		add_action( 'wp_head', array( $this, 'webfont_loader_script' ), 30 );
+		add_action('wp_head', array($this, 'webfont_loader'));
+		add_action('wp_head', array($this, 'webfont_loader_script'), 30);
 
 		// Add these in the dashboard to support editor-styles.
-		add_action( 'admin_enqueue_scripts', array( $this, 'webfont_loader' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'webfont_loader_script' ), 30 );
+		add_action('admin_enqueue_scripts', array($this, 'webfont_loader'));
+		add_action('admin_enqueue_scripts', array($this, 'webfont_loader_script'), 30);
 
-		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
+		add_filter('wp_resource_hints', array($this, 'resource_hints'), 10, 2);
 	}
 
 	/**
@@ -84,10 +85,10 @@ final class Kirki_Modules_Webfonts_Async {
 	 * @param string $relation_type  The relation type the URLs are printed.
 	 * @return array $urls           URLs to print for resource hints.
 	 */
-	public function resource_hints( $urls, $relation_type ) {
+	public function resource_hints($urls, $relation_type) {
 		$fonts_to_load = $this->googlefonts->fonts;
 
-		if ( ! empty( $fonts_to_load ) && 'preconnect' === $relation_type ) {
+		if (! empty($fonts_to_load) && 'preconnect' === $relation_type) {
 			$urls[] = array(
 				'href' => 'https://fonts.gstatic.com',
 				'crossorigin',
@@ -105,24 +106,24 @@ final class Kirki_Modules_Webfonts_Async {
 	public function webfont_loader() {
 
 		// Go through our fields and populate $this->fonts.
-		$this->webfonts->loop_fields( $this->config_id );
+		$this->webfonts->loop_fields($this->config_id);
 
-		$this->googlefonts->fonts = apply_filters( 'kirki_enqueue_google_fonts', $this->googlefonts->fonts );
+		$this->googlefonts->fonts = apply_filters('kirki_enqueue_google_fonts', $this->googlefonts->fonts);
 
 		// Goes through $this->fonts and adds or removes things as needed.
 		$this->googlefonts->process_fonts();
 
-		foreach ( $this->googlefonts->fonts as $font => $weights ) {
-			foreach ( $weights as $key => $value ) {
-				if ( 'italic' === $value ) {
-					$weights[ $key ] = '400i';
+		foreach ($this->googlefonts->fonts as $font => $weights) {
+			foreach ($weights as $key => $value) {
+				if ('italic' === $value) {
+					$weights[$key] = '400i';
 				} else {
-					$weights[ $key ] = str_replace( array( 'regular', 'bold', 'italic' ), array( '400', '', 'i' ), $value );
+					$weights[$key] = str_replace(array('regular', 'bold', 'italic'), array('400', '', 'i'), $value);
 				}
 			}
-			$this->fonts_to_load[] = $font . ':' . join( ',', $weights ) . ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
+			$this->fonts_to_load[] = $font . ':' . join(',', $weights) . ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
 		}
-		if ( ! empty( $this->fonts_to_load ) ) {
+		if (! empty($this->fonts_to_load)) {
 			Kirki_Modules_Webfont_Loader::$load = true;
 		}
 	}
@@ -134,10 +135,10 @@ final class Kirki_Modules_Webfonts_Async {
 	 * @since 3.0.0
 	 */
 	public function webfont_loader_script() {
-		if ( ! empty( $this->fonts_to_load ) ) {
+		if (! empty($this->fonts_to_load)) {
 			wp_add_inline_script(
 				'webfont-loader',
-				'WebFont.load({google:{families:[\'' . join( '\', \'', $this->fonts_to_load ) . '\']}});',
+				'WebFont.load({google:{families:[\'' . join('\', \'', $this->fonts_to_load) . '\']}});',
 				'after'
 			);
 		}

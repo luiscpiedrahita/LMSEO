@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Control: toggle.
  *
@@ -10,7 +11,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -38,17 +39,17 @@ class Kirki_Control_Toggle extends Kirki_Control_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
-		?>
+?>
 		<label for="toggle_{{ data.id }}">
 			<span class="customize-control-title">
 				{{{ data.label }}}
 			</span>
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
-			<input class="screen-reader-text" {{{ data.inputAttrs }}} name="toggle_{{ data.id }}" id="toggle_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> hidden />
-			<span class="switch"></span>
+				<# } #>
+					<input class="screen-reader-text" {{{ data.inputAttrs }}} name="toggle_{{ data.id }}" id="toggle_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1'==data.value ) { #> checked<# } #> hidden />
+						<span class="switch"></span>
 		</label>
-		<?php
+<?php
 	}
 }

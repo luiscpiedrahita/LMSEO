@@ -1,5 +1,5 @@
 <?php
-$out.='
+$out .= '
 <a class="anchor" id="social"></a>
 <section class="social container-fluid">
     <div class="row">

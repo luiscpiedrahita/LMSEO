@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles CSS properties.
  * Extend this class in order to handle exceptions.
@@ -38,7 +39,7 @@ class Kirki_Output_Property {
 	 * @param string $property The CSS property we're modifying.
 	 * @param mixed  $value    The value.
 	 */
-	public function __construct( $property, $value ) {
+	public function __construct($property, $value) {
 		$this->property = $property;
 		$this->value    = $value;
 		$this->process_value();
@@ -50,7 +51,6 @@ class Kirki_Output_Property {
 	 * @access protected
 	 */
 	protected function process_value() {
-
 	}
 
 	/**

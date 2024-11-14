@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WebFont-Loader Module.
  *
@@ -12,7 +13,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -48,8 +49,8 @@ class Kirki_Modules_Webfont_Loader {
 	 * @since 3.0.26
 	 */
 	protected function __construct() {
-		add_action( 'wp_head', array( $this, 'enqueue_scripts' ), 20 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 20 );
+		add_action('wp_head', array($this, 'enqueue_scripts'), 20);
+		add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'), 20);
 	}
 
 	/**
@@ -62,7 +63,7 @@ class Kirki_Modules_Webfont_Loader {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -77,8 +78,8 @@ class Kirki_Modules_Webfont_Loader {
 	 */
 	public function enqueue_scripts() {
 		global $wp_customize;
-		if ( self::$load || $wp_customize || is_customize_preview() ) {
-			wp_enqueue_script( 'webfont-loader', trailingslashit( Kirki::$url ) . 'modules/webfont-loader/vendor-typekit/webfontloader.js', array(), '3.0.28', true );
+		if (self::$load || $wp_customize || is_customize_preview()) {
+			wp_enqueue_script('webfont-loader', trailingslashit(Kirki::$url) . 'modules/webfont-loader/vendor-typekit/webfontloader.js', array(), '3.0.28', true);
 		}
 	}
 
@@ -90,7 +91,7 @@ class Kirki_Modules_Webfont_Loader {
 	 * @param bool $load Set to false to disable loading.
 	 * @return void
 	 */
-	public function set_load( $load ) {
+	public function set_load($load) {
 		self::$load = $load;
 	}
 }

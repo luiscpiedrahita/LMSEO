@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying single video post format
  *
@@ -7,16 +8,17 @@
  * @package cenote
  */
 
-$content = apply_filters( 'the_content', get_the_content() );
-$video   = get_media_embedded_in_content( $content, array( 'video', 'object', 'embed', 'iframe' ) );
+$content = apply_filters('the_content', get_the_content());
+$video   = get_media_embedded_in_content($content, array('video', 'object', 'embed', 'iframe'));
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<div class="post-format-media post-format-media--video">
-		<?php if ( ! empty( $video ) ) : ?>
+		<?php if (! empty($video)) : ?>
 			<div class="post-format-video">
-				<?php echo $video[0]; // WPCS xss ok. ?>
+				<?php echo $video[0]; // WPCS xss ok. 
+				?>
 			</div>
 		<?php endif; ?>
 	</div>
@@ -29,13 +31,13 @@ $video   = get_media_embedded_in_content( $content, array( 'video', 'object', 'e
 	</div>
 
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-meta">
 		<?php
-			cenote_posted_by();
-			cenote_posted_on();
+		cenote_posted_by();
+		cenote_posted_on();
 		?>
 	</div><!-- .entry-meta -->
 
@@ -45,7 +47,7 @@ $video   = get_media_embedded_in_content( $content, array( 'video', 'object', 'e
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cenote' ),
+				'before' => '<div class="page-links">' . esc_html__('Pages:', 'cenote'),
 				'after'  => '</div>',
 			)
 		);
@@ -59,8 +61,8 @@ $video   = get_media_embedded_in_content( $content, array( 'video', 'object', 'e
 
 	<?php
 	// Show author box if enabled.
-	if ( true === get_theme_mod( 'cenote_single_enable_author_box', true ) ) {
-		get_template_part( 'template-parts/author/author', 'box' );
+	if (true === get_theme_mod('cenote_single_enable_author_box', true)) {
+		get_template_part('template-parts/author/author', 'box');
 	}
 	?>
 </article><!-- #post-<?php the_ID(); ?> -->

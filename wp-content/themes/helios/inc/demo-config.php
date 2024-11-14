@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Functions for configuring demo importer.
  *
@@ -8,7 +9,7 @@
  * @since    1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -19,23 +20,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return array
  */
-function cenote_demo_importer_packages( $packages ) {
+function cenote_demo_importer_packages($packages) {
 	$new_packages = array(
 		'cenote-free'    => array(
-			'name'    => esc_html__( 'Cenote', 'cenote' ),
+			'name'    => esc_html__('Cenote', 'cenote'),
 			'preview' => 'https://demo.themegrill.com/cenote/',
 		),
 		'cenote-fashion' => array(
-			'name'    => esc_html__( 'Cenote Fashion', 'cenote' ),
+			'name'    => esc_html__('Cenote Fashion', 'cenote'),
 			'preview' => 'https://demo.themegrill.com/cenote-fashion/',
 		),
 		'cenote-tech'    => array(
-			'name'    => esc_html__( 'Cenote Tech', 'cenote' ),
+			'name'    => esc_html__('Cenote Tech', 'cenote'),
 			'preview' => 'https://demo.themegrill.com/cenote-tech/',
 		),
 	);
 
-	return array_merge( $new_packages, $packages );
+	return array_merge($new_packages, $packages);
 }
 
-add_filter( 'themegrill_demo_importer_packages', 'cenote_demo_importer_packages' );
+add_filter('themegrill_demo_importer_packages', 'cenote_demo_importer_packages');

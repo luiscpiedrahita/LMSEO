@@ -1,5 +1,5 @@
 <?php
-$out.='
+$out .= '
 <a class="anchor" id="projects"></a>
 <section class="projects container-fluid overflow-hidden">
   <div class="">
@@ -12,7 +12,7 @@ $out.='
             <div class="col-lg-6" 
                 data-aos="fade-right"
                 data-aos-offset="0">
-                <img src="'. get_stylesheet_directory_uri(). '/dist/images/projects/eopiates/eopiates.png"
+                <img src="' . get_stylesheet_directory_uri() . '/dist/images/projects/eopiates/eopiates.png"
                 class="img-fluid"
                 width="617"
                 height="339"
@@ -51,7 +51,7 @@ $out.='
             <div class="col-lg-6 columns"
                 data-aos="fade-left"
                 data-aos-offset="0">
-                <img src="'.get_stylesheet_directory_uri().'/dist/images/projects/eopiates/instant-search.jpg"
+                <img src="' . get_stylesheet_directory_uri() . '/dist/images/projects/eopiates/instant-search.jpg"
                 class="img-fluid"
                 width="686"
                 height="338"
@@ -66,7 +66,7 @@ $out.='
             <div class="col-lg-6" 
                 data-aos="fade-right"
                 data-aos-offset="0">
-                <img src="'.get_stylesheet_directory_uri().'/dist/images/projects/lmseo/home.jpg"
+                <img src="' . get_stylesheet_directory_uri() . '/dist/images/projects/lmseo/home.jpg"
                 class="img-fluid"
                 width="686"
                 height="338"

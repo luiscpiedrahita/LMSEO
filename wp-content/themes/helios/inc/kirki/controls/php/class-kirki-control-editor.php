@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Control: editor.
  *
@@ -12,7 +13,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -44,12 +45,14 @@ class Kirki_Control_Editor extends Kirki_Control_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
-		?>
+?>
 		<label>
-			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
-			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span>
+				<# } #>
+					<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span>
+						<# } #>
 		</label>
 		<textarea id="kirki-editor-{{{ data.id.replace( '[', '' ).replace( ']', '' ) }}}" {{{ data.inputAttrs }}} {{{ data.link }}}>{{ data.value }}</textarea>
-		<?php
+<?php
 	}
 }

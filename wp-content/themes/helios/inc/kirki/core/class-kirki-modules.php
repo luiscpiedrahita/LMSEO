@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles modules loading.
  *
@@ -42,8 +43,8 @@ class Kirki_Modules {
 	 * @since 3.0.0
 	 */
 	public function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'setup_default_modules' ), 10 );
-		add_action( 'after_setup_theme', array( $this, 'init' ), 11 );
+		add_action('after_setup_theme', array($this, 'setup_default_modules'), 10);
+		add_action('after_setup_theme', array($this, 'init'), 11);
 	}
 
 	/**
@@ -84,11 +85,11 @@ class Kirki_Modules {
 	 * @since 3.0.0
 	 */
 	public function init() {
-		foreach ( self::$modules as $key => $module_class ) {
-			if ( class_exists( $module_class ) ) {
+		foreach (self::$modules as $key => $module_class) {
+			if (class_exists($module_class)) {
 				// Use this syntax instead of $module_class::get_instance()
 				// for PHP 5.2 compatibility.
-				self::$active_modules[ $key ] = call_user_func( array( $module_class, 'get_instance' ) );
+				self::$active_modules[$key] = call_user_func(array($module_class, 'get_instance'));
 			}
 		}
 	}
@@ -101,8 +102,8 @@ class Kirki_Modules {
 	 * @param string $module The classname of the module to add.
 	 * @since 3.0.0
 	 */
-	public static function add_module( $module ) {
-		if ( ! in_array( $module, self::$modules, true ) ) {
+	public static function add_module($module) {
+		if (! in_array($module, self::$modules, true)) {
 			self::$modules[] = $module;
 		}
 	}
@@ -115,10 +116,10 @@ class Kirki_Modules {
 	 * @param string $module The classname of the module to add.
 	 * @since 3.0.0
 	 */
-	public static function remove_module( $module ) {
-		$key = array_search( $module, self::$modules, true );
-		if ( false !== $key ) {
-			unset( self::$modules[ $key ] );
+	public static function remove_module($module) {
+		$key = array_search($module, self::$modules, true);
+		if (false !== $key) {
+			unset(self::$modules[$key]);
 		}
 	}
 

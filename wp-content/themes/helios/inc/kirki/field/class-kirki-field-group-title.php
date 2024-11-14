@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -13,4 +14,5 @@
  * Prior to version 0.8 there was a separate 'group-title' field.
  * This exists here just for backwards-compatibility purposes.
  */
-class Kirki_Field_Group_Title extends Kirki_Field_Custom {}
+class Kirki_Field_Group_Title extends Kirki_Field_Custom {
+}

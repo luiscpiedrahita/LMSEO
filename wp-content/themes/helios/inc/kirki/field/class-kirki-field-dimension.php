@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -30,7 +31,7 @@ class Kirki_Field_Dimension extends Kirki_Field {
 	 * @param string $value The value.
 	 * @return string
 	 */
-	public function sanitize( $value ) {
-		return sanitize_text_field( $value );
+	public function sanitize($value) {
+		return sanitize_text_field($value);
 	}
 }

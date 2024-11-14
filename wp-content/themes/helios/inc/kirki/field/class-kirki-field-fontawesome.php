@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -23,18 +24,18 @@ class Kirki_Field_FontAwesome extends Kirki_Field_Select {
 	 */
 	protected function set_choices() {
 		ob_start();
-		$json_path = wp_normalize_path( Kirki::$path . '/assets/vendor/fontawesome/fontawesome.json' );
+		$json_path = wp_normalize_path(Kirki::$path . '/assets/vendor/fontawesome/fontawesome.json');
 		include $json_path; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		$font_awesome_json = ob_get_clean();
 
-		$fa_array = (array) json_decode( $font_awesome_json, true );
+		$fa_array = (array) json_decode($font_awesome_json, true);
 
 		$this->choices = array();
-		foreach ( $fa_array['icons'] as $icon ) {
-			if ( ! isset( $icon['id'] ) || ! isset( $icon['name'] ) ) {
+		foreach ($fa_array['icons'] as $icon) {
+			if (! isset($icon['id']) || ! isset($icon['name'])) {
 				continue;
 			}
-			$this->choices[ $icon['id'] ] = $icon['name'];
+			$this->choices[$icon['id']] = $icon['name'];
 		}
 	}
 
@@ -47,7 +48,7 @@ class Kirki_Field_FontAwesome extends Kirki_Field_Select {
 
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
+		if (! empty($this->sanitize_callback)) {
 			return;
 		}
 		$this->sanitize_callback = 'sanitize_text_field';

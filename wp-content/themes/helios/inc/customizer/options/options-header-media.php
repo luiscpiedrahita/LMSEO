@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cenote Heder media options
  *
@@ -7,10 +8,11 @@
 
 // Option to enable/disable the header media section.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'     => 'toggle',
 		'settings' => 'cenote_header_media_enable_desc',
-		'label'    => esc_html__( 'Enable media info box', 'cenote' ),
+		'label'    => esc_html__('Enable media info box', 'cenote'),
 		'section'  => 'header_image',
 		'default'  => '1',
 	)
@@ -18,10 +20,11 @@ Kirki::add_field(
 
 // Option to select header media section layout.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'     => 'radio-image',
 		'settings' => 'cenote_header_media_style',
-		'label'    => esc_html__( 'Header Media Layout', 'cenote' ),
+		'label'    => esc_html__('Header Media Layout', 'cenote'),
 		'section'  => 'header_image',
 		'default'  => 'cenote-header-media--center',
 		'choices'  => array(
@@ -33,10 +36,11 @@ Kirki::add_field(
 
 // Header media Heading.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'            => 'text',
 		'settings'        => 'cenote_header_media_title',
-		'label'           => esc_html__( 'Title', 'cenote' ),
+		'label'           => esc_html__('Title', 'cenote'),
 		'section'         => 'header_image',
 		'default'         => 'Hi, I am Header Media Title',
 		'transport'       => 'postMessage',
@@ -58,10 +62,11 @@ Kirki::add_field(
 
 // Header Media Content.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'            => 'text',
 		'settings'        => 'cenote_header_media_text',
-		'label'           => esc_html__( 'Text', 'cenote' ),
+		'label'           => esc_html__('Text', 'cenote'),
 		'section'         => 'header_image',
 		'default'         => 'I am description of header media. You can write short text to give me more info.',
 		'transport'       => 'postMessage',
@@ -83,10 +88,11 @@ Kirki::add_field(
 
 // Header Media Button text.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'            => 'text',
 		'settings'        => 'cenote_header_media_button_text',
-		'label'           => esc_html__( 'Button Text', 'cenote' ),
+		'label'           => esc_html__('Button Text', 'cenote'),
 		'section'         => 'header_image',
 		'default'         => 'Take action',
 		'transport'       => 'postMessage',
@@ -108,10 +114,11 @@ Kirki::add_field(
 
 // Header Media Button LInk.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'            => 'url',
 		'settings'        => 'cenote_header_media_url',
-		'label'           => esc_html__( 'Button URL', 'cenote' ),
+		'label'           => esc_html__('Button URL', 'cenote'),
 		'section'         => 'header_image',
 		'default'         => '#',
 		'active_callback' => array(

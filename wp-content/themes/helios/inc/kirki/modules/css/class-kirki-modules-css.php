@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles the CSS Output of fields.
  *
@@ -53,12 +54,12 @@ class Kirki_Modules_CSS {
 			'Kirki_Output_Property_Font_Family'         => '/property/class-kirki-output-property-font-family.php',
 		);
 
-		foreach ( $class_files as $class_name => $file ) {
-			if ( ! class_exists( $class_name ) ) {
-				include_once wp_normalize_path( dirname( __FILE__ ) . $file ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		foreach ($class_files as $class_name => $file) {
+			if (! class_exists($class_name)) {
+				include_once wp_normalize_path(dirname(__FILE__) . $file); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 			}
 		}
-		add_action( 'init', array( $this, 'init' ) );
+		add_action('init', array($this, 'init'));
 	}
 
 	/**
@@ -71,7 +72,7 @@ class Kirki_Modules_CSS {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -87,26 +88,26 @@ class Kirki_Modules_CSS {
 		Kirki_Modules_Webfonts::get_instance();
 
 		// Allow completely disabling Kirki CSS output.
-		if ( ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) || ( isset( $config['disable_output'] ) && true === $config['disable_output'] ) ) {
+		if ((defined('KIRKI_NO_OUTPUT') && true === KIRKI_NO_OUTPUT) || (isset($config['disable_output']) && true === $config['disable_output'])) {
 			return;
 		}
 
-		if ( ! is_customize_preview() ) {
+		if (! is_customize_preview()) {
 			// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
-			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
+			add_action('enqueue_block_editor_assets', array($this, 'enqueue_styles'), 100);
 		}
 
-		add_action( 'wp', array( $this, 'print_styles_action' ) );
+		add_action('wp', array($this, 'print_styles_action'));
 
-		if ( ! apply_filters( 'kirki_output_inline_styles', true ) ) {
-			$config   = apply_filters( 'kirki_config', array() );
+		if (! apply_filters('kirki_output_inline_styles', true)) {
+			$config   = apply_filters('kirki_config', array());
 			$priority = 999;
-			if ( isset( $config['styles_priority'] ) ) {
-				$priority = absint( $config['styles_priority'] );
+			if (isset($config['styles_priority'])) {
+				$priority = absint($config['styles_priority']);
 			}
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), $priority );
+			add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'), $priority);
 		} else {
-			add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
+			add_action('wp_head', array($this, 'print_styles_inline'), 999);
 		}
 	}
 
@@ -133,16 +134,16 @@ class Kirki_Modules_CSS {
 	public function enqueue_styles() {
 
 		$args = array(
-			'action' => apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
+			'action' => apply_filters('kirki_styles_action_handle', 'kirki-styles'),
 		);
-		if ( is_admin() && ! is_customize_preview() ) {
+		if (is_admin() && ! is_customize_preview()) {
 			$args['editor'] = '1';
 		}
 
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
 			'kirki-styles',
-			add_query_arg( $args, site_url() ),
+			add_query_arg($args, site_url()),
 			array(),
 			KIRKI_VERSION
 		);
@@ -160,12 +161,12 @@ class Kirki_Modules_CSS {
 		 * Note to code reviewers:
 		 * There is no need for a nonce check here, we're only checking if this is a valid request or not.
 		 */
-		if ( empty( $_GET['action'] ) || apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ) !== $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+		if (empty($_GET['action']) || apply_filters('kirki_styles_action_handle', 'kirki-styles') !== $_GET['action']) { // phpcs:ignore WordPress.Security.NonceVerification
 			return;
 		}
 
 		// This is a stylesheet.
-		header( 'Content-type: text/css' );
+		header('Content-type: text/css');
 		$this->print_styles();
 		exit;
 	}
@@ -179,13 +180,13 @@ class Kirki_Modules_CSS {
 
 		// Go through all configs.
 		$configs = Kirki::$config;
-		foreach ( $configs as $config_id => $args ) {
-			if ( isset( $args['disable_output'] ) && true === $args['disable_output'] ) {
+		foreach ($configs as $config_id => $args) {
+			if (isset($args['disable_output']) && true === $args['disable_output']) {
 				continue;
 			}
-			$styles = self::loop_controls( $config_id );
-			$styles = apply_filters( "kirki_{$config_id}_dynamic_css", $styles );
-			if ( ! empty( $styles ) ) {
+			$styles = self::loop_controls($config_id);
+			$styles = apply_filters("kirki_{$config_id}_dynamic_css", $styles);
+			if (! empty($styles)) {
 				/**
 				 * Note to code reviewers:
 				 *
@@ -199,10 +200,10 @@ class Kirki_Modules_CSS {
 				 * it can only be interpreted by the browser as such.
 				 * wp_strip_all_tags() excludes the possibility of someone closing the <style> tag and then opening something else.
 				 */
-				echo wp_strip_all_tags( $styles ); // phpcs:ignore WordPress.Security.EscapeOutput
+				echo wp_strip_all_tags($styles); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 		}
-		do_action( 'kirki_dynamic_css' );
+		do_action('kirki_dynamic_css');
 	}
 
 	/**
@@ -212,7 +213,7 @@ class Kirki_Modules_CSS {
 	 * @access public
 	 * @param string $config_id The configuration ID.
 	 */
-	public static function loop_controls( $config_id ) {
+	public static function loop_controls($config_id) {
 
 		// Get an instance of the Kirki_Modules_CSS_Generator class.
 		// This will make sure google fonts and backup fonts are loaded.
@@ -222,53 +223,53 @@ class Kirki_Modules_CSS {
 		$css    = array();
 
 		// Early exit if no fields are found.
-		if ( empty( $fields ) ) {
+		if (empty($fields)) {
 			return;
 		}
 
-		foreach ( $fields as $field ) {
+		foreach ($fields as $field) {
 
 			// Only process fields that belong to $config_id.
-			if ( $config_id !== $field['kirki_config'] ) {
+			if ($config_id !== $field['kirki_config']) {
 				continue;
 			}
 
-			if ( true === apply_filters( "kirki_{$config_id}_css_skip_hidden", true ) ) {
+			if (true === apply_filters("kirki_{$config_id}_css_skip_hidden", true)) {
 
 				// Only continue if field dependencies are met.
-				if ( ! empty( $field['required'] ) ) {
+				if (! empty($field['required'])) {
 					$valid = true;
 
-					foreach ( $field['required'] as $requirement ) {
-						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-							$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
-							if ( ! Kirki_Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+					foreach ($field['required'] as $requirement) {
+						if (isset($requirement['setting']) && isset($requirement['value']) && isset($requirement['operator'])) {
+							$controller_value = Kirki_Values::get_value($config_id, $requirement['setting']);
+							if (! Kirki_Helper::compare_values($controller_value, $requirement['value'], $requirement['operator'])) {
 								$valid = false;
 							}
 						}
 					}
 
-					if ( ! $valid ) {
+					if (! $valid) {
 						continue;
 					}
 				}
 			}
 
 			// Only continue if $field['output'] is set.
-			if ( isset( $field['output'] ) && ! empty( $field['output'] ) ) {
-				$css = Kirki_Helper::array_replace_recursive( $css, Kirki_Modules_CSS_Generator::css( $field ) );
+			if (isset($field['output']) && ! empty($field['output'])) {
+				$css = Kirki_Helper::array_replace_recursive($css, Kirki_Modules_CSS_Generator::css($field));
 
 				// Add the globals.
-				if ( isset( self::$css_array[ $config_id ] ) && ! empty( self::$css_array[ $config_id ] ) ) {
-					Kirki_Helper::array_replace_recursive( $css, self::$css_array[ $config_id ] );
+				if (isset(self::$css_array[$config_id]) && ! empty(self::$css_array[$config_id])) {
+					Kirki_Helper::array_replace_recursive($css, self::$css_array[$config_id]);
 				}
 			}
 		}
 
-		$css = apply_filters( "kirki_{$config_id}_styles", $css );
+		$css = apply_filters("kirki_{$config_id}_styles", $css);
 
-		if ( is_array( $css ) ) {
-			return Kirki_Modules_CSS_Generator::styles_parse( Kirki_Modules_CSS_Generator::add_prefixes( $css ) );
+		if (is_array($css)) {
+			return Kirki_Modules_CSS_Generator::styles_parse(Kirki_Modules_CSS_Generator::add_prefixes($css));
 		}
 	}
 
@@ -281,7 +282,8 @@ class Kirki_Modules_CSS {
 	 * @access public
 	 * @return void
 	 */
-	public static function add_fontawesome_script() {}
+	public static function add_fontawesome_script() {
+	}
 
 	/**
 	 * The FA field got deprecated in v3.0.42.

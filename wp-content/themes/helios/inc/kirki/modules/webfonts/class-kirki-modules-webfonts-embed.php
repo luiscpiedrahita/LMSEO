@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds the Webfont Loader to load fonts asyncronously.
  *
@@ -61,13 +62,13 @@ final class Kirki_Modules_Webfonts_Embed {
 	 * @param object $googlefonts The Kirki_Fonts_Google object.
 	 * @param array  $args        Extra args we want to pass.
 	 */
-	public function __construct( $config_id, $webfonts, $googlefonts, $args = array() ) {
+	public function __construct($config_id, $webfonts, $googlefonts, $args = array()) {
 		$this->config_id   = $config_id;
 		$this->webfonts    = $webfonts;
 		$this->googlefonts = $googlefonts;
 
-		add_action( 'wp', array( $this, 'init' ), 9 );
-		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
+		add_action('wp', array($this, 'init'), 9);
+		add_filter('wp_resource_hints', array($this, 'resource_hints'), 10, 2);
 	}
 
 	/**
@@ -79,7 +80,7 @@ final class Kirki_Modules_Webfonts_Embed {
 	 */
 	public function init() {
 		$this->populate_fonts();
-		add_action( 'kirki_dynamic_css', array( $this, 'the_css' ) );
+		add_action('kirki_dynamic_css', array($this, 'the_css'));
 	}
 
 	/**
@@ -90,10 +91,10 @@ final class Kirki_Modules_Webfonts_Embed {
 	 * @param string $relation_type  The relation type the URLs are printed.
 	 * @return array $urls           URLs to print for resource hints.
 	 */
-	public function resource_hints( $urls, $relation_type ) {
+	public function resource_hints($urls, $relation_type) {
 		$fonts_to_load = $this->googlefonts->fonts;
 
-		if ( ! empty( $fonts_to_load ) && 'preconnect' === $relation_type ) {
+		if (! empty($fonts_to_load) && 'preconnect' === $relation_type) {
 			$urls[] = array(
 				'href' => 'https://fonts.gstatic.com',
 				'crossorigin',
@@ -111,19 +112,19 @@ final class Kirki_Modules_Webfonts_Embed {
 	public function populate_fonts() {
 
 		// Go through our fields and populate $this->fonts.
-		$this->webfonts->loop_fields( $this->config_id );
+		$this->webfonts->loop_fields($this->config_id);
 
-		$this->googlefonts->fonts = apply_filters( 'kirki_enqueue_google_fonts', $this->googlefonts->fonts );
+		$this->googlefonts->fonts = apply_filters('kirki_enqueue_google_fonts', $this->googlefonts->fonts);
 
 		// Goes through $this->fonts and adds or removes things as needed.
 		$this->googlefonts->process_fonts();
 
-		foreach ( $this->googlefonts->fonts as $font => $weights ) {
-			foreach ( $weights as $key => $value ) {
-				if ( 'italic' === $value ) {
-					$weights[ $key ] = '400i';
+		foreach ($this->googlefonts->fonts as $font => $weights) {
+			foreach ($weights as $key => $value) {
+				if ('italic' === $value) {
+					$weights[$key] = '400i';
 				} else {
-					$weights[ $key ] = str_replace( array( 'regular', 'bold', 'italic' ), array( '400', '', 'i' ), $value );
+					$weights[$key] = str_replace(array('regular', 'bold', 'italic'), array('400', '', 'i'), $value);
 				}
 			}
 			$this->fonts_to_load[] = array(
@@ -140,21 +141,21 @@ final class Kirki_Modules_Webfonts_Embed {
 	 * @since 3.0.0
 	 */
 	public function the_css() {
-		foreach ( $this->fonts_to_load as $font ) {
-			$family  = str_replace( ' ', '+', trim( $font['family'] ) );
-			$weights = join( ',', $font['weights'] );
+		foreach ($this->fonts_to_load as $font) {
+			$family  = str_replace(' ', '+', trim($font['family']));
+			$weights = join(',', $font['weights']);
 			$url     = "https://fonts.googleapis.com/css?family={$family}:{$weights}&subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai&display=swap";
 
-			$transient_id = 'kirki_gfonts_' . md5( $url );
-			$contents     = get_transient( $transient_id );
+			$transient_id = 'kirki_gfonts_' . md5($url);
+			$contents     = get_transient($transient_id);
 
-			if ( ! class_exists( 'Kirki_Fonts_Downloader' ) ) {
-				include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-downloader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+			if (! class_exists('Kirki_Fonts_Downloader')) {
+				include_once wp_normalize_path(dirname(__FILE__) . '/class-kirki-fonts-downloader.php'); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 			}
 			$downloader = new Kirki_Fonts_Downloader();
-			$contents   = $downloader->get_styles( $url );
+			$contents   = $downloader->get_styles($url);
 
-			if ( $contents ) {
+			if ($contents) {
 				/**
 				 * Note to code reviewers:
 				 *
@@ -164,7 +165,7 @@ final class Kirki_Modules_Webfonts_Embed {
 				 * For extra security we're using the wp_strip_all_tags() function here
 				 * just to make sure there's no <script> tags in there or anything else.
 				 */
-				echo wp_strip_all_tags( $contents ); // phpcs:ignore WordPress.Security.EscapeOutput
+				echo wp_strip_all_tags($contents); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -59,11 +60,11 @@ class Kirki_Field_Code extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_choices() {
-		if ( ! isset( $this->choices['language'] ) ) {
+		if (! isset($this->choices['language'])) {
 			return;
 		}
 		$language = $this->choices['language'];
-		switch ( $language ) {
+		switch ($language) {
 			case 'json':
 			case 'xml':
 				$language = 'application/' . $language;
@@ -84,20 +85,20 @@ class Kirki_Field_Code extends Kirki_Field {
 				$language = 'text/' . $language;
 				break;
 			default:
-				$language = ( 'js' === $language ) ? 'javascript' : $language;
-				$language = ( 'htm' === $language ) ? 'html' : $language;
-				$language = ( 'yml' === $language ) ? 'yaml' : $language;
+				$language = ('js' === $language) ? 'javascript' : $language;
+				$language = ('htm' === $language) ? 'html' : $language;
+				$language = ('yml' === $language) ? 'yaml' : $language;
 				$language = 'text/x-' . $language;
 				break;
 		}
-		if ( ! isset( $this->editor_settings['codemirror'] ) ) {
+		if (! isset($this->editor_settings['codemirror'])) {
 			$this->editor_settings['codemirror'] = array();
 		}
-		if ( ! isset( $this->editor_settings['codemirror']['mode'] ) ) {
+		if (! isset($this->editor_settings['codemirror']['mode'])) {
 			$this->editor_settings['codemirror']['mode'] = $language;
 		}
 
-		if ( 'text/x-scss' === $this->editor_settings['codemirror']['mode'] ) {
+		if ('text/x-scss' === $this->editor_settings['codemirror']['mode']) {
 			$this->editor_settings['codemirror'] = array_merge(
 				$this->editor_settings['codemirror'],
 				array(
@@ -118,12 +119,12 @@ class Kirki_Field_Code extends Kirki_Field {
 
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
+		if (! empty($this->sanitize_callback)) {
 			return;
 		}
 		// Code fields must NOT be filtered. Their values usually contain CSS/JS.
 		// It is the responsibility of the theme/plugin that registers this field
 		// to properly apply any necessary filtering.
-		$this->sanitize_callback = array( 'Kirki_Sanitize_Values', 'unfiltered' );
+		$this->sanitize_callback = array('Kirki_Sanitize_Values', 'unfiltered');
 	}
 }

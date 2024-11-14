@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WordPress Customize Setting classes
  *
@@ -32,8 +33,8 @@ class Kirki_Setting_Site_Option extends WP_Customize_Setting {
 	 * @param mixed $default Value to return if root does not exist.
 	 * @return mixed
 	 */
-	protected function get_root_value( $default = null ) {
-		return get_site_option( $this->id_data['base'], $default );
+	protected function get_root_value($default = null) {
+		return get_site_option($this->id_data['base'], $default);
 	}
 
 	/**
@@ -44,8 +45,8 @@ class Kirki_Setting_Site_Option extends WP_Customize_Setting {
 	 * @param mixed $value Value to set as root of multidimensional setting.
 	 * @return bool Whether the multidimensional root was updated successfully.
 	 */
-	protected function set_root_value( $value ) {
-		return update_site_option( $this->id_data['base'], $value );
+	protected function set_root_value($value) {
+		return update_site_option($this->id_data['base'], $value);
 	}
 
 	/**
@@ -56,8 +57,8 @@ class Kirki_Setting_Site_Option extends WP_Customize_Setting {
 	 * @param mixed $value The value to update.
 	 * @return bool The result of saving the value.
 	 */
-	protected function update( $value ) {
-		return $this->set_root_value( $value );
+	protected function update($value) {
+		return $this->set_root_value($value);
 	}
 
 	/**
@@ -68,6 +69,6 @@ class Kirki_Setting_Site_Option extends WP_Customize_Setting {
 	 * @return mixed The value.
 	 */
 	public function value() {
-		return $this->get_root_value( $this->default );
+		return $this->get_root_value($this->default);
 	}
 }

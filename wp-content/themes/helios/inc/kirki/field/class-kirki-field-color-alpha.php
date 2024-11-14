@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -20,7 +21,7 @@ class Kirki_Field_Color_Alpha extends Kirki_Field_Color {
 	 * @access protected
 	 */
 	protected function set_choices() {
-		if ( ! is_array( $this->choices ) ) {
+		if (! is_array($this->choices)) {
 			$this->choices = array();
 		}
 		$this->choices['alpha'] = true;

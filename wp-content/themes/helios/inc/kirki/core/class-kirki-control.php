@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Controls handler
  *
@@ -37,11 +38,11 @@ class Kirki_Control {
 	 * @access public
 	 * @param array $args The field definition as sanitized in Kirki_Field.
 	 */
-	public function __construct( $args ) {
+	public function __construct($args) {
 
 		// Set the $wp_customize property.
 		global $wp_customize;
-		if ( ! $wp_customize ) {
+		if (! $wp_customize) {
 			return;
 		}
 		$this->wp_customize = $wp_customize;
@@ -50,8 +51,7 @@ class Kirki_Control {
 		$this->set_control_types();
 
 		// Add the control.
-		$this->add_control( $args );
-
+		$this->add_control($args);
 	}
 
 	/**
@@ -62,14 +62,14 @@ class Kirki_Control {
 	 *
 	 * @return         string   the name of the class that will be used to create this control.
 	 */
-	private function get_control_class_name( $args ) {
+	private function get_control_class_name($args) {
 
 		// Set a default class name.
 		$class_name = 'WP_Customize_Control';
 
 		// Get the classname from the array of control classnames.
-		if ( array_key_exists( $args['type'], self::$control_types ) ) {
-			$class_name = self::$control_types[ $args['type'] ];
+		if (array_key_exists($args['type'], self::$control_types)) {
+			$class_name = self::$control_types[$args['type']];
 		}
 		return $class_name;
 	}
@@ -80,14 +80,13 @@ class Kirki_Control {
 	 * @access protected
 	 * @param array $args The field definition as sanitized in Kirki_Field.
 	 */
-	final protected function add_control( $args ) {
+	final protected function add_control($args) {
 
 		// Get the name of the class we're going to use.
-		$class_name = $this->get_control_class_name( $args );
+		$class_name = $this->get_control_class_name($args);
 
 		// Add the control.
-		$this->wp_customize->add_control( new $class_name( $this->wp_customize, $args['settings'], $args ) );
-
+		$this->wp_customize->add_control(new $class_name($this->wp_customize, $args['settings'], $args));
 	}
 
 	/**
@@ -101,16 +100,16 @@ class Kirki_Control {
 	private function set_control_types() {
 
 		// Early exit if this has already run.
-		if ( ! empty( self::$control_types ) ) {
+		if (! empty(self::$control_types)) {
 			return;
 		}
 
-		self::$control_types = apply_filters( 'kirki_control_types', array() );
+		self::$control_types = apply_filters('kirki_control_types', array());
 
 		// Make sure the defined classes actually exist.
-		foreach ( self::$control_types as $key => $classname ) {
-			if ( ! class_exists( $classname ) ) {
-				unset( self::$control_types[ $key ] );
+		foreach (self::$control_types as $key => $classname) {
+			if (! class_exists($classname)) {
+				unset(self::$control_types[$key]);
 			}
 		}
 	}

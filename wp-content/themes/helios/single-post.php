@@ -30,8 +30,8 @@ function lmseo_index_print_styles() {
 
     //  Disabling CSS styles of WooCommerce blocks
     //  https://themesharbor.com/disabling-css-styles-of-woocommerce-blocks/
-    wp_dequeue_style('wc-blocks-style'); //wc-blocks-integration-css
-    wp_dequeue_style('wc-blocks-integration'); //wc-blocks-integration-css
+    // wp_dequeue_style('wc-blocks-style'); //wc-blocks-integration-css
+    // wp_dequeue_style('wc-blocks-integration'); //wc-blocks-integration-css
     wp_dequeue_style('woocommerce-smallscreen'); //wc-blocks-integration-css
     wp_dequeue_style('woocommerce-layout'); //wc-blocks-integration-css
     wp_dequeue_style('woocommerce-general'); //wc-blocks-integration-css
@@ -39,7 +39,7 @@ function lmseo_index_print_styles() {
     wp_dequeue_style('classic-theme-styles'); //wc-blocks-integration-css
     //  Dequeue Gutenberg Block Library CSS Code Snippet
     //  https://smartwp.com/remove-gutenberg-css/
-    wp_dequeue_style('wp-block-library'); // wp-block-library-css
+    // wp_dequeue_style('wp-block-library'); // wp-block-library-css
     //  https://wordpress.org/support/topic/how-to-disable-inline-styling-style-idglobal-styles-inline-css/
     wp_dequeue_style('global-styles'); //  global-styles-inline-css
     wp_dequeue_style('lmseo'); // main css

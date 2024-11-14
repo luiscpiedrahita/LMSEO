@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Automatic field-dependencies scripts calculation for Kirki controls.
  *
@@ -11,7 +12,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -37,7 +38,7 @@ class Kirki_Modules_Field_Dependencies {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
-		add_action( 'customize_controls_enqueue_scripts', array( $this, 'field_dependencies' ) );
+		add_action('customize_controls_enqueue_scripts', array($this, 'field_dependencies'));
 	}
 
 	/**
@@ -50,7 +51,7 @@ class Kirki_Modules_Field_Dependencies {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -65,6 +66,6 @@ class Kirki_Modules_Field_Dependencies {
 	 * @return void
 	 */
 	public function field_dependencies() {
-		wp_enqueue_script( 'kirki_field_dependencies', trailingslashit( Kirki::$url ) . 'modules/field-dependencies/field-dependencies.js', array( 'jquery', 'customize-base', 'customize-controls' ), KIRKI_VERSION, true );
+		wp_enqueue_script('kirki_field_dependencies', trailingslashit(Kirki::$url) . 'modules/field-dependencies/field-dependencies.js', array('jquery', 'customize-base', 'customize-controls'), KIRKI_VERSION, true);
 	}
 }

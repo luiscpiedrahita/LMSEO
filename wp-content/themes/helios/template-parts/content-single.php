@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying single post
  *
@@ -7,73 +8,73 @@
  * @package cenote
  */
 
-$content_orders = get_theme_mod( 'cenote_single_order_layout', array(
+$content_orders = get_theme_mod('cenote_single_order_layout', array(
 	'thumbnail',
-//	'categories', removing categories. It is included with footer-entry
+	//	'categories', removing categories. It is included with footer-entry
 	'title',
 	'meta',
 	'content',
 	'footer',
-) );
+));
 $classes = array('container');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
 	<div class="row">
-	<?php
-	foreach ( $content_orders as $key => $content_order ) :
-		if ( 'thumbnail' === $content_order ) :
-			cenote_post_thumbnail();
-		elseif ( 'categories' === $content_order ) :
-			?>
-			<div class="tg-top-cat">
-				<?php cenote_post_categories(); ?>
-			</div>
 		<?php
-		elseif ( 'title' === $content_order ) :
+		foreach ($content_orders as $key => $content_order) :
+			if ('thumbnail' === $content_order) :
+				cenote_post_thumbnail();
+			elseif ('categories' === $content_order) :
+		?>
+				<div class="tg-top-cat">
+					<?php cenote_post_categories(); ?>
+				</div>
+			<?php
+			elseif ('title' === $content_order) :
 			?>
-			<header class="entry-header">
-				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-			</header><!-- .entry-header -->
-		<?php
+				<header class="entry-header">
+					<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+				</header><!-- .entry-header -->
+			<?php
 
-		elseif ( 'meta' === $content_order && 'post' === get_post_type() ) :
+			elseif ('meta' === $content_order && 'post' === get_post_type()) :
 			?>
-			<div class="entry-meta">
-				<?php
-				cenote_posted_by();
-				echo ' on ';
-				cenote_posted_on();
-				?>
-			</div><!-- .entry-meta -->
-		<?php
-		elseif ( 'content' === $content_order ) :
+				<div class="entry-meta">
+					<?php
+					cenote_posted_by();
+					echo ' on ';
+					cenote_posted_on();
+					?>
+				</div><!-- .entry-meta -->
+			<?php
+			elseif ('content' === $content_order) :
 			?>
-			<div class="entry-content">
-				<?php
-				the_content();
-				wp_link_pages(
-					array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cenote' ),
-						'after'  => '</div>',
-					)
-				);
-				?>
-			</div><!-- .entry-content -->
-		<?php
-		elseif ( 'footer' === $content_order ) :
+				<div class="entry-content">
+					<?php
+					the_content();
+					wp_link_pages(
+						array(
+							'before' => '<div class="page-links">' . esc_html__('Pages:', 'cenote'),
+							'after'  => '</div>',
+						)
+					);
+					?>
+				</div><!-- .entry-content -->
+			<?php
+			elseif ('footer' === $content_order) :
 			?>
-			<footer class="entry-footer">
-				<?php cenote_entry_footer(); ?>
-			</footer><!-- .entry-footer -->
+				<footer class="entry-footer">
+					<?php cenote_entry_footer(); ?>
+				</footer><!-- .entry-footer -->
 		<?php
-		endif;
-	endforeach;
+			endif;
+		endforeach;
 
-	// Show author box if enabled.
-	if ( true === get_theme_mod( 'cenote_single_enable_author_box', true ) ) {
-		get_template_part( 'template-parts/author/author', 'box' );
-	}
-	?>
-</div>
+		// Show author box if enabled.
+		if (true === get_theme_mod('cenote_single_enable_author_box', true)) {
+			get_template_part('template-parts/author/author', 'box');
+		}
+		?>
+	</div>
 </article><!-- #post-<?php the_ID(); ?> -->

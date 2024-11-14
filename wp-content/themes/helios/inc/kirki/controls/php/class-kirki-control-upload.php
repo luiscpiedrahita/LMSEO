@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Control: image.
  *

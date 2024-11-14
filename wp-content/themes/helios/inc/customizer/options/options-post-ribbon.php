@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cenote Post Ribbon option
  *
@@ -7,10 +8,11 @@
 
 // Post Ribbon display.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'     => 'toggle',
 		'settings' => 'cenote_single_post_ribbon_display',
-		'label'    => esc_attr__( 'Enable Post Ribbon', 'cenote' ),
+		'label'    => esc_attr__('Enable Post Ribbon', 'cenote'),
 		'section'  => 'cenote_section_post_ribbon',
 		'default'  => 0,
 	)
@@ -18,15 +20,16 @@ Kirki::add_field(
 
 // Display by categories.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'            => 'radio-buttonset',
 		'settings'        => 'cenote_post_ribbon_category_select',
-		'label'           => esc_html__( 'Category Select', 'cenote' ),
+		'label'           => esc_html__('Category Select', 'cenote'),
 		'section'         => 'cenote_section_post_ribbon',
 		'default'         => 'tg-post-latest',
 		'choices'         => array(
-			'tg-post-category' => esc_attr__( 'Categories', 'cenote' ),
-			'tg-post-latest'   => esc_attr__( 'Latest', 'cenote' ),
+			'tg-post-category' => esc_attr__('Categories', 'cenote'),
+			'tg-post-latest'   => esc_attr__('Latest', 'cenote'),
 		),
 		'active_callback' => array(
 			array(
@@ -41,16 +44,17 @@ Kirki::add_field(
 // Categories select option.
 $category_choices                        = array();
 $categories_lists                        = get_categories();
-$category_choices['cenote_all_category'] = esc_html__( ' Display All Category', 'cenote' );
-foreach ( $categories_lists as $categories => $category ) {
-	$category_choices[ $category->term_id ] = $category->name;
+$category_choices['cenote_all_category'] = esc_html__(' Display All Category', 'cenote');
+foreach ($categories_lists as $categories => $category) {
+	$category_choices[$category->term_id] = $category->name;
 }
 
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'            => 'select',
 		'settings'        => 'cenote_post_ribbon_categories',
-		'label'           => esc_html__( 'Categories', 'cenote' ),
+		'label'           => esc_html__('Categories', 'cenote'),
 		'section'         => 'cenote_section_post_ribbon',
 		'default'         => 'cenote_all_category',
 		'choices'         => $category_choices,

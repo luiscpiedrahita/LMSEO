@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The default section.
  *
@@ -21,5 +22,4 @@ class Kirki_Sections_Default_Section extends WP_Customize_Section {
 	 * @var string
 	 */
 	public $type = 'kirki-default';
-
 }

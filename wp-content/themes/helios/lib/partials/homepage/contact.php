@@ -1,5 +1,5 @@
 <?php
-$out.='
+$out .= '
 <a class="anchor" id="contact"></a>
 <section class="contact container-fluid">
     <div class="container">
@@ -58,4 +58,3 @@ $out.='
     </form>
     </div>
  </section>';
-?>

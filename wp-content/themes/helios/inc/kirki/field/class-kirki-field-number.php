@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -22,7 +23,6 @@ class Kirki_Field_Number extends Kirki_Field {
 	protected function set_type() {
 
 		$this->type = 'kirki-number';
-
 	}
 
 	/**
@@ -31,7 +31,7 @@ class Kirki_Field_Number extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_sanitize_callback() {
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = array($this, 'sanitize');
 	}
 
 	/**
@@ -49,9 +49,9 @@ class Kirki_Field_Number extends Kirki_Field {
 			)
 		);
 		// Make sure min, max & step are all numeric.
-		$this->choices['min']  = filter_var( $this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-		$this->choices['max']  = filter_var( $this->choices['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-		$this->choices['step'] = filter_var( $this->choices['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+		$this->choices['min']  = filter_var($this->choices['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+		$this->choices['max']  = filter_var($this->choices['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+		$this->choices['step'] = filter_var($this->choices['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 	}
 
 	/**
@@ -61,20 +61,20 @@ class Kirki_Field_Number extends Kirki_Field {
 	 * @param integer|string $value The checkbox value.
 	 * @return bool
 	 */
-	public function sanitize( $value = 0 ) {
+	public function sanitize($value = 0) {
 		$this->set_choices();
 
-		$value = filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+		$value = filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
 		// Minimum & maximum value limits.
-		if ( $value < $this->choices['min'] || $value > $this->choices['max'] ) {
-			return max( min( $value, $this->choices['max'] ), $this->choices['min'] );
+		if ($value < $this->choices['min'] || $value > $this->choices['max']) {
+			return max(min($value, $this->choices['max']), $this->choices['min']);
 		}
 
 		// Only multiple of steps.
-		$steps = ( $value - $this->choices['min'] ) / $this->choices['step'];
-		if ( ! is_int( $steps ) ) {
-			$value = $this->choices['min'] + ( round( $steps ) * $this->choices['step'] );
+		$steps = ($value - $this->choices['min']) / $this->choices['step'];
+		if (! is_int($steps)) {
+			$value = $this->choices['min'] + (round($steps) * $this->choices['step']);
 		}
 		return $value;
 	}

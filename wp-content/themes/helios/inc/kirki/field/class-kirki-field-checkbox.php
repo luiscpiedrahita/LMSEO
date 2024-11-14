@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -29,8 +30,8 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_sanitize_callback() {
-		if ( ! $this->sanitize_callback ) {
-			$this->sanitize_callback = array( $this, 'sanitize' );
+		if (! $this->sanitize_callback) {
+			$this->sanitize_callback = array($this, 'sanitize');
 		}
 	}
 
@@ -41,8 +42,8 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 * @param boolean|integer|string|null $value The checkbox value.
 	 * @return bool
 	 */
-	public function sanitize( $value = null ) {
-		return ( '0' === $value || 'false' === $value ) ? false : (bool) $value;
+	public function sanitize($value = null) {
+		return ('0' === $value || 'false' === $value) ? false : (bool) $value;
 	}
 
 	/**
@@ -51,6 +52,6 @@ class Kirki_Field_Checkbox extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_default() {
-		$this->default = (bool) ( 1 === $this->default || '1' === $this->default || true === $this->default || 'true' === $this->default || 'on' === $this->default );
+		$this->default = (bool) (1 === $this->default || '1' === $this->default || true === $this->default || 'true' === $this->default || 'on' === $this->default);
 	}
 }

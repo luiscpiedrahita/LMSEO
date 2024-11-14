@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Internationalization helper.
  *
@@ -40,14 +41,14 @@ class Kirki_L10n {
 	public function __construct() {
 
 		// If Kirki is installed as a plugin, load the texdomain.
-		if ( Kirki_Util::is_plugin() ) {
-			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+		if (Kirki_Util::is_plugin()) {
+			add_action('plugins_loaded', array($this, 'load_textdomain'));
 			return;
 		}
 
 		// If we got this far, then Kirki is embedded in a plugin.
 		// We want the theme's textdomain to handle translations.
-		add_filter( 'override_load_textdomain', array( $this, 'override_load_textdomain' ), 5, 3 );
+		add_filter('override_load_textdomain', array($this, 'override_load_textdomain'), 5, 3);
 	}
 
 	/**
@@ -56,10 +57,10 @@ class Kirki_L10n {
 	 * @access public
 	 */
 	public function load_textdomain() {
-		if ( null !== $this->get_path() ) {
-			load_textdomain( $this->textdomain, $this->get_path() );
+		if (null !== $this->get_path()) {
+			load_textdomain($this->textdomain, $this->get_path());
 		}
-		load_plugin_textdomain( $this->textdomain, false, Kirki::$path . '/languages' );
+		load_plugin_textdomain($this->textdomain, false, Kirki::$path . '/languages');
 	}
 
 	/**
@@ -71,12 +72,12 @@ class Kirki_L10n {
 	protected function get_path() {
 		$path_found = false;
 		$found_path = null;
-		foreach ( $this->get_paths() as $path ) {
-			if ( $path_found ) {
+		foreach ($this->get_paths() as $path) {
+			if ($path_found) {
 				continue;
 			}
-			$path = wp_normalize_path( $path );
-			if ( file_exists( $path ) ) {
+			$path = wp_normalize_path($path);
+			if (file_exists($path)) {
 				$path_found = true;
 				$found_path = $path;
 			}
@@ -107,14 +108,14 @@ class Kirki_L10n {
 	 * @param string $mofile   Path to the MO file.
 	 * @return bool
 	 */
-	public function override_load_textdomain( $override, $domain, $mofile ) {
+	public function override_load_textdomain($override, $domain, $mofile) {
 		global $l10n;
-		if ( isset( $l10n[ $this->get_theme_textdomain() ] ) ) {
-			$l10n['kirki'] = $l10n[ $this->get_theme_textdomain() ]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride
+		if (isset($l10n[$this->get_theme_textdomain()])) {
+			$l10n['kirki'] = $l10n[$this->get_theme_textdomain()]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride
 		}
 
 		// Check if the domain is "kirki".
-		if ( 'kirki' === $domain ) {
+		if ('kirki' === $domain) {
 			return true;
 		}
 		return $override;
@@ -128,14 +129,14 @@ class Kirki_L10n {
 	 * @return string
 	 */
 	private function get_theme_textdomain() {
-		if ( '' === $this->theme_textdomain ) {
+		if ('' === $this->theme_textdomain) {
 
 			// Get the textdomain.
 			$theme                  = wp_get_theme();
-			$this->theme_textdomain = $theme->get( 'TextDomain' );
+			$this->theme_textdomain = $theme->get('TextDomain');
 
 			// If no texdomain was found, use the template folder name.
-			if ( ! $this->theme_textdomain ) {
+			if (! $this->theme_textdomain) {
 				$this->theme_textdomain = get_template();
 			}
 		}

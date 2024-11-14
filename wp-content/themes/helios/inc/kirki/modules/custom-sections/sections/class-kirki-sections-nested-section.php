@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Nested section.
  *
@@ -53,15 +54,15 @@ class Kirki_Sections_Nested_Section extends WP_Customize_Section {
 			)
 		);
 
-		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
+		$array['title']          = html_entity_decode($this->title, ENT_QUOTES, get_bloginfo('charset'));
 		$array['content']        = $this->get_content();
 		$array['active']         = $this->active();
 		$array['instanceNumber'] = $this->instance_number;
 
-		$array['customizeAction'] = esc_html__( 'Customizing', 'kirki' );
-		if ( $this->panel ) {
+		$array['customizeAction'] = esc_html__('Customizing', 'kirki');
+		if ($this->panel) {
 			/* translators: The title. */
-			$array['customizeAction'] = sprintf( esc_html__( 'Customizing &#9656; %s', 'kirki' ), esc_html( $this->manager->get_panel( $this->panel )->title ) );
+			$array['customizeAction'] = sprintf(esc_html__('Customizing &#9656; %s', 'kirki'), esc_html($this->manager->get_panel($this->panel)->title));
 		}
 		return $array;
 	}

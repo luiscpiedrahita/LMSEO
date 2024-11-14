@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -32,10 +33,10 @@ class Kirki_Field_Multicheck extends Kirki_Field {
 
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
+		if (! empty($this->sanitize_callback)) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = array($this, 'sanitize');
 	}
 
 	/**
@@ -43,8 +44,8 @@ class Kirki_Field_Multicheck extends Kirki_Field {
 	 *
 	 * @param string|array $value The control's value.
 	 */
-	public function sanitize( $value ) {
-		$value = ( ! is_array( $value ) ) ? explode( ',', $value ) : $value;
-		return ( ! empty( $value ) ) ? array_map( 'sanitize_text_field', $value ) : array();
+	public function sanitize($value) {
+		$value = (! is_array($value)) ? explode(',', $value) : $value;
+		return (! empty($value)) ? array_map('sanitize_text_field', $value) : array();
 	}
 }

@@ -1,9 +1,9 @@
-<?php 
-$out='<nav class="top-bar" data-topbar role="navigation"><ul class="title-area"><li class="name">';
-$inside .= sprintf( '<a href="/" title="%s" class="logo">%s</a>', esc_attr( get_bloginfo( 'name' ) ), get_bloginfo( 'name' ) );
-$out .=sprintf( '<h1 class="site-title">%1$s</h1>', $inside );
+<?php
+$out = '<nav class="top-bar" data-topbar role="navigation"><ul class="title-area"><li class="name">';
+$inside .= sprintf('<a href="/" title="%s" class="logo">%s</a>', esc_attr(get_bloginfo('name')), get_bloginfo('name'));
+$out .= sprintf('<h1 class="site-title">%1$s</h1>', $inside);
 //<a class="logo" href="/">lmseo</a></h1>
-$out .='</li>
+$out .= '</li>
 <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
 </ul>
 <section class="top-bar-section">
@@ -92,4 +92,4 @@ $out .='</li>
 	</li>
 </ul>
 </section>
-</nav>'; ?>
+</nav>';

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Repeater Customizer Setting.
  *
@@ -10,7 +11,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -29,11 +30,11 @@ class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 	 * @param string               $id       A specific ID of the setting. Can be a theme mod or option name.
 	 * @param array                $args     Setting arguments.
 	 */
-	public function __construct( $manager, $id, $args = array() ) {
-		parent::__construct( $manager, $id, $args );
+	public function __construct($manager, $id, $args = array()) {
+		parent::__construct($manager, $id, $args);
 
 		// Will onvert the setting from JSON to array. Must be triggered very soon.
-		add_filter( "customize_sanitize_{$this->id}", array( $this, 'sanitize_repeater_setting' ), 10, 1 );
+		add_filter("customize_sanitize_{$this->id}", array($this, 'sanitize_repeater_setting'), 10, 1);
 	}
 
 	/**
@@ -53,25 +54,25 @@ class Kirki_Settings_Repeater_Setting extends WP_Customize_Setting {
 	 * @param string $value URL Encoded JSON Value.
 	 * @return array
 	 */
-	public function sanitize_repeater_setting( $value ) {
-		if ( ! is_array( $value ) ) {
-			$value = json_decode( urldecode( $value ) );
+	public function sanitize_repeater_setting($value) {
+		if (! is_array($value)) {
+			$value = json_decode(urldecode($value));
 		}
-		if ( empty( $value ) || ! is_array( $value ) ) {
+		if (empty($value) || ! is_array($value)) {
 			$value = array();
 		}
 
 		// Make sure that every row is an array, not an object.
-		foreach ( $value as $key => $val ) {
-			$value[ $key ] = (array) $val;
-			if ( empty( $val ) ) {
-				unset( $value[ $key ] );
+		foreach ($value as $key => $val) {
+			$value[$key] = (array) $val;
+			if (empty($val)) {
+				unset($value[$key]);
 			}
 		}
 
 		// Reindex array.
-		if ( is_array( $value ) ) {
-			$value = array_values( $value );
+		if (is_array($value)) {
+			$value = array_values($value);
 		}
 
 		return $value;

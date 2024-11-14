@@ -1,11 +1,11 @@
 <?php
-$out .='<header class="sticky">
+$out .= '<header class="sticky">
   <nav class="top-bar animated fadeInUp delay-300" data-topbar>
     <ul class="title-area">
       <li class="name">';
-$inside .= sprintf( '<a href="/" title="%s" class="logo">%s</a>', esc_attr( get_bloginfo( 'name' ) ), get_bloginfo( 'name' ) );
-$out .=sprintf( '<h1 class="site-title">%1$s</h1>', $inside );
-$out .='
+$inside .= sprintf('<a href="/" title="%s" class="logo">%s</a>', esc_attr(get_bloginfo('name')), get_bloginfo('name'));
+$out .= sprintf('<h1 class="site-title">%1$s</h1>', $inside);
+$out .= '
       </li>
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -53,4 +53,3 @@ $out .='
     </section>
   </nav>
 </header>';
-?>

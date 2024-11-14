@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main Kirki object
  *
@@ -11,7 +12,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -37,7 +38,7 @@ final class Kirki_Toolkit {
 	 * @return object Kirki_Toolkit.
 	 */
 	public static function get_instance() {
-		if ( null === self::$instance ) {
+		if (null === self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;

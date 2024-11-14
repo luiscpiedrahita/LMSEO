@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Control: multicolor.
  *
@@ -10,7 +11,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -56,23 +57,23 @@ class Kirki_Control_Multicolor extends Kirki_Control_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
-		?>
+?>
 		<span class="customize-control-title">
 			{{{ data.label }}}
 		</span>
 		<# if ( data.description ) { #>
 			<span class="description customize-control-description">{{{ data.description }}}</span>
-		<# } #>
-		<div class="multicolor-group-wrapper">
-			<# for ( key in data.choices ) { #>
-				<# if ( 'irisArgs' !== key ) { #>
-					<div class="multicolor-single-color-wrapper">
-						<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="{{ data.alpha }}" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" data-label="<# if ( data.choices[ key ] ) { #>{{ data.choices[ key ] }}<# } else { #>{{ key }}<# } #>" />
-					</div>
-				<# } #>
 			<# } #>
-		</div>
-		<input class="multicolor-hidden-value" type="hidden" {{{ data.link }}}>
+				<div class="multicolor-group-wrapper">
+					<# for ( key in data.choices ) { #>
+						<# if ( 'irisArgs' !==key ) { #>
+							<div class="multicolor-single-color-wrapper">
+								<input {{{ data.inputAttrs }}} id="{{ data.id }}-{{ key }}" type="text" data-palette="{{ data.palette }}" data-default-color="{{ data.default[ key ] }}" data-alpha="{{ data.alpha }}" value="{{ data.value[ key ] }}" class="kirki-color-control color-picker multicolor-index-{{ key }}" data-label="<# if ( data.choices[ key ] ) { #>{{ data.choices[ key ] }}<# } else { #>{{ key }}<# } #>" />
+							</div>
+							<# } #>
+								<# } #>
+				</div>
+				<input class="multicolor-hidden-value" type="hidden" {{{ data.link }}}>
 		<?php
 	}
 }

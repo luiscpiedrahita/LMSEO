@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Automatic postMessage scripts calculation for Kirki controls.
  *
@@ -11,7 +12,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -37,7 +38,7 @@ class Kirki_Modules_PostMessage {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
-		add_action( 'customize_preview_init', array( $this, 'postmessage' ) );
+		add_action('customize_preview_init', array($this, 'postmessage'));
 	}
 
 	/**
@@ -50,7 +51,7 @@ class Kirki_Modules_PostMessage {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -62,18 +63,18 @@ class Kirki_Modules_PostMessage {
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
-		wp_enqueue_script( 'kirki_auto_postmessage', trailingslashit( Kirki::$url ) . 'modules/postmessage/postmessage.js', array( 'jquery', 'customize-preview' ), KIRKI_VERSION, true );
+		wp_enqueue_script('kirki_auto_postmessage', trailingslashit(Kirki::$url) . 'modules/postmessage/postmessage.js', array('jquery', 'customize-preview'), KIRKI_VERSION, true);
 		$fields = Kirki::$fields;
 		$data   = array();
-		foreach ( $fields as $field ) {
-			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
+		foreach ($fields as $field) {
+			if (isset($field['transport']) && 'postMessage' === $field['transport'] && isset($field['js_vars']) && ! empty($field['js_vars']) && is_array($field['js_vars']) && isset($field['settings'])) {
 				$data[] = $field;
 			}
 		}
-		wp_localize_script( 'kirki_auto_postmessage', 'kirkiPostMessageFields', $data );
-		$extras = apply_filters( 'kirki_postmessage_script', false );
-		if ( $extras ) {
-			wp_add_inline_script( 'kirki_auto_postmessage', $extras, 'after' );
+		wp_localize_script('kirki_auto_postmessage', 'kirkiPostMessageFields', $data);
+		$extras = apply_filters('kirki_postmessage_script', false);
+		if ($extras) {
+			wp_add_inline_script('kirki_auto_postmessage', $extras, 'after');
 		}
 	}
 }

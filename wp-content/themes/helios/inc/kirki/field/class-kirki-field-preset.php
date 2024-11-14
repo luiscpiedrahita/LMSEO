@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -35,8 +36,8 @@ class Kirki_Field_Preset extends Kirki_Field_Select {
 		$this->preset = $this->choices;
 
 		// We're using a flat select.
-		foreach ( $this->choices as $key => $args ) {
-			$this->choices[ $key ] = $args['label'];
+		foreach ($this->choices as $key => $args) {
+			$this->choices[$key] = $args['label'];
 		}
 	}
 }

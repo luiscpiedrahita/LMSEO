@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WordPress Customize Setting classes
  *
@@ -32,18 +33,18 @@ class Kirki_Setting_User_Meta extends WP_Customize_Setting {
 	 * @param mixed $default Value to return if root does not exist.
 	 * @return mixed
 	 */
-	protected function get_root_value( $default = null ) {
+	protected function get_root_value($default = null) {
 		$id_base = $this->id_data['base'];
 
 		// Get all user-meta.
 		// We'll use this to check if the value is set or not,
 		// in order to figure out if we need to return the default value.
-		$user_meta = get_user_meta( get_current_user_id() );
+		$user_meta = get_user_meta(get_current_user_id());
 
 		// Get the single meta.
-		$single_meta = get_user_meta( get_current_user_id(), $id_base, true );
+		$single_meta = get_user_meta(get_current_user_id(), $id_base, true);
 
-		if ( isset( $user_meta[ $id_base ] ) ) {
+		if (isset($user_meta[$id_base])) {
 			return $single_meta;
 		}
 		return $default;
@@ -57,15 +58,15 @@ class Kirki_Setting_User_Meta extends WP_Customize_Setting {
 	 * @param mixed $value Value to set as root of multidimensional setting.
 	 * @return bool Whether the multidimensional root was updated successfully.
 	 */
-	protected function set_root_value( $value ) {
+	protected function set_root_value($value) {
 		$id_base = $this->id_data['base'];
 
 		// First delete the current user-meta.
 		// We're doing this to avoid duplicate entries.
-		delete_user_meta( get_current_user_id(), $id_base );
+		delete_user_meta(get_current_user_id(), $id_base);
 
 		// Update the user-meta.
-		return update_user_meta( get_current_user_id(), $id_base, $value );
+		return update_user_meta(get_current_user_id(), $id_base, $value);
 	}
 
 	/**
@@ -76,8 +77,8 @@ class Kirki_Setting_User_Meta extends WP_Customize_Setting {
 	 * @param mixed $value The value to update.
 	 * @return bool The result of saving the value.
 	 */
-	protected function update( $value ) {
-		return $this->set_root_value( $value );
+	protected function update($value) {
+		return $this->set_root_value($value);
 	}
 
 	/**
@@ -88,6 +89,6 @@ class Kirki_Setting_User_Meta extends WP_Customize_Setting {
 	 * @return mixed The value.
 	 */
 	public function value() {
-		return $this->get_root_value( $this->default );
+		return $this->get_root_value($this->default);
 	}
 }

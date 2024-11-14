@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Processes configurations.
  *
@@ -87,23 +88,23 @@ final class Kirki_Config {
 	 * @param string $config_id @see Kirki_Config::get_instance().
 	 * @param array  $args      @see Kirki_Config::get_instance().
 	 */
-	private function __construct( $config_id = 'global', $args = array() ) {
+	private function __construct($config_id = 'global', $args = array()) {
 
 		// Get defaults from the class.
-		$defaults = get_class_vars( __CLASS__ );
+		$defaults = get_class_vars(__CLASS__);
 		// Skip what we don't need in this context.
-		unset( $defaults['config_final'] );
-		unset( $defaults['instances'] );
+		unset($defaults['config_final']);
+		unset($defaults['instances']);
 		// Apply any kirki_config global filters.
-		$defaults = apply_filters( 'kirki_config', $defaults );
+		$defaults = apply_filters('kirki_config', $defaults);
 		// Merge our args with the defaults.
-		$args = wp_parse_args( $args, $defaults );
+		$args = wp_parse_args($args, $defaults);
 
 		// Modify default values with the defined ones.
-		foreach ( $args as $key => $value ) {
+		foreach ($args as $key => $value) {
 			// Is this property whitelisted?
-			if ( property_exists( $this, $key ) ) {
-				$args[ $key ] = $value;
+			if (property_exists($this, $key)) {
+				$args[$key] = $value;
 			}
 		}
 		$this->id = $config_id;
@@ -138,15 +139,15 @@ final class Kirki_Config {
 	 *
 	 * @return Kirki_Config
 	 */
-	public static function get_instance( $id = 'global', $args = array() ) {
-		if ( empty( $id ) ) {
+	public static function get_instance($id = 'global', $args = array()) {
+		if (empty($id)) {
 			$id = 'global';
 		}
-		$id_md5 = md5( $id );
-		if ( ! isset( self::$instances[ $id_md5 ] ) ) {
-			self::$instances[ $id_md5 ] = new self( $id, $args );
+		$id_md5 = md5($id);
+		if (! isset(self::$instances[$id_md5])) {
+			self::$instances[$id_md5] = new self($id, $args);
 		}
-		return self::$instances[ $id_md5 ];
+		return self::$instances[$id_md5];
 	}
 
 	/**
@@ -159,10 +160,10 @@ final class Kirki_Config {
 	 */
 	public static function get_config_ids() {
 		$configs = array();
-		foreach ( self::$instances as $instance ) {
+		foreach (self::$instances as $instance) {
 			$configs[] = $instance->id;
 		}
-		return array_unique( $configs );
+		return array_unique($configs);
 	}
 
 	/**

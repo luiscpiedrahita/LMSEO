@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -20,7 +21,7 @@ class Kirki_Field_Text extends Kirki_Field_Kirki_Generic {
 	 * @access protected
 	 */
 	protected function set_choices() {
-		if ( ! is_array( $this->choices ) ) {
+		if (! is_array($this->choices)) {
 			$this->choices = array();
 		}
 		$this->choices['element'] = 'input';
@@ -36,7 +37,7 @@ class Kirki_Field_Text extends Kirki_Field_Kirki_Generic {
 
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
+		if (! empty($this->sanitize_callback)) {
 			return;
 		}
 		$this->sanitize_callback = 'sanitize_textarea_field';

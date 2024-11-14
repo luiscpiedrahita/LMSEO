@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles sections created via the Kirki API.
  *
@@ -31,7 +32,7 @@ class Kirki_Modules_Selective_Refresh {
 	 * @access protected
 	 */
 	protected function __construct() {
-		add_action( 'customize_register', array( $this, 'register_partials' ), 99 );
+		add_action('customize_register', array($this, 'register_partials'), 99);
 	}
 
 	/**
@@ -44,7 +45,7 @@ class Kirki_Modules_Selective_Refresh {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -57,10 +58,10 @@ class Kirki_Modules_Selective_Refresh {
 	 *
 	 * @param object $wp_customize WP_Customize_Manager.
 	 */
-	public function register_partials( $wp_customize ) {
+	public function register_partials($wp_customize) {
 
 		// Abort if selective refresh is not available.
-		if ( ! isset( $wp_customize->selective_refresh ) ) {
+		if (! isset($wp_customize->selective_refresh)) {
 			return;
 		}
 
@@ -68,19 +69,19 @@ class Kirki_Modules_Selective_Refresh {
 		$fields = Kirki::$fields;
 
 		// Start parsing the fields.
-		foreach ( $fields as $field ) {
-			if ( isset( $field['partial_refresh'] ) && ! empty( $field['partial_refresh'] ) ) {
+		foreach ($fields as $field) {
+			if (isset($field['partial_refresh']) && ! empty($field['partial_refresh'])) {
 				// Start going through each item in the array of partial refreshes.
-				foreach ( $field['partial_refresh'] as $partial_refresh => $partial_refresh_args ) {
+				foreach ($field['partial_refresh'] as $partial_refresh => $partial_refresh_args) {
 					// If we have all we need, create the selective refresh call.
-					if ( isset( $partial_refresh_args['render_callback'] ) && isset( $partial_refresh_args['selector'] ) ) {
+					if (isset($partial_refresh_args['render_callback']) && isset($partial_refresh_args['selector'])) {
 						$partial_refresh_args = wp_parse_args(
 							$partial_refresh_args,
 							array(
 								'settings' => $field['settings'],
 							)
 						);
-						$wp_customize->selective_refresh->add_partial( $partial_refresh, $partial_refresh_args );
+						$wp_customize->selective_refresh->add_partial($partial_refresh, $partial_refresh_args);
 					}
 				}
 			}

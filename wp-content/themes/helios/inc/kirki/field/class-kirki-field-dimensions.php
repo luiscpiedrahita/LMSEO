@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -32,10 +33,10 @@ class Kirki_Field_Dimensions extends Kirki_Field {
 
 		// If a custom sanitize_callback has been defined,
 		// then we don't need to proceed any further.
-		if ( ! empty( $this->sanitize_callback ) ) {
+		if (! empty($this->sanitize_callback)) {
 			return;
 		}
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = array($this, 'sanitize');
 	}
 
 	/**
@@ -45,11 +46,11 @@ class Kirki_Field_Dimensions extends Kirki_Field {
 	 * @param array $value The value.
 	 * @return array
 	 */
-	public function sanitize( $value ) {
+	public function sanitize($value) {
 
 		// Sanitize each sub-value separately.
-		foreach ( $value as $key => $sub_value ) {
-			$value[ $key ] = sanitize_text_field( $sub_value );
+		foreach ($value as $key => $sub_value) {
+			$value[$key] = sanitize_text_field($sub_value);
 		}
 		return $value;
 	}
@@ -62,9 +63,9 @@ class Kirki_Field_Dimensions extends Kirki_Field {
 	 */
 	protected function set_choices() {
 		$this->choices['controls'] = array();
-		if ( is_array( $this->default ) ) {
-			foreach ( $this->default as $key => $value ) {
-				$this->choices['controls'][ $key ] = true;
+		if (is_array($this->default)) {
+			foreach ($this->default as $key => $value) {
+				$this->choices['controls'][$key] = true;
 			}
 		}
 	}

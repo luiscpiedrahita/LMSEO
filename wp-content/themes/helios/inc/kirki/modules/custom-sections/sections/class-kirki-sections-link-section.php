@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The default section.
  * Inspired from https://github.com/justintadlock/trt-customizer-pro
@@ -53,7 +54,7 @@ class Kirki_Sections_Link_Section extends WP_Customize_Section {
 		$json = parent::json();
 
 		$json['button_text'] = $this->button_text;
-		$json['button_url']  = esc_url( $this->button_url );
+		$json['button_url']  = esc_url($this->button_url);
 
 		return $json;
 	}
@@ -66,13 +67,13 @@ class Kirki_Sections_Link_Section extends WP_Customize_Section {
 	 * @return void
 	 */
 	protected function render_template() {
-		?>
+?>
 		<li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }} cannot-expand">
 			<h3 class="accordion-section-title">
 				{{ data.title }}
 				<a href="{{ data.button_url }}" class="button alignright" target="_blank" rel="nofollow">{{ data.button_text }}</a>
 			</h3>
 		</li>
-		<?php
+<?php
 	}
 }

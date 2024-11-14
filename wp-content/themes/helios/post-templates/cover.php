@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Cover Style
  * Template Post Type: post
@@ -12,13 +13,13 @@ get_header(); ?>
 	<main id="main" class="site-main">
 
 		<?php
-		while ( have_posts() ) :
+		while (have_posts()) :
 			the_post();
 
-			get_template_part( 'template-parts/content-single', 'cover' );
+			get_template_part('template-parts/content-single', 'cover');
 
 		endwhile; // End of the loop.
-	?>
+		?>
 	</main><!-- #main -->
 </div><!-- #primary -->
 

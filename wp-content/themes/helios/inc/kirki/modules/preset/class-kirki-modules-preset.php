@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Automatic preset scripts calculation for Kirki controls.
  *
@@ -11,7 +12,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -37,7 +38,7 @@ class Kirki_Modules_Preset {
 	 * @since 3.0.26
 	 */
 	protected function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'customize_controls_print_footer_scripts' ) );
+		add_action('customize_controls_print_footer_scripts', array($this, 'customize_controls_print_footer_scripts'));
 	}
 
 	/**
@@ -50,7 +51,7 @@ class Kirki_Modules_Preset {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -63,6 +64,6 @@ class Kirki_Modules_Preset {
 	 * @since 3.0.26
 	 */
 	public function customize_controls_print_footer_scripts() {
-		wp_enqueue_script( 'kirki-preset', trailingslashit( Kirki::$url ) . 'modules/preset/preset.js', array( 'jquery' ), KIRKI_VERSION, false );
+		wp_enqueue_script('kirki-preset', trailingslashit(Kirki::$url) . 'modules/preset/preset.js', array('jquery'), KIRKI_VERSION, false);
 	}
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Gutenberg integration for Kirki.
  *
@@ -83,7 +84,7 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
-		add_action( 'admin_init', array( $this, 'init' ) );
+		add_action('admin_init', array($this, 'init'));
 	}
 
 	/**
@@ -112,7 +113,7 @@ class Kirki_Modules_Gutenberg {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -125,9 +126,9 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	protected function add_hooks() {
-		if ( ! $this->is_disabled() ) {
-			add_action( 'after_setup_theme', array( $this, 'add_theme_support' ), 999 );
-			add_filter( 'block_editor_settings_all', array( $this, 'enqueue' ) );
+		if (! $this->is_disabled()) {
+			add_action('after_setup_theme', array($this, 'add_theme_support'), 999);
+			add_filter('block_editor_settings_all', array($this, 'enqueue'));
 		}
 	}
 
@@ -141,8 +142,8 @@ class Kirki_Modules_Gutenberg {
 	 * @since 3.0.35
 	 */
 	public function add_theme_support() {
-		if ( true !== get_theme_support( 'editor-styles' ) ) {
-			add_theme_support( 'editor-styles' );
+		if (true !== get_theme_support('editor-styles')) {
+			add_theme_support('editor-styles');
 		}
 	}
 
@@ -153,11 +154,11 @@ class Kirki_Modules_Gutenberg {
 	 * @param array $settings The settings for styles.
 	 * @since 3.0.35
 	 */
-	public function enqueue( $settings ) {
+	public function enqueue($settings) {
 		$styles = $this->get_styles();
 
-		if ( ! empty( $styles ) ) {
-			$settings['styles'][] = array( 'css' => $styles );
+		if (! empty($styles)) {
+			$settings['styles'][] = array('css' => $styles);
 		}
 
 		return $settings;
@@ -175,17 +176,17 @@ class Kirki_Modules_Gutenberg {
 
 		$styles = null;
 
-		foreach ( $this->configs as $config_id => $args ) {
+		foreach ($this->configs as $config_id => $args) {
 
-			if ( true === $this->is_disabled( $args ) ) {
+			if (true === $this->is_disabled($args)) {
 				continue;
 			}
 
 			$modules_css = $this->modules_css;
-			$styles      = $modules_css::loop_controls( $config_id ); // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-			$styles      = apply_filters( "kirki_gutenberg_{$config_id}_dynamic_css", $styles );
+			$styles      = $modules_css::loop_controls($config_id); // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
+			$styles      = apply_filters("kirki_gutenberg_{$config_id}_dynamic_css", $styles);
 
-			if ( empty( $styles ) ) {
+			if (empty($styles)) {
 				continue;
 			}
 		}
@@ -205,17 +206,17 @@ class Kirki_Modules_Gutenberg {
 	 *
 	 * @return bool $disabled Is gutenberg integration feature disabled?
 	 */
-	private function is_disabled( $args = array() ) {
-		if ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) {
+	private function is_disabled($args = array()) {
+		if (defined('KIRKI_NO_OUTPUT') && true === KIRKI_NO_OUTPUT) {
 			return true;
 		}
 
-		if ( ! empty( $args ) ) {
-			if ( isset( $args['disable_output'] ) && true === $args['disable_output'] ) {
+		if (! empty($args)) {
+			if (isset($args['disable_output']) && true === $args['disable_output']) {
 				return true;
 			}
 
-			if ( ! isset( $args['gutenberg_support'] ) || true !== $args['gutenberg_support'] ) {
+			if (! isset($args['gutenberg_support']) || true !== $args['gutenberg_support']) {
 				return true;
 			}
 		}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class to render the Cenote Upsell Link.
  *
@@ -39,7 +40,7 @@ class CENOTE_Upsell_Section extends WP_Customize_Section {
 	 */
 	public function json() {
 		$json        = parent::json();
-		$json['url'] = esc_url( $this->url );
+		$json['url'] = esc_url($this->url);
 		$json['id']  = $this->id;
 
 		return $json;
@@ -49,10 +50,10 @@ class CENOTE_Upsell_Section extends WP_Customize_Section {
 	 * An Underscore (JS) template for rendering this section.
 	 */
 	protected function render_template() {
-		?>
+?>
 		<li id="accordion-section-{{ data.id }}" class="cenote-upsell-accordion-section control-section-{{ data.type }} cannot-expand accordion-section">
 			<h3 class="accordion-section-title"><a href="{{{ data.url }}}" target="_blank">{{ data.title }}</a></h3>
 		</li>
-		<?php
+<?php
 	}
 }

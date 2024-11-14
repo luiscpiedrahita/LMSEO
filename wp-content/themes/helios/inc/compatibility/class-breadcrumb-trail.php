@@ -32,8 +32,7 @@
  * @param  array $args Arguments to pass to Breadcrumb_Trail.
  * @return string html output.
  */
-function breadcrumb_trail($args = array())
-{
+function breadcrumb_trail($args = array()) {
 
 	$breadcrumb = apply_filters('breadcrumb_trail_object', null, $args);
 
@@ -49,8 +48,7 @@ function breadcrumb_trail($args = array())
  * @since  0.6.0
  * @access public
  */
-class Breadcrumb_Trail
-{
+class Breadcrumb_Trail {
 
 	/**
 	 * Array of items belonging to the current breadcrumb trail.
@@ -98,8 +96,7 @@ class Breadcrumb_Trail
 	 * @access public
 	 * @return string
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		return $this->trail();
 	}
 
@@ -126,8 +123,7 @@ class Breadcrumb_Trail
 	 * }
 	 * @return void
 	 */
-	public function __construct($args = array())
-	{
+	public function __construct($args = array()) {
 
 		$defaults = array(
 			'container'         => 'nav',
@@ -166,8 +162,7 @@ class Breadcrumb_Trail
 	 * @access public
 	 * @return string
 	 */
-	public function trail()
-	{
+	public function trail() {
 
 		// Set up variables that we'll need.
 		$breadcrumb    = '';
@@ -274,8 +269,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function set_labels()
-	{
+	protected function set_labels() {
 
 		$defaults = array(
 			'browse'              => esc_html__('Browse:', 'cenote'),
@@ -313,8 +307,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function set_post_taxonomy()
-	{
+	protected function set_post_taxonomy() {
 
 		$defaults = array();
 
@@ -334,8 +327,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_items()
-	{
+	protected function add_items() {
 
 		// If viewing the front page.
 		if (is_front_page()) {
@@ -397,8 +389,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_rewrite_front_items()
-	{
+	protected function add_rewrite_front_items() {
 		global $wp_rewrite;
 
 		if ($wp_rewrite->front) {
@@ -413,8 +404,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_paged_items()
-	{
+	protected function add_paged_items() {
 
 		// If viewing a paged singular post.
 		if (is_singular() && 1 < get_query_var('page') && true === $this->args['show_title']) {
@@ -433,8 +423,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_network_home_link()
-	{
+	protected function add_network_home_link() {
 
 		if (is_multisite() && ! is_main_site() && true === $this->args['network']) {
 			$this->items[] = sprintf('<a href="%s" rel="home" class="hvr-underline-from-left">%s</a>', esc_url(network_home_url()), $this->labels['home']);
@@ -448,8 +437,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_site_home_link()
-	{
+	protected function add_site_home_link() {
 
 		$network = is_multisite() && ! is_main_site() && true === $this->args['network'];
 		$label   = $network ? get_bloginfo('name') : $this->labels['home'];
@@ -465,8 +453,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_front_page_items()
-	{
+	protected function add_front_page_items() {
 
 		// Only show front items if the 'show_on_front' argument is set to 'true'.
 		if (true === $this->args['show_on_front'] || is_paged() || (is_singular() && 1 < get_query_var('page'))) {
@@ -490,8 +477,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_blog_items()
-	{
+	protected function add_blog_items() {
 
 		// Get the post ID and post.
 		$post_id = get_queried_object_id();
@@ -519,8 +505,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_singular_items()
-	{
+	protected function add_singular_items() {
 
 		// Get the queried post.
 		$post       = get_queried_object();
@@ -560,8 +545,7 @@ class Breadcrumb_Trail
 	 * @global object $wp_rewrite
 	 * @return void
 	 */
-	protected function add_term_archive_items()
-	{
+	protected function add_term_archive_items() {
 		global $wp_rewrite;
 
 		// Get some taxonomy and term variables.
@@ -672,8 +656,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_post_type_archive_items()
-	{
+	protected function add_post_type_archive_items() {
 
 		// Get the post type object.
 		$post_type_object = get_post_type_object(get_query_var('post_type'));
@@ -712,8 +695,7 @@ class Breadcrumb_Trail
 	 * @global object $wp_rewrite
 	 * @return void
 	 */
-	protected function add_user_archive_items()
-	{
+	protected function add_user_archive_items() {
 		global $wp_rewrite;
 
 		// Add $wp_rewrite->front to the trail.
@@ -742,8 +724,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_minute_hour_archive_items()
-	{
+	protected function add_minute_hour_archive_items() {
 
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
@@ -761,8 +742,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_minute_archive_items()
-	{
+	protected function add_minute_archive_items() {
 
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
@@ -780,8 +760,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_hour_archive_items()
-	{
+	protected function add_hour_archive_items() {
 
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
@@ -799,8 +778,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_day_archive_items()
-	{
+	protected function add_day_archive_items() {
 
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
@@ -829,8 +807,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_week_archive_items()
-	{
+	protected function add_week_archive_items() {
 
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
@@ -869,8 +846,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_month_archive_items()
-	{
+	protected function add_month_archive_items() {
 
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
@@ -897,8 +873,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_year_archive_items()
-	{
+	protected function add_year_archive_items() {
 
 		// Add $wp_rewrite->front to the trail.
 		$this->add_rewrite_front_items();
@@ -922,8 +897,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_default_archive_items()
-	{
+	protected function add_default_archive_items() {
 
 		// If this is a date-/time-based archive, add $wp_rewrite->front to the trail.
 		if (is_date() || is_time()) {
@@ -941,8 +915,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_search_items()
-	{
+	protected function add_search_items() {
 
 		if (is_paged()) {
 			$this->items[] = sprintf('<a href="%s" class="hvr-underline-from-left">%s</a>', esc_url(get_search_link()), sprintf($this->labels['search'], get_search_query()));
@@ -958,8 +931,7 @@ class Breadcrumb_Trail
 	 * @access protected
 	 * @return void
 	 */
-	protected function add_404_items()
-	{
+	protected function add_404_items() {
 
 		if (true === $this->args['show_title']) {
 			$this->items[] = $this->labels['error_404'];
@@ -974,8 +946,7 @@ class Breadcrumb_Trail
 	 * @param int $post_id post id.
 	 * @return void
 	 */
-	protected function add_post_parents($post_id)
-	{
+	protected function add_post_parents($post_id) {
 		$parents = array();
 
 		while ($post_id) {
@@ -1022,8 +993,7 @@ class Breadcrumb_Trail
 	 * @param int $post_id post id.
 	 * @return void
 	 */
-	protected function add_post_hierarchy($post_id)
-	{
+	protected function add_post_hierarchy($post_id) {
 
 		// Get the post type.
 		$post_type        = get_post_type($post_id);
@@ -1077,8 +1047,7 @@ class Breadcrumb_Trail
 	 * @param int $slug The post type archive slug to search for.
 	 * @return array $return post type.
 	 */
-	protected function get_post_types_by_slug($slug)
-	{
+	protected function get_post_types_by_slug($slug) {
 
 		$return = array();
 
@@ -1103,8 +1072,7 @@ class Breadcrumb_Trail
 	 * @param string $taxonomy The taxonomy to get the terms from.
 	 * @return void
 	 */
-	protected function add_post_terms($post_id, $taxonomy)
-	{
+	protected function add_post_terms($post_id, $taxonomy) {
 
 		// Get the post type.
 		$post_type = get_post_type($post_id);
@@ -1143,8 +1111,7 @@ class Breadcrumb_Trail
 	 * @param  string $path The path (slug) to search for posts by.
 	 * @return void
 	 */
-	protected function add_path_parents($path)
-	{
+	protected function add_path_parents($path) {
 
 		// Trim '/' off $path in case we just got a simple '/' instead of a real path.
 		$path = trim($path, '/');
@@ -1201,8 +1168,7 @@ class Breadcrumb_Trail
 	 * @param  string $taxonomy Name of the taxonomy for the given term.
 	 * @return void
 	 */
-	protected function add_term_parents($term_id, $taxonomy)
-	{
+	protected function add_term_parents($term_id, $taxonomy) {
 
 		// Set up some default arrays.
 		$parents = array();
@@ -1237,8 +1203,7 @@ class Breadcrumb_Trail
 	 * @param  int    $post_id ID of the post whose parents we want.
 	 * @param  string $path Path of a potential parent page.
 	 */
-	protected function map_rewrite_tags($post_id, $path)
-	{
+	protected function map_rewrite_tags($post_id, $path) {
 
 		$post = get_post($post_id);
 

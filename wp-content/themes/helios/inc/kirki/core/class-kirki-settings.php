@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles sections created via the Kirki API.
  *
@@ -38,11 +39,11 @@ class Kirki_Settings {
 	 * @access public
 	 * @param array $args The field definition as sanitized in Kirki_Field.
 	 */
-	public function __construct( $args = array() ) {
+	public function __construct($args = array()) {
 
 		// Set the $wp_customize property.
 		global $wp_customize;
-		if ( ! $wp_customize ) {
+		if (! $wp_customize) {
 			return;
 		}
 		$this->wp_customize = $wp_customize;
@@ -51,8 +52,7 @@ class Kirki_Settings {
 		$this->set_setting_types();
 
 		// Add the settings.
-		$this->add_settings( $args );
-
+		$this->add_settings($args);
 	}
 
 	/**
@@ -64,32 +64,32 @@ class Kirki_Settings {
 	 * @access private
 	 * @param array $args The field definition as sanitized in Kirki_Field.
 	 */
-	private function add_settings( $args = array() ) {
+	private function add_settings($args = array()) {
 
 		// Get the classname we'll be using to create our setting(s).
 		$classname = false;
-		if ( isset( $args['option_type'] ) && array_key_exists( $args['option_type'], $this->setting_types ) ) {
-			$classname = $this->setting_types[ $args['option_type'] ];
+		if (isset($args['option_type']) && array_key_exists($args['option_type'], $this->setting_types)) {
+			$classname = $this->setting_types[$args['option_type']];
 		}
-		if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->setting_types ) ) {
+		if (! isset($args['type']) || ! array_key_exists($args['type'], $this->setting_types)) {
 			$args['type'] = 'default';
 		}
-		$classname = ! $classname ? $this->setting_types[ $args['type'] ] : $classname;
+		$classname = ! $classname ? $this->setting_types[$args['type']] : $classname;
 
 		// If settings are defined as an array, then we need to go through them
 		// and call add_setting for each one of them separately.
-		if ( isset( $args['settings'] ) && is_array( $args['settings'] ) ) {
+		if (isset($args['settings']) && is_array($args['settings'])) {
 
 			// Make sure defaults have been defined.
-			if ( ! isset( $args['default'] ) || ! is_array( $args['default'] ) ) {
+			if (! isset($args['default']) || ! is_array($args['default'])) {
 				$args['default'] = array();
 			}
-			foreach ( $args['settings'] as $key => $value ) {
-				$default = ( isset( $defaults[ $key ] ) ) ? $defaults[ $key ] : '';
-				$this->add_setting( $classname, $value, $default, $args['option_type'], $args['capability'], $args['transport'], $args['sanitize_callback'] );
+			foreach ($args['settings'] as $key => $value) {
+				$default = (isset($defaults[$key])) ? $defaults[$key] : '';
+				$this->add_setting($classname, $value, $default, $args['option_type'], $args['capability'], $args['transport'], $args['sanitize_callback']);
 			}
 		}
-		$this->add_setting( $classname, $args['settings'], $args['default'], $args['option_type'], $args['capability'], $args['transport'], $args['sanitize_callback'] );
+		$this->add_setting($classname, $args['settings'], $args['default'], $args['option_type'], $args['capability'], $args['transport'], $args['sanitize_callback']);
 	}
 
 	/**
@@ -106,7 +106,7 @@ class Kirki_Settings {
 	 * @param string       $transport           Use refresh|postMessage.
 	 * @param string|array $sanitize_callback   A callable sanitization function or method.
 	 */
-	private function add_setting( $classname, $setting, $default, $type, $capability, $transport, $sanitize_callback ) {
+	private function add_setting($classname, $setting, $default, $type, $capability, $transport, $sanitize_callback) {
 
 		$this->wp_customize->add_setting(
 			new $classname(
@@ -121,7 +121,6 @@ class Kirki_Settings {
 				)
 			)
 		);
-
 	}
 
 	/**
@@ -144,10 +143,10 @@ class Kirki_Settings {
 		);
 
 		// Make sure the defined classes actually exist.
-		foreach ( $this->setting_types as $key => $classname ) {
+		foreach ($this->setting_types as $key => $classname) {
 
-			if ( ! class_exists( $classname ) ) {
-				unset( $this->setting_types[ $key ] );
+			if (! class_exists($classname)) {
+				unset($this->setting_types[$key]);
 			}
 		}
 	}

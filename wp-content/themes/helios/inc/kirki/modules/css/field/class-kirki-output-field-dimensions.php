@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles CSS output for dimensions fields.
  *
@@ -21,7 +22,7 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 	 * @param array $output The `output` item.
 	 * @param array $value  The field's value.
 	 */
-	protected function process_output( $output, $value ) {
+	protected function process_output($output, $value) {
 		$output = wp_parse_args(
 			$output,
 			array(
@@ -33,24 +34,24 @@ class Kirki_Output_Field_Dimensions extends Kirki_Output {
 			)
 		);
 
-		if ( ! is_array( $value ) ) {
+		if (! is_array($value)) {
 			return;
 		}
 
-		foreach ( array_keys( $value ) as $key ) {
+		foreach (array_keys($value) as $key) {
 
-			$property = ( empty( $output['property'] ) ) ? $key : $output['property'] . '-' . $key;
-			if ( isset( $output['choice'] ) && $output['property'] ) {
-				if ( $key === $output['choice'] ) {
+			$property = (empty($output['property'])) ? $key : $output['property'] . '-' . $key;
+			if (isset($output['choice']) && $output['property']) {
+				if ($key === $output['choice']) {
 					$property = $output['property'];
 				} else {
 					continue;
 				}
 			}
-			if ( false !== strpos( $output['property'], '%%' ) ) {
-				$property = str_replace( '%%', $key, $output['property'] );
+			if (false !== strpos($output['property'], '%%')) {
+				$property = str_replace('%%', $key, $output['property']);
 			}
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $this->process_property_value( $property, $value[ $key ] ) . $output['suffix'];
+			$this->styles[$output['media_query']][$output['element']][$property] = $output['prefix'] . $this->process_property_value($property, $value[$key]) . $output['suffix'];
 		}
 	}
 }

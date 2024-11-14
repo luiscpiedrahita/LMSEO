@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying single video post format
  *
@@ -7,16 +8,17 @@
  * @package cenote
  */
 
-$content = apply_filters( 'the_content', get_the_content() );
-$audio   = get_media_embedded_in_content( $content, array( 'audio', 'iframe' ) );
+$content = apply_filters('the_content', get_the_content());
+$audio   = get_media_embedded_in_content($content, array('audio', 'iframe'));
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<div class="post-format-media post-format-media--audio">
-		<?php if ( ! empty( $audio ) ) : ?>
+		<?php if (! empty($audio)) : ?>
 			<div class="post-format-audio">
-				<?php echo $audio[0]; // WPCS xss ok. ?>
+				<?php echo $audio[0]; // WPCS xss ok. 
+				?>
 			</div>
 		<?php endif; ?>
 	</div>
@@ -29,13 +31,13 @@ $audio   = get_media_embedded_in_content( $content, array( 'audio', 'iframe' ) )
 	</div>
 
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-meta">
 		<?php
-			cenote_posted_by();
-			cenote_posted_on();
+		cenote_posted_by();
+		cenote_posted_on();
 		?>
 	</div><!-- .entry-meta -->
 
@@ -45,7 +47,7 @@ $audio   = get_media_embedded_in_content( $content, array( 'audio', 'iframe' ) )
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cenote' ),
+				'before' => '<div class="page-links">' . esc_html__('Pages:', 'cenote'),
 				'after'  => '</div>',
 			)
 		);
@@ -59,8 +61,8 @@ $audio   = get_media_embedded_in_content( $content, array( 'audio', 'iframe' ) )
 
 	<?php
 	// Show author box if enabled.
-	if ( true === get_theme_mod( 'cenote_single_enable_author_box', true ) ) {
-		get_template_part( 'template-parts/author/author', 'box' );
+	if (true === get_theme_mod('cenote_single_enable_author_box', true)) {
+		get_template_part('template-parts/author/author', 'box');
 	}
 	?>
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -1,5 +1,5 @@
 <?php
-$out.='
+$out .= '
 <a class="anchor" id="services"></a>
 <section class="services overflow-hidden">
     <h1 class="services-title text-center py-5"
@@ -7,7 +7,7 @@ $out.='
             data-aos-offset="300">
             Services
     </h1>
-    <img src="'. get_stylesheet_directory_uri(). '/images/home/office.jpg" alt="Our Office" width="1920" height="1280">
+    <img src="' . get_stylesheet_directory_uri() . '/images/home/office.jpg" alt="Our Office" width="1920" height="1280">
     <div class="container-fluid services-wrapper  clearfix">
         <div class="row services-marketing" data-equalizer>
           <div class="col-md-12 col-lg-4 section--first section-padding padding-side animated-svg" 

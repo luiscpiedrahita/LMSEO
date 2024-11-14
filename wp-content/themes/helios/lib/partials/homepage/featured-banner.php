@@ -1,5 +1,5 @@
 <?php
-$out.='
+$out .= '
 <div class="featured overflow-hidden">
     <div class="featured-content">
       <h1 

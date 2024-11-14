@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles webfonts.
  *
@@ -11,7 +12,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -47,11 +48,10 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function __construct() {
 
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		include_once wp_normalize_path(dirname(__FILE__) . '/class-kirki-fonts.php'); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		include_once wp_normalize_path(dirname(__FILE__) . '/class-kirki-fonts-google.php'); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
-		add_action( 'wp_loaded', array( $this, 'run' ) );
-
+		add_action('wp_loaded', array($this, 'run'));
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Kirki_Modules_Webfonts {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -88,11 +88,11 @@ class Kirki_Modules_Webfonts {
 	 * @since 3.0.0
 	 */
 	protected function init() {
-		foreach ( array_keys( Kirki::$config ) as $config_id ) {
-			if ( 'async' === $this->get_method() ) {
-				new Kirki_Modules_Webfonts_Async( $config_id, $this, $this->fonts_google );
+		foreach (array_keys(Kirki::$config) as $config_id) {
+			if ('async' === $this->get_method()) {
+				new Kirki_Modules_Webfonts_Async($config_id, $this, $this->fonts_google);
 			}
-			new Kirki_Modules_Webfonts_Embed( $config_id, $this, $this->fonts_google );
+			new Kirki_Modules_Webfonts_Embed($config_id, $this, $this->fonts_google);
 		}
 	}
 
@@ -105,7 +105,7 @@ class Kirki_Modules_Webfonts {
 	 * @return string
 	 */
 	public function get_method() {
-		return ( is_customize_preview() || is_admin() ) ? 'async' : 'embed';
+		return (is_customize_preview() || is_admin()) ? 'async' : 'embed';
 	}
 
 	/**
@@ -114,31 +114,31 @@ class Kirki_Modules_Webfonts {
 	 * @access public
 	 * @param string $config_id The config-ID.
 	 */
-	public function loop_fields( $config_id ) {
-		foreach ( Kirki::$fields as $field ) {
-			if ( isset( $field['kirki_config'] ) && $config_id !== $field['kirki_config'] ) {
+	public function loop_fields($config_id) {
+		foreach (Kirki::$fields as $field) {
+			if (isset($field['kirki_config']) && $config_id !== $field['kirki_config']) {
 				continue;
 			}
-			if ( true === apply_filters( "kirki_{$config_id}_webfonts_skip_hidden", true ) ) {
+			if (true === apply_filters("kirki_{$config_id}_webfonts_skip_hidden", true)) {
 				// Only continue if field dependencies are met.
-				if ( ! empty( $field['required'] ) ) {
+				if (! empty($field['required'])) {
 					$valid = true;
 
-					foreach ( $field['required'] as $requirement ) {
-						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) ) {
-							$controller_value = Kirki_Values::get_value( $config_id, $requirement['setting'] );
-							if ( ! Kirki_Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+					foreach ($field['required'] as $requirement) {
+						if (isset($requirement['setting']) && isset($requirement['value']) && isset($requirement['operator'])) {
+							$controller_value = Kirki_Values::get_value($config_id, $requirement['setting']);
+							if (! Kirki_Helper::compare_values($controller_value, $requirement['value'], $requirement['operator'])) {
 								$valid = false;
 							}
 						}
 					}
 
-					if ( ! $valid ) {
+					if (! $valid) {
 						continue;
 					}
 				}
 			}
-			$this->fonts_google->generate_google_font( $field );
+			$this->fonts_google->generate_google_font($field);
 		}
 	}
 }

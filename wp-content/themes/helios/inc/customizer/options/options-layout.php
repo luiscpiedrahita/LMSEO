@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cenote layout control option
  *
@@ -7,10 +8,11 @@
 
 // Layout style for homepage.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'     => 'radio-image',
 		'settings' => 'cenote_layout_site',
-		'label'    => esc_html__( 'Site Layout', 'cenote' ),
+		'label'    => esc_html__('Site Layout', 'cenote'),
 		'section'  => 'cenote_section_layout',
 		'default'  => 'layout-site--wide',
 		'choices'  => array(
@@ -22,10 +24,11 @@ Kirki::add_field(
 
 // Layout style for Arvhive/Blog.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'     => 'radio-image',
 		'settings' => 'cenote_layout_archive',
-		'label'    => esc_html__( 'Archive/Blog Layout', 'cenote' ),
+		'label'    => esc_html__('Archive/Blog Layout', 'cenote'),
 		'section'  => 'cenote_section_layout',
 		'default'  => 'layout--no-sidebar',
 		'choices'  => array(
@@ -39,10 +42,11 @@ Kirki::add_field(
 
 // Layout style for Single Post.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'     => 'radio-image',
 		'settings' => 'cenote_layout_single',
-		'label'    => esc_html__( 'Single Post Layout', 'cenote' ),
+		'label'    => esc_html__('Single Post Layout', 'cenote'),
 		'section'  => 'cenote_section_layout',
 		'default'  => 'layout--right-sidebar',
 		'choices'  => array(
@@ -56,10 +60,11 @@ Kirki::add_field(
 
 // Layout style for page.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'     => 'radio-image',
 		'settings' => 'cenote_layout_page',
-		'label'    => esc_html__( 'Page Layout', 'cenote' ),
+		'label'    => esc_html__('Page Layout', 'cenote'),
 		'section'  => 'cenote_section_layout',
 		'default'  => 'layout--right-sidebar',
 		'choices'  => array(

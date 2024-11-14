@@ -12,8 +12,7 @@ if (! function_exists('cenote_posted_on')) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
-	function cenote_posted_on($display = true)
-	{
+	function cenote_posted_on($display = true) {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		//		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		//			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -46,8 +45,7 @@ if (! function_exists('cenote_posted_by')) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function cenote_posted_by()
-	{
+	function cenote_posted_by() {
 		$byline = sprintf(
 			'%s',
 			'<span class="author vcard"><a class="url fn n hvr-underline-from-left" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
@@ -62,8 +60,7 @@ if (! function_exists('cenote_entry_footer')) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function cenote_entry_footer()
-	{
+	function cenote_entry_footer() {
 		// Hide category and tag text for pages.
 		if ('post' === get_post_type()) {
 			/* translators: used between list items, there is a space after the comma */
@@ -125,8 +122,7 @@ if (! function_exists('cenote_post_thumbnail')) {
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function cenote_post_thumbnail($display = true, $thumbnail_size = 'post-thumbnail')
-	{
+	function cenote_post_thumbnail($display = true, $thumbnail_size = 'post-thumbnail') {
 		global $wp_query;
 		$current_post = $wp_query->current_post;
 
@@ -196,8 +192,7 @@ if (! function_exists('cenote_post_thumbnail')) {
 /**
  * Displays post thumbnail for related post
  */
-function cenote_related_post_thumbnail()
-{
+function cenote_related_post_thumbnail() {
 	$title_first_letter = substr(get_the_title(), 0, 1);
 	if (post_password_required() || is_attachment() || ! has_post_thumbnail()) {
 		return;
@@ -231,8 +226,7 @@ function cenote_related_post_thumbnail()
 /**
  *  Displays list of categories
  */
-function cenote_post_categories($display = true)
-{
+function cenote_post_categories($display = true) {
 	$cats = '';
 	if ('post' === get_post_type()) {
 		/* translators: used between list items, there is a space after the comma */

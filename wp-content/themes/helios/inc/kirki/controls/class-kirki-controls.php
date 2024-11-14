@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Controls Init.
  *
@@ -48,10 +49,10 @@ class Kirki_Controls {
 	 * @since 3.0.17
 	 */
 	public function __construct() {
-		if ( ! $this->views_path ) {
-			$this->views_path = wp_normalize_path( dirname( KIRKI_PLUGIN_FILE ) . '/controls/views/' );
+		if (! $this->views_path) {
+			$this->views_path = wp_normalize_path(dirname(KIRKI_PLUGIN_FILE) . '/controls/views/');
 		}
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'underscore_templates' ) );
+		add_action('customize_controls_print_footer_scripts', array($this, 'underscore_templates'));
 	}
 
 	/**
@@ -61,9 +62,9 @@ class Kirki_Controls {
 	 * @since 3.0.17
 	 */
 	public function underscore_templates() {
-		foreach ( $this->templates as $template ) {
-			if ( file_exists( $this->views_path . $template . '.php' ) ) {
-				echo '<script type="text/html" id="tmpl-kirki-input-' . esc_attr( $template ) . '">';
+		foreach ($this->templates as $template) {
+			if (file_exists($this->views_path . $template . '.php')) {
+				echo '<script type="text/html" id="tmpl-kirki-input-' . esc_attr($template) . '">';
 				include $this->views_path . $template . '.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 				echo '</script>';
 			}

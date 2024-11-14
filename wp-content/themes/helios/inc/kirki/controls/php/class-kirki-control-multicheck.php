@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Control: multicheck.
  *
@@ -13,7 +14,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -41,17 +42,21 @@ class Kirki_Control_MultiCheck extends Kirki_Control_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
-		?>
+?>
 		<# if ( ! data.choices ) { return; } #>
 
-		<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
-		<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span>
+				<# } #>
+					<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span>
+						<# } #>
 
-		<ul>
-			<# for ( key in data.choices ) { #>
-				<li><label<# if ( _.contains( data.value, key ) ) { #> class="checked"<# } #>><input {{{ data.inputAttrs }}} type="checkbox" value="{{ key }}"<# if ( _.contains( data.value, key ) ) { #> checked<# } #> />{{ data.choices[ key ] }}</label></li>
-			<# } #>
-		</ul>
-		<?php
-	}
-}
+							<ul>
+								<# for ( key in data.choices ) { #>
+									<li>
+										<label<# if ( _.contains( data.value, key ) ) { #> class="checked"<# } #>><input {{{ data.inputAttrs }}} type="checkbox" value="{{ key }}" <# if ( _.contains( data.value, key ) ) { #> checked<# } #> />{{ data.choices[ key ] }}</label>
+									</li>
+									<# } #>
+							</ul>
+					<?php
+				}
+			}

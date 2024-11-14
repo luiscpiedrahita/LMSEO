@@ -1,5 +1,5 @@
 <?php
-$out.='<a class="anchor" id="recent-posts"></a><section class="services">
+$out .= '<a class="anchor" id="recent-posts"></a><section class="services">
   <div class="row" data-equalizer>
     <div class="col-lg-12 columns recent-post-wrapper">
       <h1 class="recent-posts-title">Services</h1>
@@ -8,7 +8,7 @@ $out.='<a class="anchor" id="recent-posts"></a><section class="services">
           <div class="radius">
           <div class="row">
           ';
-$out .='</div>
+$out .= '</div>
         </div>
         </div>
       </div>
@@ -18,4 +18,3 @@ $out .='</div>
     </div>
   </div>
   </section>';
-?>

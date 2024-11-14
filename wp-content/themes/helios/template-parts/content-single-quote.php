@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying single quote post format
  *
@@ -7,7 +8,7 @@
  * @package cenote
  */
 
-$content_orders = get_theme_mod( 'cenote_single_order_layout', array( 'thumbnail', 'categories', 'title', 'meta', 'content', 'footer' ) );
+$content_orders = get_theme_mod('cenote_single_order_layout', array('thumbnail', 'categories', 'title', 'meta', 'content', 'footer'));
 $gallery_images = get_post_gallery_images();
 ?>
 
@@ -18,7 +19,7 @@ $gallery_images = get_post_gallery_images();
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cenote' ),
+				'before' => '<div class="page-links">' . esc_html__('Pages:', 'cenote'),
 				'after'  => '</div>',
 			)
 		);
@@ -33,13 +34,13 @@ $gallery_images = get_post_gallery_images();
 	</div>
 
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-meta">
 		<?php
-			cenote_posted_by();
-			cenote_posted_on();
+		cenote_posted_by();
+		cenote_posted_on();
 		?>
 	</div><!-- .entry-meta -->
 
@@ -49,8 +50,8 @@ $gallery_images = get_post_gallery_images();
 
 	<?php
 	// Show author box if enabled.
-	if ( true === get_theme_mod( 'cenote_single_enable_author_box', true ) ) {
-		get_template_part( 'template-parts/author/author', 'box' );
+	if (true === get_theme_mod('cenote_single_enable_author_box', true)) {
+		get_template_part('template-parts/author/author', 'box');
 	}
 	?>
 </article><!-- #post-<?php the_ID(); ?> -->

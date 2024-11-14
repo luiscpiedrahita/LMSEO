@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Control: slider.
  *
@@ -12,7 +13,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -58,19 +59,21 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
-		?>
+?>
 		<label>
-			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
-			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="wrapper">
-				<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} />
-				<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_html_e( 'Reset', 'kirki' ); ?></span></span>
-				<span class="value">
-					<input {{{ data.inputAttrs }}} type="text"/>
-					<span class="suffix">{{ data.choices['suffix'] }}</span>
-				</span>
-			</div>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span>
+				<# } #>
+					<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span>
+						<# } #>
+							<div class="wrapper">
+								<input {{{ data.inputAttrs }}} type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" {{{ data.link }}} />
+								<span class="slider-reset dashicons dashicons-image-rotate"><span class="screen-reader-text"><?php esc_html_e('Reset', 'kirki'); ?></span></span>
+								<span class="value">
+									<input {{{ data.inputAttrs }}} type="text" />
+									<span class="suffix">{{ data.choices['suffix'] }}</span>
+								</span>
+							</div>
 		</label>
-		<?php
+<?php
 	}
 }

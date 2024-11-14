@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -29,7 +30,7 @@ class Kirki_Field_Sortable extends Kirki_Field {
 	 * @access protected
 	 */
 	protected function set_sanitize_callback() {
-		$this->sanitize_callback = array( $this, 'sanitize' );
+		$this->sanitize_callback = array($this, 'sanitize');
 	}
 
 	/**
@@ -39,16 +40,16 @@ class Kirki_Field_Sortable extends Kirki_Field {
 	 * @param array $value The checkbox value.
 	 * @return array
 	 */
-	public function sanitize( $value = array() ) {
-		if ( is_string( $value ) || is_numeric( $value ) ) {
+	public function sanitize($value = array()) {
+		if (is_string($value) || is_numeric($value)) {
 			return array(
-				sanitize_text_field( $value ),
+				sanitize_text_field($value),
 			);
 		}
 		$sanitized_value = array();
-		foreach ( $value as $sub_value ) {
-			if ( isset( $this->choices[ $sub_value ] ) ) {
-				$sanitized_value[] = sanitize_text_field( $sub_value );
+		foreach ($value as $sub_value) {
+			if (isset($this->choices[$sub_value])) {
+				$sanitized_value[] = sanitize_text_field($sub_value);
 			}
 		}
 		return $sanitized_value;

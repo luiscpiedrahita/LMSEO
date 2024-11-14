@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cenote color option
  *
@@ -7,10 +8,11 @@
 
 // Primary color option.
 Kirki::add_field(
-	'cenote_config', array(
+	'cenote_config',
+	array(
 		'type'     => 'color',
 		'settings' => 'cenote_color_primary',
-		'label'    => esc_html__( 'Primary Color', 'cenote' ),
+		'label'    => esc_html__('Primary Color', 'cenote'),
 		'section'  => 'cenote_section_color',
 		'default'  => '#de7b85',
 		'output'   => array(

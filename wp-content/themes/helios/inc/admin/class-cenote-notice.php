@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cenote Notice Class.
  *
@@ -8,7 +9,7 @@
  */
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 class Cenote_Notice {
 	public $name;
@@ -29,7 +30,7 @@ class Cenote_Notice {
 	 * @since 1.3.3
 	 *
 	 */
-	public function __construct( $name, $type, $dismiss_url, $temporary_dismiss_url ) {
+	public function __construct($name, $type, $dismiss_url, $temporary_dismiss_url) {
 		$this->name                  = $name;
 		$this->type                  = $type;
 		$this->dismiss_url           = $dismiss_url;
@@ -38,20 +39,20 @@ class Cenote_Notice {
 		$this->current_user_id       = get_current_user_id();
 
 		// Notice markup.
-		add_action( 'admin_notices', array( $this, 'notice' ) );
+		add_action('admin_notices', array($this, 'notice'));
 
 		$this->dismiss_notice();
 		$this->dismiss_notice_temporary();
 	}
 
 	public function notice() {
-		if ( ! $this->is_dismiss_notice() ) {
+		if (! $this->is_dismiss_notice()) {
 			$this->notice_markup();
 		}
 	}
 
 	private function is_dismiss_notice() {
-		return apply_filters( 'cenote_' . $this->name . '_notice_dismiss', true );
+		return apply_filters('cenote_' . $this->name . '_notice_dismiss', true);
 	}
 
 	public function notice_markup() {
@@ -62,39 +63,39 @@ class Cenote_Notice {
 	 * Hide a notice if the GET variable is set.
 	 */
 	public function dismiss_notice() {
-		if ( isset( $_GET['cenote_notice_dismiss'] ) && isset( $_GET['_cenote_upgrade_notice_dismiss_nonce'] ) ) { // WPCS: input var ok.
-			if ( ! wp_verify_nonce( wp_unslash( $_GET['_cenote_upgrade_notice_dismiss_nonce'] ), 'cenote_upgrade_notice_dismiss_nonce' ) ) { // phpcs:ignore WordPress.VIP.ValidatedSanitizedInput.InputNotSanitized
-				wp_die( __( 'Action failed. Please refresh the page and retry.', 'cenote' ) ); // WPCS: xss ok.
+		if (isset($_GET['cenote_notice_dismiss']) && isset($_GET['_cenote_upgrade_notice_dismiss_nonce'])) { // WPCS: input var ok.
+			if (! wp_verify_nonce(wp_unslash($_GET['_cenote_upgrade_notice_dismiss_nonce']), 'cenote_upgrade_notice_dismiss_nonce')) { // phpcs:ignore WordPress.VIP.ValidatedSanitizedInput.InputNotSanitized
+				wp_die(__('Action failed. Please refresh the page and retry.', 'cenote')); // WPCS: xss ok.
 			}
 
-			if ( ! current_user_can( 'publish_posts' ) ) {
-				wp_die( __( 'Cheatin&#8217; huh?', 'cenote' ) ); // WPCS: xss ok.
+			if (! current_user_can('publish_posts')) {
+				wp_die(__('Cheatin&#8217; huh?', 'cenote')); // WPCS: xss ok.
 			}
 
-			$dismiss_notice = sanitize_text_field( wp_unslash( $_GET['cenote_notice_dismiss'] ) );
+			$dismiss_notice = sanitize_text_field(wp_unslash($_GET['cenote_notice_dismiss']));
 
 			// Hide.
-			if ( $dismiss_notice === $_GET['cenote_notice_dismiss'] ) {
-				add_user_meta( get_current_user_id(), 'cenote_' . $dismiss_notice . '_notice_dismiss', 'yes', true );
+			if ($dismiss_notice === $_GET['cenote_notice_dismiss']) {
+				add_user_meta(get_current_user_id(), 'cenote_' . $dismiss_notice . '_notice_dismiss', 'yes', true);
 			}
 		}
 	}
 
 	public function dismiss_notice_temporary() {
-		if ( isset( $_GET['cenote_notice_dismiss_temporary'] ) && isset( $_GET['_cenote_upgrade_notice_dismiss_temporary_nonce'] ) ) { // WPCS: input var ok.
-			if ( ! wp_verify_nonce( wp_unslash( $_GET['_cenote_upgrade_notice_dismiss_temporary_nonce'] ), 'cenote_upgrade_notice_dismiss_temporary_nonce' ) ) { // phpcs:ignore WordPress.VIP.ValidatedSanitizedInput.InputNotSanitized
-				wp_die( __( 'Action failed. Please refresh the page and retry.', 'cenote' ) ); // WPCS: xss ok.
+		if (isset($_GET['cenote_notice_dismiss_temporary']) && isset($_GET['_cenote_upgrade_notice_dismiss_temporary_nonce'])) { // WPCS: input var ok.
+			if (! wp_verify_nonce(wp_unslash($_GET['_cenote_upgrade_notice_dismiss_temporary_nonce']), 'cenote_upgrade_notice_dismiss_temporary_nonce')) { // phpcs:ignore WordPress.VIP.ValidatedSanitizedInput.InputNotSanitized
+				wp_die(__('Action failed. Please refresh the page and retry.', 'cenote')); // WPCS: xss ok.
 			}
 
-			if ( ! current_user_can( 'publish_posts' ) ) {
-				wp_die( __( 'Cheatin&#8217; huh?', 'cenote' ) ); // WPCS: xss ok.
+			if (! current_user_can('publish_posts')) {
+				wp_die(__('Cheatin&#8217; huh?', 'cenote')); // WPCS: xss ok.
 			}
 
-			$dismiss_notice = sanitize_text_field( wp_unslash( $_GET['cenote_notice_dismiss_temporary'] ) );
+			$dismiss_notice = sanitize_text_field(wp_unslash($_GET['cenote_notice_dismiss_temporary']));
 
 			// Hide.
-			if ( $dismiss_notice === $_GET['cenote_notice_dismiss_temporary'] ) {
-				add_user_meta( get_current_user_id(), 'cenote_' . $dismiss_notice . '_notice_dismiss_temporary', 'yes', true );
+			if ($dismiss_notice === $_GET['cenote_notice_dismiss_temporary']) {
+				add_user_meta(get_current_user_id(), 'cenote_' . $dismiss_notice . '_notice_dismiss_temporary', 'yes', true);
 			}
 		}
 	}

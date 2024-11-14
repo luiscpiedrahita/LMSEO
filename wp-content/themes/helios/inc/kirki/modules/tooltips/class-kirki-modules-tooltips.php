@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Injects tooltips to controls when the 'tooltip' argument is used.
  *
@@ -11,7 +12,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -46,7 +47,7 @@ class Kirki_Modules_Tooltips {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
-		add_action( 'customize_controls_print_footer_scripts', array( $this, 'customize_controls_print_footer_scripts' ) );
+		add_action('customize_controls_print_footer_scripts', array($this, 'customize_controls_print_footer_scripts'));
 	}
 
 	/**
@@ -59,7 +60,7 @@ class Kirki_Modules_Tooltips {
 	 * @return object
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -74,12 +75,12 @@ class Kirki_Modules_Tooltips {
 	 */
 	private function parse_fields() {
 		$fields = Kirki::$fields;
-		foreach ( $fields as $field ) {
-			if ( isset( $field['tooltip'] ) && ! empty( $field['tooltip'] ) ) {
+		foreach ($fields as $field) {
+			if (isset($field['tooltip']) && ! empty($field['tooltip'])) {
 				// Get the control ID and properly format it for the tooltips.
-				$id = str_replace( '[', '-', str_replace( ']', '', $field['settings'] ) );
+				$id = str_replace('[', '-', str_replace(']', '', $field['settings']));
 				// Add the tooltips content.
-				$this->tooltips_content[ $id ] = array(
+				$this->tooltips_content[$id] = array(
 					'id'      => $id,
 					'content' => $field['tooltip'],
 				);
@@ -95,10 +96,10 @@ class Kirki_Modules_Tooltips {
 	 * @param string $field_id The field-ID.
 	 * @param string $tooltip  The tooltip content.
 	 */
-	public function add_tooltip( $field_id, $tooltip ) {
-		$this->tooltips_content[ $field_id ] = array(
-			'id'      => sanitize_key( $field_id ),
-			'content' => wp_kses_post( $tooltip ),
+	public function add_tooltip($field_id, $tooltip) {
+		$this->tooltips_content[$field_id] = array(
+			'id'      => sanitize_key($field_id),
+			'content' => wp_kses_post($tooltip),
 		);
 	}
 
@@ -111,8 +112,8 @@ class Kirki_Modules_Tooltips {
 	public function customize_controls_print_footer_scripts() {
 		$this->parse_fields();
 
-		wp_enqueue_script( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.js', array( 'jquery' ), KIRKI_VERSION, false );
-		wp_localize_script( 'kirki-tooltip', 'kirkiTooltips', $this->tooltips_content );
-		wp_enqueue_style( 'kirki-tooltip', trailingslashit( Kirki::$url ) . 'modules/tooltips/tooltip.css', array(), KIRKI_VERSION );
+		wp_enqueue_script('kirki-tooltip', trailingslashit(Kirki::$url) . 'modules/tooltips/tooltip.js', array('jquery'), KIRKI_VERSION, false);
+		wp_localize_script('kirki-tooltip', 'kirkiTooltips', $this->tooltips_content);
+		wp_enqueue_style('kirki-tooltip', trailingslashit(Kirki::$url) . 'modules/tooltips/tooltip.css', array(), KIRKI_VERSION);
 	}
 }

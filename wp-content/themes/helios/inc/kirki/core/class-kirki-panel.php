@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handles panels added via the Kirki API.
  *
@@ -31,9 +32,9 @@ class Kirki_Panel {
 	 * @access public
 	 * @param array $args The panel arguments.
 	 */
-	public function __construct( $args ) {
-		$this->panel_types = apply_filters( 'kirki_panel_types', $this->panel_types );
-		$this->add_panel( $args );
+	public function __construct($args) {
+		$this->panel_types = apply_filters('kirki_panel_types', $this->panel_types);
+		$this->add_panel($args);
 	}
 
 	/**
@@ -41,14 +42,14 @@ class Kirki_Panel {
 	 *
 	 * @param array $args The panel arguments.
 	 */
-	public function add_panel( $args ) {
+	public function add_panel($args) {
 		global $wp_customize;
 
-		if ( ! isset( $args['type'] ) || ! array_key_exists( $args['type'], $this->panel_types ) ) {
+		if (! isset($args['type']) || ! array_key_exists($args['type'], $this->panel_types)) {
 			$args['type'] = 'default';
 		}
-		$panel_classname = $this->panel_types[ $args['type'] ];
+		$panel_classname = $this->panel_types[$args['type']];
 
-		$wp_customize->add_panel( new $panel_classname( $wp_customize, $args['id'], $args ) );
+		$wp_customize->add_panel(new $panel_classname($wp_customize, $args['id'], $args));
 	}
 }

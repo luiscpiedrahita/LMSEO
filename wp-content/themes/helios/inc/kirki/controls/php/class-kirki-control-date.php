@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer Control: kirki-date.
  *
@@ -10,7 +11,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -38,14 +39,16 @@ class Kirki_Control_Date extends Kirki_Control_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
-		?>
+?>
 		<label>
-			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
-			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="customize-control-content">
-				<input {{{ data.inputAttrs }}} class="datepicker" type="text" id="{{ data.id }}" value="{{ data.value }}" {{{ data.link }}} />
-			</div>
+			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span>
+				<# } #>
+					<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span>
+						<# } #>
+							<div class="customize-control-content">
+								<input {{{ data.inputAttrs }}} class="datepicker" type="text" id="{{ data.id }}" value="{{ data.value }}" {{{ data.link }}} />
+							</div>
 		</label>
-		<?php
+<?php
 	}
 }

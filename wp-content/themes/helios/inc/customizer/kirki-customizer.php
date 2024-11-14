@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Kirki Customizer Options File
  *
@@ -14,140 +15,140 @@ function cenote_kirki_configuration() {
 	);
 }
 
-add_filter( 'kirki/config', 'cenote_kirki_configuration' );
+add_filter('kirki/config', 'cenote_kirki_configuration');
 
 /**
  * Cenote Kirki Config
  */
-Kirki::add_config( 'cenote_config', array(
+Kirki::add_config('cenote_config', array(
 	'capability'  => 'edit_theme_options',
 	'option_type' => 'theme_mod',
-) );
+));
 
 /**
  * Cenote Kirki Theme Options Panel
  */
-Kirki::add_panel( 'cenote_theme_options', array(
+Kirki::add_panel('cenote_theme_options', array(
 	'priority' => 10,
-	'title'    => esc_html__( 'Theme Options', 'cenote' ),
-) );
+	'title'    => esc_html__('Theme Options', 'cenote'),
+));
 
 /**
  * Cenote Social Options section
  */
-Kirki::add_section( 'cenote_section_social', array(
-	'title'    => esc_html__( 'Social', 'cenote' ),
+Kirki::add_section('cenote_section_social', array(
+	'title'    => esc_html__('Social', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 5,
-) );
+));
 
 /**
  * Cenote Top Header Bar Options section
  */
-Kirki::add_section( 'cenote_section_top_header', array(
-	'title'    => esc_html__( 'Top Header Bar', 'cenote' ),
+Kirki::add_section('cenote_section_top_header', array(
+	'title'    => esc_html__('Top Header Bar', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 10,
-) );
+));
 
 /**
  * Cenote Header Options section
  */
-Kirki::add_section( 'cenote_section_header', array(
-	'title'    => esc_html__( 'Header', 'cenote' ),
+Kirki::add_section('cenote_section_header', array(
+	'title'    => esc_html__('Header', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 15,
-) );
+));
 
 /**
  * Cenote Color Option section
  */
-Kirki::add_section( 'cenote_section_color', array(
-	'title'    => esc_html__( 'Color', 'cenote' ),
+Kirki::add_section('cenote_section_color', array(
+	'title'    => esc_html__('Color', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 20,
-) );
+));
 
 /**
  * Cenote Post Slider Options section
  */
-Kirki::add_section( 'cenote_section_post_slider', array(
-	'title'    => esc_html__( 'Post Slider', 'cenote' ),
+Kirki::add_section('cenote_section_post_slider', array(
+	'title'    => esc_html__('Post Slider', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Cenote Breadcrumbs Options section
  */
-Kirki::add_section( 'cenote_section_breadcrumb', array(
-	'title'    => esc_html__( 'Breadcrumbs', 'cenote' ),
+Kirki::add_section('cenote_section_breadcrumb', array(
+	'title'    => esc_html__('Breadcrumbs', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Cenote Layout Options section
  */
-Kirki::add_section( 'cenote_section_layout', array(
-	'title'    => esc_html__( 'Layout', 'cenote' ),
+Kirki::add_section('cenote_section_layout', array(
+	'title'    => esc_html__('Layout', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Cenote Typography Options section
  */
-Kirki::add_section( 'cenote_section_typography', array(
-	'title'    => esc_html__( 'Typography', 'cenote' ),
+Kirki::add_section('cenote_section_typography', array(
+	'title'    => esc_html__('Typography', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Cenote Blog/Archive Options section
  */
-Kirki::add_section( 'cenote_section_archive', array(
-	'title'    => esc_html__( 'Archive/Blog', 'cenote' ),
+Kirki::add_section('cenote_section_archive', array(
+	'title'    => esc_html__('Archive/Blog', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Cenote Page Options section
  */
-Kirki::add_section( 'cenote_section_page', array(
-	'title'    => esc_html__( 'Page', 'cenote' ),
+Kirki::add_section('cenote_section_page', array(
+	'title'    => esc_html__('Page', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Cenote Singe Post Options section
  */
-Kirki::add_section( 'cenote_section_single', array(
-	'title'    => esc_html__( 'Single Post', 'cenote' ),
+Kirki::add_section('cenote_section_single', array(
+	'title'    => esc_html__('Single Post', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Cenote Post Ribbon Options section
  */
-Kirki::add_section( 'cenote_section_post_ribbon', array(
-	'title'    => esc_html__( 'Post Ribbon', 'cenote' ),
+Kirki::add_section('cenote_section_post_ribbon', array(
+	'title'    => esc_html__('Post Ribbon', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Cenote Footer Options section
  */
-Kirki::add_section( 'cenote_section_footer', array(
-	'title'    => esc_html__( 'Footer', 'cenote' ),
+Kirki::add_section('cenote_section_footer', array(
+	'title'    => esc_html__('Footer', 'cenote'),
 	'panel'    => 'cenote_theme_options',
 	'priority' => 25,
-) );
+));
 
 /**
  * Add the required kirki customizer options files

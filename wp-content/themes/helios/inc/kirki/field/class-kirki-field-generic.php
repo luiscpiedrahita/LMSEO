@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Override field methods
  *
@@ -12,4 +13,5 @@
 /**
  * This is simply an alias for the Kirki_Field_Kirki_Generic class.
  */
-class Kirki_Field_Generic extends Kirki_Field_Kirki_Generic {}
+class Kirki_Field_Generic extends Kirki_Field_Kirki_Generic {
+}

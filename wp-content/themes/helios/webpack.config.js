@@ -1,6 +1,6 @@
-// This webpack file is a build for the entire website at once
+// This webpack config file is setup to build the entire website at once
 // hence it is very slow
-// Use individual webpack configs to build individual
+// Instead use individual webpack configs to build individual
 // WordPress templates
 const webpackConfig = require("./webpack/templates/dev.template");
 const config404 = require("./webpack/templates/404");
@@ -13,6 +13,7 @@ const configSearch = require("./webpack/templates/search");
 const configServices = require("./webpack/templates/services");
 const configServicesDef = require("./webpack/templates/servicesDef");
 const configServicesDev = require("./webpack/templates/servicesDevelopment");
+const configServicesGoogle = require("./webpack/templates/servicesGoogle");
 const configServicesDigital = require("./webpack/templates/servicesDigital");
 const configTeams = require("./webpack/templates/teams");
 
@@ -29,6 +30,7 @@ const wordpressSections = [
   configServicesDef,
   configServicesDigital,
   configServicesDev,
+  configServicesGoogle,
   configTeams,
 ];
 // lastArrayElem i + 1 === row.length ? true : false

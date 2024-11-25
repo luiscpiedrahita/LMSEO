@@ -1,2 +1,8 @@
+@use "sass:color";
 @import "../../../parts/variables";
 $display-font-weight: bold;
+$blue-light: #f8fdff;
+$blue-1: $blue-light;
+$blue-2: color.scale($blue-1, $lightness: -2%); // #f8f9fb
+$blue-3: color.scale($blue-2, $lightness: -2%);
+$blue-4: color.scale($blue-3, $lightness: -2%);

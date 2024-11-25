@@ -72,6 +72,17 @@ $row-end: 17;
   );
   text-transform: uppercase;
 }
+.btn-more-dark {
+  @include button-variant(
+    $blue,
+    $white,
+    $color: $white,
+    $hover-background: $white,
+    $hover-border: $blue,
+    $hover-color: $blue
+  );
+  text-transform: uppercase;
+}
 .btn-xl {
   @include button-size(0.5rem, 3rem, 1rem, 0);
   --bs-btn-border-width: 2px;

@@ -23,7 +23,7 @@
 
 
 # Ignore everything in the root except the "wp-content" directory.
-/*
+# /*
 !.gitignore
 !wp-content/
 
@@ -58,6 +58,18 @@ wp-content/themes/helios/lib/css/partials/typography/*
 # wp-content/themes/helios/photos/*
 /wp-content/themes/helios/testing/
 # /wp-content/themes/helios/dist/
+
+node_modules/*
+.sass-cache/*
+test/*
+bower_components/*
+lib/js/bower_components/*
+# bin/images/*
+# images/*
+include/cpt/*
+lib/css/partials/typography/*
+# photos/*
+testing/
 
 # ignore log files, databases and dev files
 *.log

@@ -46,28 +46,14 @@ wp-content/themes/*
 !wp-content/themes/helios/
 
 # ignore node dependency directories
-wp-content/themes/helios/node_modules/*
-wp-content/themes/helios/.sass-cache/*
-wp-content/themes/helios/test/*
-wp-content/themes/helios/bower_components/*
-wp-content/themes/helios/lib/js/bower_components/*
-# wp-content/themes/helios/bin/images/*
-# wp-content/themes/helios/images/*
-wp-content/themes/helios/include/cpt/*
-wp-content/themes/helios/lib/css/partials/typography/*
-# wp-content/themes/helios/photos/*
-/wp-content/themes/helios/testing/
-# /wp-content/themes/helios/dist/
-
 node_modules/*
 .sass-cache/*
-test/*
 bower_components/*
 lib/js/bower_components/*
 # bin/images/*
 # images/*
-include/cpt/*
-lib/css/partials/typography/*
+# include/cpt/*
+# lib/css/partials/typography/*
 # photos/*
 testing/
 

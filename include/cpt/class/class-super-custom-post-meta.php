@@ -5,6 +5,7 @@ $scpt_known_custom_fields = array();
  * Easy as pie Custom post meta
  */
 class Super_Custom_Post_Meta {
+	var $type;
 	/**
 	 * Holds our meta boxes which get added later by WordPress
 	 *

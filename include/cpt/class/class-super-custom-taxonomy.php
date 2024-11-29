@@ -6,6 +6,7 @@
  * @author Matthew Boynes
  */
 class Super_Custom_Taxonomy {
+	var $args;
 	/**
 	 * The tax slug, e.g. event
 	 *

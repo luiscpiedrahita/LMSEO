@@ -129,33 +129,7 @@ pre code {
   padding: 10px;
   color: #333;
 }
-// Code Block Pro Plugin
-.wp-block-kevinbatdorf-code-block-pro {
-  border: 2px solid $hexachromeBlack;
-  border-radius: 25px;
-  & > span:first-child {
-    padding-bottom: 20px !important;
-    border: 2px solid $hexachromeBlack;
-    border-top-right-radius: 23px;
-    border-top-left-radius: 23px;
-    background: $gray-800 !important;
-  }
-  & > span:last-child {
-    border: 2px solid $hexachromeBlack;
-    border-top: none;
-    border-bottom-right-radius: 23px;
-    border-bottom-left-radius: 23px;
-  }
-}
-.code-block-pro-copy-button {
-  opacity: 1 !important;
-  &:hover {
-    opacity: 0.7 !important;
-  }
-  svg {
-    stroke: $white;
-  }
-}
+
 .post-navigation {
 }
 .prev-post,
@@ -306,4 +280,52 @@ blockquote {
   & > .author::before {
     content: "- ";
   }
+}
+// Code Block Pro Plugin
+li .wp-block-kevinbatdorf-code-block-pro {
+  margin: 1rem 0;
+}
+.wp-block-kevinbatdorf-code-block-pro {
+  border: 2px solid $hexachromeBlack;
+  // border-radius: 25px;
+  & > span:first-child {
+    border: 2px solid $hexachromeBlack;
+    // border-top-right-radius: 23px;
+    // border-top-left-radius: 23px;
+    background: $gray-800 !important;
+  }
+  & > span:last-child {
+    border: 2px solid $hexachromeBlack;
+    border-top: none;
+    // border-bottom-right-radius: 23px;
+    // border-bottom-left-radius: 23px;
+  }
+}
+.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre {
+  // border-top-left-radius: 23px !important;
+  // border-top-right-radius: 23px !important;
+}
+.cbp-btn-text {
+  color: $white;
+  &:hover {
+    color: color.scale($white, $lightness: 5%);
+  }
+}
+.code-block-pro-copy-button {
+  opacity: 1 !important;
+  &:hover {
+    opacity: 0.7 !important;
+  }
+  svg {
+    stroke: $white;
+  }
+}
+.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(
+    .code-block-pro-editor
+  )
+  pre
+  code
+  .line
+  span {
+  text-wrap: wrap;
 }

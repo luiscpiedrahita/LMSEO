@@ -87,10 +87,14 @@ function zp_body_class($classes) {
 	return $classes;
 }
 
-remove_action('genesis_loop', 'genesis_do_loop');
+// remove_action('genesis_loop', 'genesis_do_loop');
 add_filter('genesis_markup_content-sidebar-wrap', '__return_null');
 remove_action('genesis_sidebar', 'genesis_do_sidebar');
 remove_action('genesis_content_sidebar_wrap', 'genesis_do_sidebar');
+remove_action('genesis_header', 'genesis_header_markup_open', 5);
+remove_action('genesis_header', 'genesis_do_header');
+remove_action('genesis_header', 'genesis_header_markup_close', 15);
+
 
 add_action('genesis_before_loop', 'lmseo_homepage_content');
 function lmseo_homepage_content() {
@@ -102,8 +106,9 @@ function lmseo_homepage_content() {
 	require_once(get_stylesheet_directory() . '/lib/partials/homepage/social.php');
 	require_once(get_stylesheet_directory() . '/lib/partials/homepage/recent-posts.php');
 	require_once(get_stylesheet_directory() . '/lib/partials/homepage/services.php');
-	require_once(get_stylesheet_directory() . '/lib/partials/homepage/contact.php');
 	require_once(get_stylesheet_directory() . '/lib/partials/homepage/about.php');
+	require_once(get_stylesheet_directory() . '/lib/partials/homepage/contact.php');
 	echo $out;
 }
+remove_action('genesis_entry_header', 'genesis_do_post_title');
 genesis();

@@ -3,7 +3,9 @@ $out .= '
 <a class="anchor" id="contact"></a>
 <section class="contact container-fluid">
     <div class="container">
-    <form action="/contact/" autocomplete="on" method="post">
+    <form action="/contact/" autocomplete="on" method="post">';
+$out .= do_shortcode('[contact-form-7 id="e7d6778" title="Contact"]');
+$out .= '
       <div class="row">
         <div class="form-group">
             <h1 class="contact-title">Contact Us</h1>

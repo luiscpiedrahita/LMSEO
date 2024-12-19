@@ -110,5 +110,18 @@ function lmseo_homepage_content() {
 	require_once(get_stylesheet_directory() . '/lib/partials/homepage/contact.php');
 	echo $out;
 }
+
+// Remove H1
 remove_action('genesis_entry_header', 'genesis_do_post_title');
+
+// Add a html section wrap around html article tag
+add_action('genesis_before_entry', 'entry_content_wrap_open');
+function entry_content_wrap_open() {
+	echo '<section class="content">';
+}
+
+add_action('genesis_after_entry', 'entry_content_wrap_close');
+function entry_content_wrap_close() {
+	echo '</section>';
+}
 genesis();

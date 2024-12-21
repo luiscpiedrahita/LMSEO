@@ -38,7 +38,7 @@ blockquote p {
   padding: 0 0 0 0;
 }
 .entry-content {
-  margin: 0 0 35px;
+  margin: 0 0 0;
   position: relative;
   border-top-color: $white-light;
 }
@@ -74,6 +74,162 @@ p.subscribe-to-comments {
   border-bottom: 5px solid $jet;
   text-decoration: none;
 }
+// Contact Form 7
+// Contact Form 7
+// Contact Form 7
+.wpcf7-form {
+  position: relative;
+}
+.wpcf7 form.init .wpcf7-response-output,
+.wpcf7 form.resetting .wpcf7-response-output,
+.wpcf7 form.submitting .wpcf7-response-output {
+  display: none;
+}
+.invalid .wpcf7-not-valid-tip {
+  display: block;
+}
+.screen-reader-response:has(+ form.invalid),
+.invalid .wpcf7-response-output,
+.invalid .wpcf7-not-valid-tip,
+.aborted .wpcf7-response-output {
+  @extend .alert;
+  @extend .alert-danger;
+}
+.screen-reader-response:has(+ form.sent),
+.sent .wpcf7-response-output,
+.sent .wpcf7-not-valid-tip {
+  @extend .alert;
+  @extend .alert-success;
+}
+.screen-reader-response:has(+ form.sent) {
+  // position: absolute;
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-50%, -50%);
+  font-size: 2rem;
+}
+section.contact:has(.sent) {
+  background-color: var(--bs-success-bg-subtle);
+  background-color: $white;
+  // background: linear-gradient(to right, $purple, $blue);
+}
+.screen-reader-response:has(+ form.sent) p {
+  @extend .col-lg-4;
+  @extend .offset-lg-4;
+}
+.wpcf7-form.sent {
+  visibility: hidden;
+  display: none;
+}
+.wpcf7-spinner-wrapper {
+}
+.wpcf7-spinner {
+  visibility: hidden;
+}
+form.submitting .wpcf7-spinner {
+  visibility: visible;
+}
+form.wpcf7-form.submitting {
+  visibility: hidden;
+}
+.wpcf7-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // visibility: visible;
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: $blue;
+}
+.wpcf7-spinner:before,
+.wpcf7-spinner:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: 1s spin linear infinite;
+}
+.wpcf7-spinner:after {
+  color: $purple;
+  transform: rotateY(70deg);
+  animation-delay: 0.4s;
+}
+.sent-thanks {
+  display: none;
+}
+.sent-thanks:has(+ div .sent) {
+  display: flex;
+}
+form.sent .sent-thanks {
+  display: block;
+}
+.svg-icon--title {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20rem;
+  height: 10rem;
+  // position: absolute;
+  // right: 25%;
+  // top: 30%;
+  transform: rotateZ(335deg) translateX(-80px);
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    box-shadow: 0.2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: 0.2em 0.2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 0.2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -0.2em 0.2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -0.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -0.2em -0.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -0.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: 0.2em -0.2em 0 0 currentcolor;
+  }
+}
+
 @include media-breakpoint-up(md) {
   h4 {
     font-size: 1.2rem;

@@ -36,10 +36,10 @@ function lmseo_index_print_styles() {
 	wp_dequeue_style('core-block-supports');
 	wp_dequeue_style('core-block-supports-duotone');
 	//  Disabling CSS styles of contact-form-7 blocks
-	wp_dequeue_script('swv');
-	wp_dequeue_script('wp-i18n');
-	wp_dequeue_script('wp-hooks');
-	wp_dequeue_script('contact-form-7');
+	// wp_dequeue_script('swv');
+	// wp_dequeue_script('wp-i18n');
+	// wp_dequeue_script('wp-hooks');
+	// wp_dequeue_script('contact-form-7');
 
 	wp_dequeue_style('contact-form-7');
 

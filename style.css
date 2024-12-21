@@ -12143,6 +12143,9 @@ a.anchor {
 .recent-posts a {
   text-decoration: none;
 }
+.recent-posts p {
+  overflow-wrap: break-word;
+}
 
 .recent-posts-list h4, .recent-posts-list .h4 {
   margin-top: 8vh;

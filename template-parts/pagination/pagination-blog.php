@@ -226,8 +226,8 @@ function lmseo_get_paginated_noNextPrev($query) {
 	}, $pages);
 }
 ?>
-<div class="row pagination-wrapper smoky-bg">
-	<nav class="navigation pt-5 pb-4">
+<div class="row pagination-wrapper">
+	<nav class="navigation pt-3">
 		<span class="screen-reader-text"><?php esc_html_e('Posts Navigation', 'LMSEO'); ?></span>
 
 		<!-- /.screen-reader-text -->

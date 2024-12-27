@@ -24,11 +24,12 @@ $excerpt_count  = get_theme_mod('cenote_archive_excerpt_count', '40');
 $columns = array();
 $counter = $array_defaults['counter'];
 $classes = [];
-$classes[] = 'py-3';
+$classes[] = '';
 $array_defaults['content'][$counter] = '<article id="post-' . get_the_ID() . '" class="';
 foreach (get_post_class($classes) as $key => $class) {
 	$array_defaults['content'][$counter] .=  $class . ' ';
 }
+$array_defaults['content'][$counter] .= 'px-3 pt-3 pb-5';
 $array_defaults['content'][$counter] .= '" >';
 foreach ($content_orders as $key => $content_order) {
 	if ('thumbnail' === $content_order) {
@@ -70,12 +71,14 @@ foreach ($content_orders as $key => $content_order) {
 		$array_defaults['content'][$counter] .= '</div><!-- .entry-content -->';
 	} elseif ('footer' === $content_order) {
 		$array_defaults['content'][$counter] .= '<footer class="entry-footer p-0">
-				<span>';
-		$array_defaults['content'][$counter] .= __('READ THIS POST ', 'cenote');
+				<div>';
+		$array_defaults['content'][$counter] .= '<span class="read-this-post">';
+		$array_defaults['content'][$counter] .= __('READ THIS POST: ', 'cenote');
+		$array_defaults['content'][$counter] .= ' </span><span  class="readmore-wrapper"><div class="underline-effect-wrapper">';
 		$array_defaults['content'][$counter] .= '<a href="' . get_the_permalink();
-		$array_defaults['content'][$counter] .= '" class="tg-readmore-link">';
+		$array_defaults['content'][$counter] .= '" class="tg-readmore-link hvr-underline-from-left">';
 		$array_defaults['content'][$counter] .= 	get_the_title('', '');
-		$array_defaults['content'][$counter] .= '</a></span>
+		$array_defaults['content'][$counter] .= '</a></div></span></div>
 			</footer><!-- .entry-footer -->';
 	};
 }
@@ -85,25 +88,28 @@ if ($paged == 1) {
 	//   Layout page 1
 	if ($counter == 0) {
 		$array_defaults['columns'][0] = '';
-		$array_defaults['columns'][1] = '<div class="col-lg-5 col-md-7 dark-bg">';
+		$array_defaults['columns'][1] = '<div class="col-lg-5 col-md-7 border-end p-0"><div class="top-article border-bottom pb-5">';
 		$array_defaults['columns'][1] .= $array_defaults['content'][0];
+		$array_defaults['columns'][1] .= '</div>';
 	} elseif ($counter == 1) {
 		$array_defaults['columns'][1] .= $array_defaults['content'][1];
 		$array_defaults['columns'][1] .= '</div>';
 	} elseif ($counter == 2) {
-		$array_defaults['columns'][0] =  '<div class="col-lg-4 col-md-5 smoky-bg">';
+		$array_defaults['columns'][0] =  '<div class="col-lg-4 col-md-5 border-end  p-0"><div class="top-article border-bottom pb-5">';
 		$array_defaults['columns'][0] .= $array_defaults['content'][$counter];
+		$array_defaults['columns'][0] .= '</div>';
 	} elseif ($counter == 3) {
 		$array_defaults['columns'][0] .= $array_defaults['content'][$counter];
 		$array_defaults['columns'][0] .= '</div>';
 	} elseif ($counter == 4) {
-		$array_defaults['columns'][2] = '<div class="col-lg-3 col-md-12">';
+		$array_defaults['columns'][2] = '<div class="col-lg-3 col-md-12  p-0"><div class="top-article border-bottom pb-5">';
 		$array_defaults['columns'][2] .= $array_defaults['content'][$counter];
+		$array_defaults['columns'][2] .= '</div>';
 	} elseif ($counter == 5) {
 		$array_defaults['columns'][2] .= $array_defaults['content'][$counter];
-		$array_defaults['columns'][2] .= '</div></div><div class="bottom-row row gx-4 py-0">';
+		$array_defaults['columns'][2] .= '</div></div><div class="middle-row row"><div class="col-lg-4 col-md-7 border-end py-5 "></div><div class="col-lg-5 col-md-7 border-end "></div><div class="col-lg-3 col-md-7 border-end "></div></div><div class="bottom-row row gx-4 py-0">';
 	} elseif ($counter > 5) {
-		$array_defaults['columns'][$counter - 2] =  '<div class="col-lg-4 border-top border-end py-2">';
+		$array_defaults['columns'][$counter - 2] =  '<div class="col-lg-4 border-top border-end p-5">';
 		$array_defaults['columns'][$counter - 2] .= $array_defaults['content'][$counter];
 		$array_defaults['columns'][$counter - 2] .= '</div>';
 	}

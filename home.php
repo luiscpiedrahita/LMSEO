@@ -62,7 +62,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 ?>
 
-<main class="content container-fluid mt-5 overflow-hidden <?php echo ($paged == 1) ? 'first-page' : 'other-page' ?> page-<?php echo $paged ?>">
+<main class="content container-fluid dark-bg border-top overflow-hidden <?php echo ($paged == 1) ? 'first-page' : 'other-page' ?> page-<?php echo $paged ?>">
 
     <?php
 
@@ -84,7 +84,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     if ($wp_query->have_posts()) :
         if ('tg-archive-style--masonry' === $archive_layout) :
     ?>
-            <div class="top-row row gx-4 mb-0">
+            <div class="top-row row masonry gx-4 mb-0">
             <?php
         endif;
         /* Start the Loop */

@@ -15,6 +15,7 @@ const configServicesDef = require("./webpack/templates/servicesDef");
 const configServicesDev = require("./webpack/templates/servicesDevelopment");
 const configServicesGoogle = require("./webpack/templates/servicesGoogle");
 const configServicesDigital = require("./webpack/templates/servicesDigital");
+const configServiceshosting = require("./webpack/templates/servicesHosting");
 const configTeams = require("./webpack/templates/teams");
 
 let config = [];
@@ -29,6 +30,7 @@ const wordpressSections = [
   configServices,
   configServicesDef,
   configServicesDigital,
+  configServiceshosting,
   configServicesDev,
   configServicesGoogle,
   configTeams,

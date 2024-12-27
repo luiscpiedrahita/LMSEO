@@ -28,6 +28,8 @@
     "searchBuild": "webpack --mode production --config ./webpack/webpack.config.search.js",
     "digital": "webpack --mode development --watch --config ./webpack/webpack.config.digital.js",
     "digitalBuild": "webpack --mode production --config ./webpack/webpack.config.digital.js",
+    "hosting": "webpack --mode development --watch --config ./webpack/webpack.config.hosting.js",
+    "hostingBuild": "webpack --mode production --config ./webpack/webpack.config.hosting.js",
     "development": "webpack --mode development --watch --config ./webpack/webpack.config.servicesDevelopment.js",
     "developmentBuild": "webpack --mode production --config ./webpack/webpack.config.servicesDevelopment.js",
     "google": "webpack --mode development --watch --config ./webpack/webpack.config.servicesGoogle.js",

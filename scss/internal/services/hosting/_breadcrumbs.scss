@@ -1,14 +1,6 @@
 @import "../../../parts/breadcrumbs";
 .lmseo-breadcrumb-wrap {
   // padding: 0 3rem;
-  // background-color: $hexachromeBlack;
-  // color: $white;
-  ul {
-    // border-bottom: 5px solid color.scale($blue, $lightness: 50%);
-    border-bottom: 5px solid $blue;
-  }
-  .lmseo-breadcrumb .hvr-underline-from-left:before {
-    background: $purple;
-    // background: $highlightYellow;
-  }
+  background-color: $hexachromeBlack;
+  color: $white;
 }

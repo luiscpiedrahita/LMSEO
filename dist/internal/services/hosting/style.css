@@ -10903,11 +10903,9 @@ button.expand,
   max-width: fit-content;
 }
 
-.lmseo-breadcrumb-wrap ul {
-  border-bottom: 5px solid #2098d1;
-}
-.lmseo-breadcrumb-wrap .lmseo-breadcrumb .hvr-underline-from-left:before {
-  background: #39459b;
+.lmseo-breadcrumb-wrap {
+  background-color: #212121;
+  color: #ffffff;
 }
 
 @view-transition {
@@ -11296,9 +11294,11 @@ h1,
 .entry-header {
   height: 50vh;
   width: 100%;
+  background-color: #212121;
+  color: #ffffff;
 }
 .entry-header h1, .entry-header .h1 {
-  color: #212121;
+  color: #ffffff;
   line-height: 3.6rem;
   font-size: 3.4rem;
   font-weight: normal;
@@ -11312,7 +11312,18 @@ h1,
 }
 
 .entry-content {
-  background-color: rgb(244.2, 244.2, 244.2);
+  --bs-border-color: var(--lmseo-border-color);
+  background-color: var(--lmseo-border-color);
+  color: #ffffff;
+}
+.entry-content h2, .entry-content .h2 {
+  color: #adb5bd;
+}
+.entry-content h3, .entry-content .h3 {
+  color: #6c757d;
+}
+.entry-content .lets-talk {
+  color: white;
 }
 .entry-content p,
 .entry-content ul,
@@ -11340,7 +11351,8 @@ h1,
 }
 .entry-content .content-header h2, .entry-content .content-header .h2 {
   margin: 0;
-  font-size: 6rem;
+  font-size: 4rem;
+  color: #ffffff;
 }
 .entry-content .content-header p {
   font-size: 1.5rem;
@@ -11363,6 +11375,29 @@ h1,
   height: 20rem;
 }
 
+.svg-mk {
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  background-color: #212121;
+}
+
+.svg-bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.wh-20 {
+  width: 20rem;
+  height: 20rem;
+}
+
+.wh-4 {
+  width: 4rem;
+  height: 4rem;
+}
+
 .flex-center--column {
   display: flex;
   align-items: center;
@@ -11373,11 +11408,15 @@ h1,
 .flex-center--column ul {
   padding: 0;
 }
+.flex-center--column ol ul,
+.flex-center--column ul ul {
+  padding: 0 2rem;
+}
 
-.accent {
+p.accent {
   position: relative;
 }
-.accent:before {
+p.accent:before {
   position: absolute;
   content: "";
   display: inline-block;
@@ -11386,6 +11425,12 @@ h1,
   background-color: #2098d1;
   bottom: -35px;
   left: 0;
+}
+
+span.accent {
+  color: rgb(253.8, 177.6, 114);
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .min-height {
@@ -11410,7 +11455,7 @@ h1,
     height: 40vh;
   }
   .entry-header h1, .entry-header .h1 {
-    grid-area: 6/3/11/12;
+    grid-area: 6/3/12/12;
   }
   .entry-header h4, .entry-header .h4 {
     grid-area: 5/3/6/5;
@@ -11435,7 +11480,7 @@ h1,
   }
   .entry-content .content-header h2, .entry-content .content-header .h2 {
     margin: 0;
-    font-size: 8rem;
+    font-size: 6rem;
   }
   .entry-content .content-header p {
     font-size: 1.5rem;
@@ -11451,6 +11496,9 @@ h1,
   }
 }
 @media (min-width: 1200px) {
+  .entry-content .content-header h2, .entry-content .content-header .h2 {
+    font-size: 8rem;
+  }
   .header-brand {
     font-size: 20rem;
     grid-area: 2/5/13/13;

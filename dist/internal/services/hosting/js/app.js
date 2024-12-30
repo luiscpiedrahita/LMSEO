@@ -7635,9 +7635,9 @@ document.addEventListener("click", function (e) {
   }
 });
 aos__WEBPACK_IMPORTED_MODULE_1___default().init({
-  offset: 0,
+  offset: 300,
   once: false,
-  mirror: false
+  mirror: true
 });
 _utilities_navbar__WEBPACK_IMPORTED_MODULE_2__.bsToggle.init();
 })();

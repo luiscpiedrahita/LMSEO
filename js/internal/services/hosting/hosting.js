@@ -1,4 +1,4 @@
-import { Navbar, Popper } from "bootstrap";
+import { Navbar } from "bootstrap";
 import AOS from "aos";
 import { bsToggle } from "../../../utilities/navbar";
 document.addEventListener("click", function (e) {
@@ -10,9 +10,9 @@ document.addEventListener("click", function (e) {
   }
 });
 AOS.init({
-  offset: 0,
+  offset: 300,
   once: false,
-  mirror: false,
+  mirror: true,
 });
 
 bsToggle.init();

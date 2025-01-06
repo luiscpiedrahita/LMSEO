@@ -158,7 +158,19 @@ h1,
     }
   }
 }
-p.accent {
+.mask {
+  display: inline-block;
+  &:before {
+    width: 100%;
+    height: 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    background-color: $hexachromeBlack;
+  }
+}
+p.accent,
+div.accent {
   position: relative;
   &:before {
     position: absolute;
@@ -171,7 +183,8 @@ p.accent {
     left: 0;
   }
 }
-span.accent {
+span.accent,
+strong.accent {
   // background-color: $blue;
   color: $orange-300;
   // display: inline-block;
@@ -241,6 +254,9 @@ span.accent {
   }
   .min-height {
     min-height: 500px;
+  }
+  .w-lg-100 {
+    width: 100% !important;
   }
 }
 @include media-breakpoint-up(xl) {

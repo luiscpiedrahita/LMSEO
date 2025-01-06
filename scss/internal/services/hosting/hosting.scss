@@ -53,11 +53,40 @@ $theme-colors: (
 @import "bootstrap/scss/carousel";
 @import "bootstrap/scss/modal";
 @import "bootstrap/scss/forms";
+$utilities: map-merge(
+  $utilities,
+  (
+    "width": map-merge(
+        map-get($utilities, "viewport-height"),
+        (
+          values: map-merge(
+              map-get(map-get($utilities, "viewport-height"), "values"),
+              (
+                50: 50vh,
+                75: 75vh,
+              )
+            ),
+        )
+      ),
+  )
+);
+$utilities: map-merge(
+  $utilities,
+  (
+    "border": map-merge(
+        map-get($utilities, "border"),
+        (
+          responsive: true,
+        )
+      ),
+  )
+);
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "bootstrap/scss/utilities/api";
 
 // 8. Add additional custom code here
+
 @import "../../../parts/hover";
 @import "../utilities";
 @import "../../../parts/forms";

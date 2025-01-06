@@ -79,7 +79,6 @@ function ServicesCSS() {
 add_filter('genesis_markup_content-sidebar-wrap', '__return_null');
 
 add_filter('genesis_attr_content', 'contentClassesFunction');
-
 function contentClassesFunction($attributes) {
     $attributes['class'] = $attributes['class'] . ' ' . 'container-fluid g-0 overflow-hidden';
     return $attributes;
@@ -132,7 +131,7 @@ function lmseo_do_post_title() {
         [
             'open'    => "<h4 %s>",
             'close'   => "</h4>",
-            'content' => 'SERVICES',
+            'content' => 'HOSTING',
             'context' => 'services-title',
             'atts' => [
                 'class' => 'services-title m-0 px-3 p-lg-0',
@@ -143,7 +142,6 @@ function lmseo_do_post_title() {
             'echo'    => false,
         ]
     );
-
 
     genesis_markup(
         [
@@ -160,18 +158,13 @@ function lmseo_do_post_title() {
             'echo'    => true,
         ]
     );
-
     echo apply_filters('genesis_post_title_output', $output, $wrap, $title) . "\n";
 }
 
 add_filter(
     'wp_calculate_image_sizes',
     function ($sizes) {
-        // $sizes = '(max-width: 960px) 50vw, 430px'; // Also just an example.
-        // $sizes = '(max-width: 960px) 50vw, 430px'; // Also just an example.
         $sizes = "(max-width: 320px) 50vw, (max-width: 576px) 50vw, (max-width: 768px) 40vw, (max-width: 992px) 40vw, (max-width: 1200px) 40vw, (max-width: 1400px) 40vw, 100vw";
-        // $sizes = "(min-width: 1200px) 740px, (min-width: 768px) 700px, calc(100vw - 36px)";
-
         return $sizes;
     }
 );
@@ -187,11 +180,13 @@ function lmseo_do_post_content() {
         ]
     );
 }
+
 remove_action('genesis_entry_content', 'genesis_do_post_content');
 add_action('genesis_entry_content', 'lmseo_before_post_content');
 function lmseo_before_post_content() {
     genesis_do_post_content();
 }
+
 remove_action('genesis_after_entry_content', 'genesis_do_post_content');
 add_action('genesis_after_entry_content', 'lmseo_after_post_content');
 function lmseo_after_post_content() {

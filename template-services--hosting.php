@@ -119,10 +119,7 @@ function lmseo_do_post_title() {
                 'wrap' => $wrap,
             ],
             'atts' => [
-                'class' => 'entry-title col-lg-8 m-0 px-3 p-lg-0',
-                'data-aos' => "fade-right",
-                'data-aos-offset' => '200',
-                'data-aos-delay' => "300",
+                'class' => 'entry-title col-lg-8 m-0 px-3 p-lg-0 fade-right',
             ],
             'echo'    => false,
         ]
@@ -134,10 +131,7 @@ function lmseo_do_post_title() {
             'content' => 'HOSTING',
             'context' => 'services-title',
             'atts' => [
-                'class' => 'services-title m-0 px-3 p-lg-0',
-                'data-aos' => "fade-right",
-                'data-aos-delay' => "1",
-                'data-aos-offset' => '100'
+                'class' => 'services-title m-0 px-3 p-lg-0 fade-right',
             ],
             'echo'    => false,
         ]
@@ -150,10 +144,7 @@ function lmseo_do_post_title() {
             'content' => 'LMSEO',
             'context' => 'header-brand',
             'atts' => [
-                'class' => 'header-brand m-0 p-0',
-                'data-aos' => "fade-left",
-                'data-aos-delay' => "1",
-                'data-offset' => '1'
+                'class' => 'header-brand m-0 p-0 fade-left',
             ],
             'echo'    => true,
         ]
